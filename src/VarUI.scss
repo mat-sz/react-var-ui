@@ -1,0 +1,143 @@
+$foreground-color: var(--react-var-ui-foreground-color, #ddd);
+$background-color: var(--react-var-ui-background-color, #11111a);
+$accent-color: var(--react-var-ui-accent-color, #4444ff);
+$input-background-color: var(--react-var-ui-input-background-color, #66666a);
+$label-background-normal-color: var(
+  --react-var-ui-label-background-normal-color,
+  #22222a
+);
+$label-background-hover-color: var(
+  --react-var-ui-label-background-hover-color,
+  #33333a
+);
+$label-border-color: var(--react-var-ui-label-border-color, #33333a);
+$transition-time: 0.2s;
+
+.react-var-ui {
+  background: $background-color;
+
+  &-category {
+    &-title {
+      color: $foreground-color;
+      text-transform: uppercase;
+      font-size: 0.7rem;
+      padding: 0.4rem;
+    }
+
+    padding-bottom: 1rem;
+  }
+
+  &-color {
+    display: flex;
+    align-items: center;
+    position: relative;
+
+    .sketch-picker {
+      position: absolute;
+      top: 1rem;
+      right: -3rem;
+    }
+
+    &-color {
+      width: 2.5rem;
+      height: 1rem;
+      border-radius: 4px;
+    }
+
+    &-swatch {
+      padding: 1px;
+      background: $foreground-color;
+      border-radius: 4px;
+      box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1);
+      display: inline-block;
+      cursor: pointer;
+    }
+
+    &-popover {
+      position: absolute;
+      z-index: 2;
+    }
+
+    &-cover {
+      position: fixed;
+      top: 0px;
+      right: 0px;
+      bottom: 0px;
+      left: 0px;
+    }
+  }
+
+  &-toggle {
+    position: relative;
+    width: 2.6rem;
+    height: 1.2rem;
+
+    &-helper {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: $input-background-color;
+      border-radius: 1rem;
+      transition: $transition-time ease-in-out all;
+
+      &:before {
+        position: absolute;
+        height: 0.8rem;
+        width: 0.8rem;
+        left: 0.3rem;
+        top: 0.2rem;
+        border-radius: 1rem;
+        background-color: $foreground-color;
+        content: '';
+        transition: $transition-time ease-in-out all;
+      }
+    }
+
+    input {
+      width: 0;
+      height: 0;
+      opacity: 0.01;
+
+      &:checked + .react-var-ui-toggle-helper {
+        background: $accent-color !important;
+
+        &:before {
+          transform: translateX(1.2rem);
+        }
+      }
+    }
+  }
+
+  select {
+    width: 100%;
+  }
+
+  &-label {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 0.5rem 1rem;
+    font-size: 0.8rem;
+    color: $foreground-color;
+    background: $label-background-normal-color;
+    border-bottom: 1px solid $label-border-color;
+
+    &:first-child {
+      border-top: 1px solid $label-border-color;
+    }
+
+    &:hover {
+      background: $label-background-hover-color;
+    }
+
+    & > span {
+      display: flex;
+      align-items: center;
+
+      &:last-child {
+        justify-content: flex-end;
+      }
+    }
+  }
+}

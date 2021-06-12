@@ -1,0 +1,19 @@
+@import '../src/VarUI.scss';
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+    Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  background: #dddddd;
+  margin: 0;
+}
+
+h1 {
+  margin-left: 20px;
+}
+
+.example {
+  display: grid;
+  grid-template-columns: 400px 1fr;
+  padding: 20px;
+  grid-gap: 20px;
+}
