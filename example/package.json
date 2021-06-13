@@ -1,11 +1,11 @@
 {
   "name": "example",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "build/index.html",
   "license": "MIT",
   "scripts": {
     "start": "parcel --no-cache index.html",
-    "build": "parcel build --no-cache index.html"
+    "build": "parcel build --no-cache index.html --public-url ./"
   },
   "dependencies": {
     "react-app-polyfill": "^1.0.0",
