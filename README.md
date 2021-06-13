@@ -23,6 +23,30 @@ React component library for variable setting and preview, inspired by iOS settin
 
 While some code from react-dat-gui was used, this library functions in a completely different way. The codebase uses modern React code practices such as hooks and functional components. Instead of iterating over the children array, react-var-ui uses a Context. Creation of custom components is also easier.
 
+## Installation
+
+Install `react-var-ui` with either npm or yarn:
+
+```
+yarn add react-var-ui
+# or
+npm install react-var-ui
+```
+
+Then include the CSS with:
+
+```css
+/* In your CSS/SCSS file: */
+@import 'react-var-ui/dist/index.css';
+```
+
+or:
+
+```js
+// In your JS/TS file (assuming your bundler supports loading CSS files):
+import 'react-var-ui/dist/index.css';
+```
+
 ## Example usage
 
 ```tsx
