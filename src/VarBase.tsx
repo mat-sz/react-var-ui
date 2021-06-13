@@ -2,6 +2,7 @@ import React, { FC, ReactChild, ReactNode } from 'react';
 
 export interface IVarBaseProps {
   label: ReactChild;
+  className?: string;
   children?: ReactNode;
 }
 
@@ -12,9 +13,9 @@ export interface IVarBaseInputProps<T> extends IVarBaseProps {
   onChange?: (value: T) => void;
 }
 
-export const VarBase: FC<IVarBaseProps> = ({ label, children }) => {
+export const VarBase: FC<IVarBaseProps> = ({ label, children, className }) => {
   return (
-    <label className="react-var-ui-label">
+    <label className={'react-var-ui-label ' + className ?? ''}>
       <span>{label}</span>
       <span>{children}</span>
     </label>
