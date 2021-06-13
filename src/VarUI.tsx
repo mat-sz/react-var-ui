@@ -1,6 +1,5 @@
 import React, {
   FC,
-  ReactChild,
   ReactNode,
   createContext,
   useMemo,
@@ -21,7 +20,6 @@ export interface IVarUIContext {
 
 export interface IVarUIProps {
   values: VarUIObject;
-  label: ReactChild;
   children?: ReactNode;
   updateValues: (values: VarUIObject) => void;
 }

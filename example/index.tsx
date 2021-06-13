@@ -57,6 +57,8 @@ const App = () => {
             <dd>{values.color}</dd>
             <dt>select</dt>
             <dd>{values.select}</dd>
+            <dt>slider</dt>
+            <dd>{values.slider}</dd>
           </dl>
         </div>
       </div>

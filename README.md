@@ -5,7 +5,7 @@ Simple React settings library.
 </p>
 
 <p align="center">
-<img alt="workflow" src="https://img.shields.io/github/workflow/status/mat-sz/react-var-ui/Node.js%20CI%20(yarn)">
+<img alt="workflow" src="https://img.shields.io/github/workflow/status/mat-sz/react-var-ui/CI">
 <a href="https://npmjs.com/package/react-var-ui">
 <img alt="npm" src="https://img.shields.io/npm/v/react-var-ui">
 <img alt="npm" src="https://img.shields.io/npm/dw/react-var-ui">
