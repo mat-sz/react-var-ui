@@ -10,6 +10,7 @@ import {
   VarToggle,
   VarSelect,
   VarSlider,
+  VarXY,
   VarCategory
 } from '../.';
 
@@ -18,7 +19,8 @@ const App = () => {
     toggle: true,
     color: '#FF0000',
     select: 1,
-    slider: 0.4
+    slider: 0.4,
+    xy: [0, 0]
   });
 
   return (
@@ -45,6 +47,7 @@ const App = () => {
                 max={0.8}
                 step={0.1}
               />
+              <VarXY label="VarXY" path="xy" />
             </VarCategory>
           </VarUI>
         </div>
@@ -59,6 +62,10 @@ const App = () => {
             <dd>{values.select}</dd>
             <dt>slider</dt>
             <dd>{values.slider}</dd>
+            <dt>xy</dt>
+            <dd>
+              {values.xy[0]}, {values.xy[1]}
+            </dd>
           </dl>
         </div>
       </div>
