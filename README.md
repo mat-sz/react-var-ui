@@ -23,7 +23,8 @@ While some code from react-dat-gui was used, this library functions in a complet
 const [values, setValues] = React.useState({
   toggle: true,
   color: '#FF0000',
-  select: 1
+  select: 1,
+  slider: 0.4
 });
 
 return (
@@ -39,7 +40,30 @@ return (
           { key: 1, label: 'One' }
         ]}
       />
+      <VarSlider
+        label="VarSlider"
+        path="slider"
+        min={0.2}
+        max={0.8}
+        step={0.1}
+      />
     </VarCategory>
   </VarUI>
 );
+```
+
+## Theme customization
+
+The colors can be customized as such (provided are default values):
+
+```css
+.react-var-ui {
+  --react-var-ui-foreground-color: #ddd;
+  --react-var-ui-background-color: #11111a;
+  --react-var-ui-accent-color: #4444ff;
+  --react-var-ui-input-background-color: #66666a;
+  --react-var-ui-label-background-normal-color: #22222a;
+  --react-var-ui-label-background-hover-color: #33333a;
+  --react-var-ui-label-border-color: #33333a;
+}
 ```
