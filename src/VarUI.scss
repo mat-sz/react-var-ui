@@ -8,7 +8,7 @@ $label-background-normal-color: var(
 );
 $label-background-hover-color: var(
   --react-var-ui-label-background-hover-color,
-  #33333a
+  #292930
 );
 $label-border-color: var(--react-var-ui-label-border-color, #33333a);
 $transition-time: 0.2s;
@@ -190,6 +190,7 @@ $transition-time: 0.2s;
 
     span {
       width: 2.5rem;
+      text-align: right;
     }
 
     button {

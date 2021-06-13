@@ -25,6 +25,11 @@ function roundValue(
   step: IVarXYValue
 ): IVarXYValue {
   const result: IVarXYValue = [0, 0];
+
+  if (!value) {
+    return result;
+  }
+
   for (let i = 0; i < value.length; i++) {
     const decimalPlaces = step[i].toString().split('.')[1].length;
     result[i] = Math.round(value[i] / step[i]) * step[i];
@@ -42,7 +47,12 @@ function percentValue(
   min: IVarXYValue,
   max: IVarXYValue
 ): IVarXYValue {
+  if (!value) {
+    return [50, 50];
+  }
+
   const result: IVarXYValue = [0, 0];
+
   for (let i = 0; i < value.length; i++) {
     result[i] = ((value[i] - min[i]) / (max[i] - min[i])) * 100;
   }
