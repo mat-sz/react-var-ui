@@ -1,11 +1,11 @@
 import React from 'react';
 import * as ReactDOM from 'react-dom';
-import { Default as Thing } from '../stories/Thing.stories';
+import { VarUI } from '../src/VarUI';
 
-describe('Thing', () => {
+describe('VarUI', () => {
   it('renders without crashing', () => {
     const div = document.createElement('div');
-    ReactDOM.render(<Thing />, div);
+    ReactDOM.render(<VarUI values={{}} updateValues={() => {}} />, div);
     ReactDOM.unmountComponentAtNode(div);
   });
 });
