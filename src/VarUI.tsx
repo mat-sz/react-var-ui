@@ -10,7 +10,7 @@ import cloneDeep from 'lodash.clonedeep';
 import set from 'lodash.set';
 import result from 'lodash.result';
 
-export type VarUIObject = Record<string, any> | any[];
+export type VarUIObject = any;
 
 export interface IVarUIContext {
   values: VarUIObject;
