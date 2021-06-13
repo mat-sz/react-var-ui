@@ -6,6 +6,9 @@ import { IVarBaseInputProps, VarBase } from './VarBase';
 
 export interface IVarColorProps extends IVarBaseInputProps<string> {}
 
+/**
+ * Color picker component. Returns and accepts values in form of hex color strings.
+ */
 export const VarColor: FC<IVarColorProps> = ({
   label,
   path,

@@ -13,11 +13,34 @@ import { IconDown } from './icons/IconDown';
 import { IconUp } from './icons/IconUp';
 
 export interface IVarSliderProps extends IVarBaseInputProps<number> {
+  /**
+   * Minimum value.
+   */
   min: number;
+
+  /**
+   * Maximum value.
+   */
   max: number;
+
+  /**
+   * Step.
+   */
   step: number;
+
+  /**
+   * Should the end result be rounded to an integer value.
+   */
   integer?: boolean;
+
+  /**
+   * If true will display an editable input, otherwise shows a read only value.
+   */
   showInput?: boolean;
+
+  /**
+   * If true will display buttons that increase and decrease the value by step.
+   */
   showButtons?: boolean;
 }
 
@@ -36,6 +59,9 @@ function roundValue(
   return integer ? Math.round(value) : parseFloat(value.toFixed(decimalPlaces));
 }
 
+/**
+ * Integer/float slider component. Accepts and provides numbers.
+ */
 export const VarSlider: FC<IVarSliderProps> = ({
   label,
   path,

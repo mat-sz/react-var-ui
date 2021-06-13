@@ -54,7 +54,8 @@ const [values, setValues] = React.useState({
   toggle: true,
   color: '#FF0000',
   select: 1,
-  slider: 0.4
+  slider: 0.4,
+  xy: [0, 0.2]
 });
 
 return (
@@ -77,6 +78,7 @@ return (
         max={0.8}
         step={0.1}
       />
+      <VarXY label="VarXY" path="xy" />
     </VarCategory>
   </VarUI>
 );

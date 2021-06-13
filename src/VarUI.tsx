@@ -12,20 +12,38 @@ import result from 'lodash.result';
 
 export type VarUIObject = any;
 
-export interface IVarUIContext {
+export interface IVarUIProps {
+  /**
+   * Object with values.
+   */
+  values: VarUIObject;
+
+  /**
+   * Function to be called with an updated object.
+   */
+  updateValues: (values: VarUIObject) => void;
+
+  /**
+   * Input components (or any other children).
+   */
+  children?: ReactNode;
+}
+
+interface IVarUIContext {
   values: VarUIObject;
   getValue: (path?: string) => any;
   setValue: (path: string, value: any) => void;
 }
 
-export interface IVarUIProps {
-  values: VarUIObject;
-  children?: ReactNode;
-  updateValues: (values: VarUIObject) => void;
-}
+const VarUIContext = createContext<IVarUIContext | undefined>(undefined);
 
-export const VarUIContext = createContext<IVarUIContext | undefined>(undefined);
-
+/**
+ * Simple function used for custom input components.
+ * @param path
+ * @param fallbackValue
+ * @param onChange
+ * @returns [value: T, setValue: (value: T) => void]
+ */
 export function useVarUIValue<T>(
   path?: string,
   fallbackValue?: T,
@@ -51,6 +69,9 @@ export function useVarUIValue<T>(
   return [value, setValue];
 }
 
+/**
+ * Component which provides a context to input components and handles value updates.
+ */
 export const VarUI: FC<IVarUIProps> = ({ values, updateValues, children }) => {
   const getValue = useCallback(
     (path?: string) => (path ? result(values, path) : undefined),

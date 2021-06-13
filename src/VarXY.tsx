@@ -60,6 +60,9 @@ function percentValue(
   return result;
 }
 
+/**
+ * XY offset picker. Accepts and provides an array in form of [x, y].
+ */
 export const VarXY: FC<IVarXYProps> = ({
   label,
   path,
