@@ -63,14 +63,14 @@ export const VarSlider: FC<IVarSliderProps> = ({
 
   const [moving, setMoving] = useState(false);
   const updatePosition = useCallback(
-    (pageX: number) => {
+    (x: number) => {
       if (!sliderRef.current) {
         return;
       }
 
       const div = sliderRef.current;
       const rect = div.getBoundingClientRect();
-      const percent = (pageX - rect.left) / rect.width;
+      const percent = (x - rect.left) / rect.width;
       const value = roundValue(
         min + (max - min) * percent,
         min,
@@ -92,7 +92,7 @@ export const VarSlider: FC<IVarSliderProps> = ({
       e.preventDefault();
       e.stopPropagation();
 
-      updatePosition(e.pageX);
+      updatePosition(e.clientX);
     };
 
     const handleTouchMove = (e: TouchEvent) => {
@@ -104,7 +104,7 @@ export const VarSlider: FC<IVarSliderProps> = ({
         return;
       }
 
-      updatePosition(touch.pageX);
+      updatePosition(touch.clientX);
     };
 
     const handleUp = () => {
@@ -134,10 +134,16 @@ export const VarSlider: FC<IVarSliderProps> = ({
         <div
           className="react-var-ui-slider-track"
           ref={sliderRef}
-          onClick={e => updatePosition(e.pageX)}
+          onClick={e => updatePosition(e.clientX)}
           onDoubleClick={() => defaultValue && setCurrentValue(defaultValue)}
-          onMouseDown={() => setMoving(true)}
-          onTouchStart={() => setMoving(true)}
+          onMouseDown={e => {
+            e.preventDefault();
+            setMoving(true);
+          }}
+          onTouchStart={e => {
+            e.preventDefault();
+            setMoving(true);
+          }}
         >
           <div
             className="react-var-ui-slider-content"

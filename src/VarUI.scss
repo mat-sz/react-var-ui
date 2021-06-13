@@ -162,6 +162,7 @@ $transition-time: 0.2s;
       overflow: hidden;
       cursor: pointer;
       margin-right: 0.4rem;
+      touch-action: none;
     }
 
     &-content {
@@ -171,6 +172,7 @@ $transition-time: 0.2s;
       bottom: 0;
       left: 0;
       pointer-events: none;
+      transition: 0.1s ease-in-out all;
     }
 
     input {
@@ -220,6 +222,7 @@ $transition-time: 0.2s;
       cursor: pointer;
       border-radius: 1rem;
       overflow: hidden;
+      touch-action: none;
     }
 
     &-control {
@@ -230,6 +233,7 @@ $transition-time: 0.2s;
       transform: translate(-50%, -50%);
       position: absolute;
       pointer-events: none;
+      transition: 0.1s ease-in-out all;
 
       &:after,
       &:before {

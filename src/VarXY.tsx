@@ -76,15 +76,16 @@ export const VarXY: FC<IVarXYProps> = ({
 
   const [moving, setMoving] = useState(false);
   const updatePosition = useCallback(
-    (pageX: number, pageY: number) => {
+    (x: number, y: number) => {
       if (!sliderRef.current) {
         return;
       }
 
       const div = sliderRef.current;
       const rect = div.getBoundingClientRect();
-      const percentX = (pageX - rect.left) / rect.width;
-      const percentY = (pageY - rect.top) / rect.height;
+      console.log(rect, x, y);
+      const percentX = (x - rect.left) / rect.width;
+      const percentY = (y - rect.top) / rect.height;
 
       const value = roundValue(
         [
@@ -115,7 +116,7 @@ export const VarXY: FC<IVarXYProps> = ({
       e.preventDefault();
       e.stopPropagation();
 
-      updatePosition(e.pageX, e.pageY);
+      updatePosition(e.clientX, e.clientY);
     };
 
     const handleTouchMove = (e: TouchEvent) => {
@@ -127,7 +128,7 @@ export const VarXY: FC<IVarXYProps> = ({
         return;
       }
 
-      updatePosition(touch.pageX, touch.pageY);
+      updatePosition(touch.clientX, touch.clientY);
     };
 
     const handleUp = () => {
@@ -160,10 +161,16 @@ export const VarXY: FC<IVarXYProps> = ({
         <div
           className="react-var-ui-xy-space"
           ref={sliderRef}
-          onClick={e => updatePosition(e.pageX, e.pageY)}
+          onClick={e => updatePosition(e.clientX, e.clientY)}
           onDoubleClick={reset}
-          onMouseDown={() => setMoving(true)}
-          onTouchStart={() => setMoving(true)}
+          onMouseDown={e => {
+            e.preventDefault();
+            setMoving(true);
+          }}
+          onTouchStart={e => {
+            e.preventDefault();
+            setMoving(true);
+          }}
         >
           <div
             className="react-var-ui-xy-control"
