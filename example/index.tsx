@@ -4,13 +4,21 @@ import * as ReactDOM from 'react-dom';
 
 import './index.scss';
 
-import { VarUI, VarColor, VarToggle, VarSelect, VarCategory } from '../.';
+import {
+  VarUI,
+  VarColor,
+  VarToggle,
+  VarSelect,
+  VarSlider,
+  VarCategory
+} from '../.';
 
 const App = () => {
   const [values, setValues] = React.useState({
     toggle: true,
     color: '#FF0000',
-    select: 1
+    select: 1,
+    slider: 0.4
   });
 
   return (
@@ -20,15 +28,22 @@ const App = () => {
         <div className="wrapper">
           <VarUI updateValues={setValues} values={values}>
             <VarCategory label="Example">
-              <VarColor path="color" label="Color" />
-              <VarToggle path="toggle" label="Toggle" />
+              <VarColor label="VarColor" path="color" />
+              <VarToggle label="VarToggle" path="toggle" />
               <VarSelect
                 path="select"
-                label="Select"
+                label="VarSelect"
                 options={[
                   { key: 0, label: 'Zero' },
                   { key: 1, label: 'One' }
                 ]}
+              />
+              <VarSlider
+                label="VarSlider"
+                path="slider"
+                min={0.2}
+                max={0.8}
+                step={0.1}
               />
             </VarCategory>
           </VarUI>

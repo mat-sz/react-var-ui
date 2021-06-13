@@ -116,7 +116,7 @@ $transition-time: 0.2s;
 
   &-label {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 2fr;
     padding: 0.5rem 1rem;
     font-size: 0.8rem;
     color: $foreground-color;
@@ -138,6 +138,57 @@ $transition-time: 0.2s;
       &:last-child {
         justify-content: flex-end;
       }
+    }
+  }
+
+  &-slider {
+    display: flex;
+    align-items: center;
+    width: 100%;
+
+    &-track {
+      background: $label-background-hover-color;
+      position: relative;
+      flex: 1;
+      height: 1.3rem;
+      border-radius: 0.2rem;
+      overflow: hidden;
+      cursor: pointer;
+    }
+
+    &-content {
+      background: $accent-color;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      pointer-events: none;
+    }
+
+    input {
+      width: 3rem;
+      background: $label-background-normal-color;
+      border: none;
+      -moz-appearance: textfield;
+      color: $foreground-color;
+      outline: none !important;
+      height: 1.3rem;
+      padding: 0 0.1rem;
+      margin-left: 0.2rem;
+
+      &::-webkit-outer-spin-button,
+      &::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+      }
+    }
+
+    button {
+      background: $label-background-normal-color;
+      border: none;
+      cursor: pointer;
+      color: $foreground-color;
+      height: 1.3rem;
     }
   }
 }

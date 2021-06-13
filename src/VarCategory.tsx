@@ -8,7 +8,7 @@ export const VarCategory: FC<IVarCategoryProps> = ({ label, children }) => {
   return (
     <div className="react-var-ui-category">
       <div className="react-var-ui-category-title">{label}</div>
-      <div>{children}</div>
+      {!!children && <div>{children}</div>}
     </div>
   );
 };

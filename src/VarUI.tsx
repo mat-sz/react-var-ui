@@ -19,7 +19,8 @@ export interface IVarUIContext {
   setValue: (path: string, value: any) => void;
 }
 
-export interface IVarUIProps extends IVarUIContext {
+export interface IVarUIProps {
+  values: VarUIObject;
   label: ReactChild;
   children?: ReactNode;
   updateValues: (values: VarUIObject) => void;
