@@ -153,6 +153,7 @@ $transition-time: 0.2s;
       border-radius: 0.2rem;
       overflow: hidden;
       cursor: pointer;
+      margin-right: 0.4rem;
     }
 
     &-content {
@@ -173,13 +174,16 @@ $transition-time: 0.2s;
       outline: none !important;
       height: 1.3rem;
       padding: 0 0.1rem;
-      margin-left: 0.2rem;
 
       &::-webkit-outer-spin-button,
       &::-webkit-inner-spin-button {
         -webkit-appearance: none;
         margin: 0;
       }
+    }
+
+    span {
+      width: 2.5rem;
     }
 
     button {

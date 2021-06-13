@@ -47,6 +47,31 @@ const App = () => {
                 max={0.8}
                 step={0.1}
               />
+              <VarSlider
+                label="VarSlider (showInput + showButtons)"
+                path="slider"
+                min={0.2}
+                max={0.8}
+                step={0.1}
+                showInput
+                showButtons
+              />
+              <VarSlider
+                label="VarSlider (showInput)"
+                path="slider"
+                min={0.2}
+                max={0.8}
+                step={0.1}
+                showInput
+              />
+              <VarSlider
+                label="VarSlider (showButtons)"
+                path="slider"
+                min={0.2}
+                max={0.8}
+                step={0.1}
+                showButtons
+              />
               <VarXY label="VarXY" path="xy" />
             </VarCategory>
           </VarUI>

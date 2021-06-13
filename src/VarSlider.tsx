@@ -17,6 +17,8 @@ export interface IVarSliderProps extends IVarBaseInputProps<number> {
   max: number;
   step: number;
   integer?: boolean;
+  showInput?: boolean;
+  showButtons?: boolean;
 }
 
 function roundValue(
@@ -43,7 +45,9 @@ export const VarSlider: FC<IVarSliderProps> = ({
   max,
   step,
   integer,
-  defaultValue
+  defaultValue,
+  showInput,
+  showButtons
 }) => {
   const sliderRef = useRef<HTMLDivElement>(null);
   const [currentValue, setCurrentValue] = useVarUIValue(path, value, onChange);
@@ -140,39 +144,47 @@ export const VarSlider: FC<IVarSliderProps> = ({
             style={{ width: percent + '%' }}
           ></div>
         </div>
-        <input
-          className="react-var-ui-slider-input"
-          type="number"
-          min={min}
-          max={max}
-          step={step}
-          value={rounded}
-          onChange={e =>
-            setCurrentValue(
-              integer ? parseInt(e.target.value) : parseFloat(e.target.value)
-            )
-          }
-        />
-        <button
-          title="Increase"
-          onClick={() =>
-            setCurrentValue(
-              roundValue(currentValue + step, min, max, step, !!integer)
-            )
-          }
-        >
-          <IconUp />
-        </button>
-        <button
-          title="Decrease"
-          onClick={() =>
-            setCurrentValue(
-              roundValue(currentValue - step, min, max, step, !!integer)
-            )
-          }
-        >
-          <IconDown />
-        </button>
+        {showInput ? (
+          <input
+            className="react-var-ui-slider-input"
+            type="number"
+            min={min}
+            max={max}
+            step={step}
+            value={rounded}
+            onChange={e =>
+              setCurrentValue(
+                integer ? parseInt(e.target.value) : parseFloat(e.target.value)
+              )
+            }
+          />
+        ) : (
+          <span>{rounded}</span>
+        )}
+        {showButtons && (
+          <>
+            <button
+              title="Increase"
+              onClick={() =>
+                setCurrentValue(
+                  roundValue(currentValue + step, min, max, step, !!integer)
+                )
+              }
+            >
+              <IconUp />
+            </button>
+            <button
+              title="Decrease"
+              onClick={() =>
+                setCurrentValue(
+                  roundValue(currentValue - step, min, max, step, !!integer)
+                )
+              }
+            >
+              <IconDown />
+            </button>
+          </>
+        )}
       </div>
     </VarBase>
   );
