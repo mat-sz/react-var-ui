@@ -1,7 +1,7 @@
 $foreground-color: var(--react-var-ui-foreground-color, #ddd);
 $background-color: var(--react-var-ui-background-color, #11111a);
 $accent-color: var(--react-var-ui-accent-color, #4444ff);
-$input-background-color: var(--react-var-ui-input-background-color, #66666a);
+$input-background-color: var(--react-var-ui-input-background-color, #44444a);
 $label-background-normal-color: var(
   --react-var-ui-label-background-normal-color,
   #22222a
@@ -133,12 +133,6 @@ $transition-time: 0.2s;
 
     &:hover {
       background: $label-background-hover-color;
-
-      .react-var-ui-xy-space,
-      .react-var-ui-slider-track,
-      select {
-        background: $label-background-normal-color;
-      }
     }
 
     & > span {
@@ -157,7 +151,7 @@ $transition-time: 0.2s;
     width: 100%;
 
     &-track {
-      background: $label-background-hover-color;
+      background: $input-background-color;
       position: relative;
       flex: 1;
       height: 1.3rem;
@@ -219,7 +213,7 @@ $transition-time: 0.2s;
       margin-top: 0.5rem;
       width: 100%;
       height: 250px;
-      background: $label-background-hover-color;
+      background: $input-background-color;
       position: relative;
       cursor: pointer;
       border-radius: 0.4rem;
