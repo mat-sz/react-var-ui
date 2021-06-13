@@ -105,7 +105,7 @@ export const VarXY: FC<IVarXYProps> = ({
     if (typeof defaultValue !== 'undefined') {
       setCurrentValue(defaultValue);
     }
-  }, [defaultValue, defaultValue]);
+  }, [defaultValue, setCurrentValue]);
 
   useEffect(() => {
     if (!moving) {
