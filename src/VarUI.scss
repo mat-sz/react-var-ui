@@ -31,6 +31,7 @@ $transition-time: 0.2s;
     display: flex;
     align-items: center;
     position: relative;
+    margin-left: 1rem;
 
     .sketch-picker {
       position: absolute;
@@ -40,15 +41,12 @@ $transition-time: 0.2s;
 
     &-color {
       width: 2.5rem;
-      height: 1rem;
-      border-radius: 4px;
+      height: 1.2rem;
+      border-radius: 0.2rem;
     }
 
     &-swatch {
-      padding: 1px;
-      background: $foreground-color;
-      border-radius: 4px;
-      box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1);
+      border-radius: 0.2rem;
       display: inline-block;
       cursor: pointer;
     }
@@ -60,16 +58,16 @@ $transition-time: 0.2s;
 
     &-cover {
       position: fixed;
-      top: 0px;
-      right: 0px;
-      bottom: 0px;
-      left: 0px;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
     }
   }
 
   &-toggle {
     position: relative;
-    width: 2.6rem;
+    width: 2.5rem;
     height: 1.2rem;
 
     &-helper {
@@ -79,8 +77,9 @@ $transition-time: 0.2s;
       right: 0;
       bottom: 0;
       background: $input-background-color;
-      border-radius: 1rem;
+      border-radius: 0.2rem;
       transition: $transition-time ease-in-out all;
+      cursor: pointer;
 
       &:before {
         position: absolute;
@@ -104,7 +103,7 @@ $transition-time: 0.2s;
         background: $accent-color !important;
 
         &:before {
-          transform: translateX(1.2rem);
+          transform: translateX(1.1rem);
         }
       }
     }

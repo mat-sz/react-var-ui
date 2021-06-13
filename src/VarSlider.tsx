@@ -155,7 +155,6 @@ export const VarSlider: FC<IVarSliderProps> = ({
         />
         <button
           title="Increase"
-          disabled={currentValue + step >= max}
           onClick={() =>
             setCurrentValue(
               roundValue(currentValue + step, min, max, step, !!integer)
@@ -166,7 +165,6 @@ export const VarSlider: FC<IVarSliderProps> = ({
         </button>
         <button
           title="Decrease"
-          disabled={currentValue - step <= min}
           onClick={() =>
             setCurrentValue(
               roundValue(currentValue - step, min, max, step, !!integer)

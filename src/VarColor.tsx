@@ -20,6 +20,7 @@ export const VarColor: FC<IVarColorProps> = ({
 
   return (
     <VarBase label={label}>
+      <span className="react-var-ui-color-value">{currentValue}</span>
       <div className="react-var-ui-color">
         <div className="react-var-ui-color-swatch" onClick={toggle}>
           <div
