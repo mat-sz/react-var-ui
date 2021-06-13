@@ -152,7 +152,10 @@ export const VarXY: FC<IVarXYProps> = ({
   });
 
   return (
-    <VarBase label={label} className="react-var-ui-xy-label">
+    <VarBase label={label}>
+      <span className="react-var-ui-xy-value">
+        {rounded[0]}, {rounded[1]}
+      </span>
       <div className="react-var-ui-xy">
         <div
           className="react-var-ui-xy-space"

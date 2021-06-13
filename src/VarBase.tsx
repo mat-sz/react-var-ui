@@ -15,7 +15,7 @@ export interface IVarBaseInputProps<T> extends IVarBaseProps {
 
 export const VarBase: FC<IVarBaseProps> = ({ label, children, className }) => {
   return (
-    <label className={'react-var-ui-label ' + className ?? ''}>
+    <label className={'react-var-ui-label ' + (className ? className : '')}>
       <span>{label}</span>
       {children}
     </label>

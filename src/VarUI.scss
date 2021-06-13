@@ -128,6 +128,14 @@ $transition-time: 0.2s;
 
     &:hover {
       background: $label-background-hover-color;
+
+      .react-var-ui-xy-space {
+        background: $label-background-normal-color;
+      }
+
+      .react-var-ui-slider-track {
+        background: $label-background-normal-color;
+      }
     }
 
     & > span {
@@ -146,7 +154,7 @@ $transition-time: 0.2s;
     width: 100%;
 
     &-track {
-      background: $background-color;
+      background: $label-background-hover-color;
       position: relative;
       flex: 1;
       height: 1.3rem;
@@ -196,12 +204,11 @@ $transition-time: 0.2s;
   }
 
   &-xy {
-    &-label {
-      display: block;
+    grid-column: 1 / 3;
 
-      & > span {
-        display: block;
-      }
+    &-value {
+      display: inline-block !important;
+      text-align: right;
     }
 
     &-space {
@@ -223,6 +230,28 @@ $transition-time: 0.2s;
       transform: translate(-50%, -50%);
       position: absolute;
       pointer-events: none;
+
+      &:after,
+      &:before {
+        content: '';
+        position: absolute;
+        background: $accent-color;
+        opacity: 0.5;
+      }
+
+      &:before {
+        top: -100rem;
+        bottom: -100rem;
+        left: calc(50% - 1px);
+        width: 1px;
+      }
+
+      &:after {
+        left: -100rem;
+        right: -100rem;
+        top: calc(50% - 1px);
+        height: 1px;
+      }
     }
   }
 }
