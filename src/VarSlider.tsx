@@ -19,6 +19,21 @@ export interface IVarSliderProps extends IVarBaseInputProps<number> {
   integer?: boolean;
 }
 
+function roundValue(
+  value: number,
+  min: number,
+  max: number,
+  step: number,
+  integer: boolean
+): number {
+  const decimalPlaces = step.toString().split('.')[1].length;
+  value = Math.round(value / step) * step;
+  value = Math.max(min, value);
+  value = Math.min(max, value);
+
+  return integer ? Math.round(value) : parseFloat(value.toFixed(decimalPlaces));
+}
+
 export const VarSlider: FC<IVarSliderProps> = ({
   label,
   path,
@@ -33,11 +48,8 @@ export const VarSlider: FC<IVarSliderProps> = ({
   const sliderRef = useRef<HTMLDivElement>(null);
   const [currentValue, setCurrentValue] = useVarUIValue(path, value, onChange);
   const rounded = useMemo(
-    () =>
-      integer
-        ? Math.round(currentValue)
-        : Math.round(currentValue / step) * step,
-    [currentValue, step, integer]
+    () => roundValue(currentValue, min, max, step, !!integer),
+    [currentValue, min, max, step, integer]
   );
   const percent = useMemo(() => ((rounded - min) / (max - min)) * 100, [
     rounded,
@@ -55,11 +67,14 @@ export const VarSlider: FC<IVarSliderProps> = ({
       const div = sliderRef.current;
       const rect = div.getBoundingClientRect();
       const percent = (pageX - rect.left) / rect.width;
-      let value = Math.round((min + (max - min) * percent) / step) * step;
-      value = Math.max(min, value);
-      value = Math.min(max, value);
-
-      setCurrentValue(integer ? Math.round(value) : value);
+      const value = roundValue(
+        min + (max - min) * percent,
+        min,
+        max,
+        step,
+        !!integer
+      );
+      setCurrentValue(value);
     },
     [setCurrentValue, integer, min, max, step]
   );
@@ -140,10 +155,10 @@ export const VarSlider: FC<IVarSliderProps> = ({
         />
         <button
           title="Increase"
-          disabled={currentValue + step > max}
+          disabled={currentValue + step >= max}
           onClick={() =>
             setCurrentValue(
-              integer ? Math.round(currentValue + step) : currentValue + step
+              roundValue(currentValue + step, min, max, step, !!integer)
             )
           }
         >
@@ -151,10 +166,10 @@ export const VarSlider: FC<IVarSliderProps> = ({
         </button>
         <button
           title="Decrease"
-          disabled={currentValue - step < min}
+          disabled={currentValue - step <= min}
           onClick={() =>
             setCurrentValue(
-              integer ? Math.round(currentValue - step) : currentValue - step
+              roundValue(currentValue - step, min, max, step, !!integer)
             )
           }
         >
