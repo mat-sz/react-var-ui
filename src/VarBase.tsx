@@ -17,7 +17,7 @@ export const VarBase: FC<IVarBaseProps> = ({ label, children, className }) => {
   return (
     <label className={'react-var-ui-label ' + className ?? ''}>
       <span>{label}</span>
-      <span>{children}</span>
+      {children}
     </label>
   );
 };

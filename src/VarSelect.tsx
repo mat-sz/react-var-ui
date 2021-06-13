@@ -24,16 +24,18 @@ export const VarSelect: FC<IVarSelectProps> = ({
 
   return (
     <VarBase label={label}>
-      <select
-        value={currentValue}
-        onChange={e => setCurrentValue(e.target.value)}
-      >
-        {options.map(option => (
-          <option key={option.key} value={option.value ?? option.key}>
-            {option.label}
-          </option>
-        ))}
-      </select>
+      <span>
+        <select
+          value={currentValue}
+          onChange={e => setCurrentValue(e.target.value)}
+        >
+          {options.map(option => (
+            <option key={option.key} value={option.value ?? option.key}>
+              {option.label}
+            </option>
+          ))}
+        </select>
+      </span>
     </VarBase>
   );
 };

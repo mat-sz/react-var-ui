@@ -20,24 +20,26 @@ export const VarColor: FC<IVarColorProps> = ({
 
   return (
     <VarBase label={label}>
-      <span className="react-var-ui-color-value">{currentValue}</span>
-      <div className="react-var-ui-color">
-        <div className="react-var-ui-color-swatch" onClick={toggle}>
-          <div
-            className="react-var-ui-color-color"
-            style={{ background: currentValue }}
-          />
-        </div>
-        {show ? (
-          <div className="react-var-ui-color-popover">
-            <div className="react-var-ui-color-cover" onClick={close} />
-            <SketchPicker
-              color={currentValue}
-              onChange={result => setCurrentValue(result.hex)}
+      <span>
+        <span className="react-var-ui-color-value">{currentValue}</span>
+        <div className="react-var-ui-color">
+          <div className="react-var-ui-color-swatch" onClick={toggle}>
+            <div
+              className="react-var-ui-color-color"
+              style={{ background: currentValue }}
             />
           </div>
-        ) : null}
-      </div>
+          {show ? (
+            <div className="react-var-ui-color-popover">
+              <div className="react-var-ui-color-cover" onClick={close} />
+              <SketchPicker
+                color={currentValue}
+                onChange={result => setCurrentValue(result.hex)}
+              />
+            </div>
+          ) : null}
+        </div>
+      </span>
     </VarBase>
   );
 };
