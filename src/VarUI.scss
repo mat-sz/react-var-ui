@@ -111,6 +111,11 @@ $transition-time: 0.2s;
 
   select {
     width: 100%;
+    background: $label-background-hover-color;
+    border: none;
+    border-radius: 0.2rem;
+    color: $foreground-color;
+    padding: 0.2rem 0.5rem;
   }
 
   &-label {
@@ -129,11 +134,9 @@ $transition-time: 0.2s;
     &:hover {
       background: $label-background-hover-color;
 
-      .react-var-ui-xy-space {
-        background: $label-background-normal-color;
-      }
-
-      .react-var-ui-slider-track {
+      .react-var-ui-xy-space,
+      .react-var-ui-slider-track,
+      select {
         background: $label-background-normal-color;
       }
     }
@@ -220,7 +223,7 @@ $transition-time: 0.2s;
       background: $label-background-hover-color;
       position: relative;
       cursor: pointer;
-      border-radius: 1rem;
+      border-radius: 0.4rem;
       overflow: hidden;
       touch-action: none;
     }
