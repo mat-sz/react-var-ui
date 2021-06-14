@@ -4,7 +4,7 @@ export interface IVarBaseProps {
   /**
    * Label to be shown left to the input.
    */
-  label: ReactChild;
+  label?: ReactChild;
 
   /**
    * Additional class names on the wrapping label element.
@@ -46,8 +46,16 @@ export interface IVarBaseInputProps<T> extends IVarBaseProps {
  */
 export const VarBase: FC<IVarBaseProps> = ({ label, children, className }) => {
   return (
-    <div className={'react-var-ui-label ' + (className ? className : '')}>
-      <span>{label}</span>
+    <div
+      className={
+        'react-var-ui-label ' +
+        (label
+          ? 'react-var-ui-label-has-label '
+          : 'react-var-ui-label-no-label ') +
+        (className ? className : '')
+      }
+    >
+      {!!label && <span>{label}</span>}
       {children}
     </div>
   );

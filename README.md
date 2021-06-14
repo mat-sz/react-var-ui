@@ -79,6 +79,7 @@ return (
         step={0.1}
       />
       <VarXY label="VarXY" path="xy" />
+      <VarButton buttonLabel="VarButton" onClick={() => alert('clicked!')} />
     </VarCategory>
   </VarUI>
 );

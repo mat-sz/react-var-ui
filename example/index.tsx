@@ -11,7 +11,8 @@ import {
   VarSelect,
   VarSlider,
   VarXY,
-  VarCategory
+  VarCategory,
+  VarButton
 } from '../.';
 
 const App = () => {
@@ -75,6 +76,15 @@ const App = () => {
                 showButtons
               />
               <VarXY label="VarXY" path="xy" />
+              <VarButton
+                buttonLabel="VarButton (no label)"
+                onClick={() => alert('clicked!')}
+              />
+              <VarButton
+                label="VarButton"
+                buttonLabel="VarButton (with label)"
+                onClick={() => alert('clicked!')}
+              />
             </VarCategory>
           </VarUI>
         </div>

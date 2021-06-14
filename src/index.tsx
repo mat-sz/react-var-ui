@@ -4,6 +4,7 @@ export * from './VarUI';
 
 // Inputs
 export * from './VarBase';
+export * from './VarButton';
 export * from './VarColor';
 export * from './VarSelect';
 export * from './VarSlider';
