@@ -55,7 +55,8 @@ const [values, setValues] = React.useState({
   color: '#FF0000',
   select: 1,
   slider: 0.4,
-  xy: [0, 0.2]
+  xy: [0, 0.2],
+  string: 'Hello world!'
 });
 
 return (
@@ -78,6 +79,7 @@ return (
         max={0.8}
         step={0.1}
       />
+      <VarString label="VarString" path="string" />
       <VarXY label="VarXY" path="xy" />
       <VarButton buttonLabel="VarButton" onClick={() => alert('clicked!')} />
     </VarCategory>

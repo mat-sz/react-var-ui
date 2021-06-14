@@ -12,7 +12,8 @@ import {
   VarSlider,
   VarXY,
   VarCategory,
-  VarButton
+  VarButton,
+  VarString
 } from '../.';
 
 const App = () => {
@@ -21,7 +22,8 @@ const App = () => {
     color: '#FF0000',
     select: 1,
     slider: 0.4,
-    xy: [0, 0]
+    xy: [0, 0],
+    string: 'test'
   });
 
   console.log(values);
@@ -75,6 +77,7 @@ const App = () => {
                 step={0.1}
                 showButtons
               />
+              <VarString label="VarString" path="string" />
               <VarXY label="VarXY" path="xy" />
               <VarButton
                 buttonLabel="VarButton (no label)"

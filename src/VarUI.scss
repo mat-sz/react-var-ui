@@ -125,6 +125,28 @@ $transition-time: 0.2s;
     border-radius: 0.2rem;
     color: $foreground-color;
     padding: 0.2rem 0.5rem;
+
+    &:hover,
+    &:focus {
+      background: $input-background-hover-color;
+    }
+  }
+
+  .react-var-ui-string {
+    input {
+      width: 100%;
+      background: $input-background-color;
+      border: none;
+      border-radius: 0.2rem;
+      color: $foreground-color;
+      padding: 0.2rem 0.5rem;
+      outline: none !important;
+
+      &:hover,
+      &:focus {
+        background: $input-background-hover-color;
+      }
+    }
   }
 
   &-label {

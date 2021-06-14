@@ -8,6 +8,7 @@ export * from './VarButton';
 export * from './VarColor';
 export * from './VarSelect';
 export * from './VarSlider';
+export * from './VarString';
 export * from './VarToggle';
 export * from './VarXY';
 
