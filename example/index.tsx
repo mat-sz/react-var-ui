@@ -23,6 +23,8 @@ const App = () => {
     xy: [0, 0]
   });
 
+  console.log(values);
+
   return (
     <div>
       <h1>VarUI example</h1>

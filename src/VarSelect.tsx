@@ -41,10 +41,13 @@ export const VarSelect: FC<IVarSelectProps> = ({
       <span>
         <select
           value={currentValue}
-          onChange={e => setCurrentValue(e.target.value)}
+          onChange={e => setCurrentValue(JSON.parse(e.target.value))}
         >
           {options.map(option => (
-            <option key={option.key} value={option.value ?? option.key}>
+            <option
+              key={option.key}
+              value={JSON.stringify(option.value ?? option.key)}
+            >
               {option.label}
             </option>
           ))}
