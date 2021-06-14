@@ -19,14 +19,14 @@ export const VarToggle: FC<IVarToggleProps> = ({
   return (
     <VarBase label={label}>
       <span>
-        <div className="react-var-ui-toggle">
+        <label className="react-var-ui-toggle">
           <input
             type="checkbox"
             checked={currentValue}
             onChange={e => setCurrentValue(e.target.checked)}
           />
           <span className="react-var-ui-toggle-helper"></span>
-        </div>
+        </label>
       </span>
     </VarBase>
   );
