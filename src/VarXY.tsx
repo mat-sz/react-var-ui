@@ -96,7 +96,7 @@ export const VarXY: FC<IVarXYProps> = ({
 
       const div = sliderRef.current;
       const rect = div.getBoundingClientRect();
-      console.log(rect, x, y);
+
       const percentX = (x - rect.left) / rect.width;
       const percentY = (y - rect.top) / rect.height;
 
