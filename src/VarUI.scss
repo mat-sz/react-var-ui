@@ -1,14 +1,14 @@
 $foreground-color: var(--react-var-ui-foreground-color, #ddd);
 $background-color: var(--react-var-ui-background-color, #11111a);
-$accent-color: var(--react-var-ui-accent-color, #4444ff);
-$input-background-color: var(--react-var-ui-input-background-color, #44444a);
+$accent-color: var(--react-var-ui-accent-color, #77f);
+$input-background-color: var(--react-var-ui-input-background-color, #353542);
 $label-background-normal-color: var(
   --react-var-ui-label-background-normal-color,
   #22222a
 );
 $label-background-hover-color: var(
   --react-var-ui-label-background-hover-color,
-  #292930
+  #2a2a33
 );
 $label-border-color: var(--react-var-ui-label-border-color, #33333a);
 $transition-time: 0.2s;
@@ -22,6 +22,7 @@ $transition-time: 0.2s;
       text-transform: uppercase;
       font-size: 0.7rem;
       padding: 0.4rem;
+      user-select: none;
     }
 
     padding-bottom: 1rem;
@@ -111,7 +112,7 @@ $transition-time: 0.2s;
 
   select {
     width: 100%;
-    background: $label-background-hover-color;
+    background: $input-background-color;
     border: none;
     border-radius: 0.2rem;
     color: $foreground-color;
@@ -126,6 +127,7 @@ $transition-time: 0.2s;
     color: $foreground-color;
     background: $label-background-normal-color;
     border-bottom: 1px solid $label-border-color;
+    user-select: none;
 
     &:first-child {
       border-top: 1px solid $label-border-color;
@@ -138,6 +140,10 @@ $transition-time: 0.2s;
     & > span {
       display: flex;
       align-items: center;
+
+      &:first-child {
+        margin-right: 0.2rem;
+      }
 
       &:last-child {
         justify-content: flex-end;
@@ -181,6 +187,7 @@ $transition-time: 0.2s;
       height: 1.3rem;
       padding: 0 0.1rem;
       text-align: right;
+      border-radius: 0.25rem;
 
       &::-webkit-outer-spin-button,
       &::-webkit-inner-spin-button {
@@ -200,6 +207,12 @@ $transition-time: 0.2s;
       cursor: pointer;
       color: $foreground-color;
       height: 1.3rem;
+      margin-left: 0.1rem;
+      border-radius: 0.25rem;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
   }
 
