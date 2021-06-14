@@ -91,18 +91,20 @@ const App = () => {
         <div className="values">
           <strong>Values:</strong>
           <dl>
-            <dt>toggle</dt>
-            <dd>{values.toggle ? 'true' : 'false'}</dd>
-            <dt>color</dt>
-            <dd>{values.color}</dd>
-            <dt>select</dt>
-            <dd>{values.select}</dd>
-            <dt>slider</dt>
-            <dd>{values.slider}</dd>
-            <dt>xy</dt>
-            <dd>
-              {values.xy[0]}, {values.xy[1]}
-            </dd>
+            {Object.keys(values).map(key => (
+              <React.Fragment key={key}>
+                <dt>{key}</dt>
+                <dd>
+                  {typeof values[key] === 'boolean'
+                    ? values[key]
+                      ? 'true'
+                      : 'false'
+                    : Array.isArray(values[key])
+                    ? values[key].join(', ')
+                    : values[key]}
+                </dd>
+              </React.Fragment>
+            ))}
           </dl>
         </div>
       </div>
