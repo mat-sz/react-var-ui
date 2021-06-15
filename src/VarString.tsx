@@ -4,7 +4,15 @@ import { useVarUIValue } from './VarUI';
 import { IVarBaseInputProps, VarBase } from './VarBase';
 
 export interface IVarStringProps extends IVarBaseInputProps<string> {
+  /**
+   * Maximum length of the text.
+   */
   maxLength?: number;
+
+  /**
+   * Should the field be a textarea?
+   */
+  multiline?: boolean;
 }
 
 /**
@@ -15,20 +23,29 @@ export const VarString: FC<IVarStringProps> = ({
   path,
   value,
   onChange,
-  maxLength
+  maxLength,
+  multiline
 }) => {
   const [currentValue, setCurrentValue] = useVarUIValue(path, value, onChange);
 
   return (
     <VarBase label={label}>
-      <span className="react-var-ui-string">
-        <input
-          type="text"
-          maxLength={maxLength}
+      {multiline ? (
+        <textarea
+          className="react-var-ui-string-multiline"
           value={currentValue}
           onChange={e => setCurrentValue(e.target.value)}
         />
-      </span>
+      ) : (
+        <span className="react-var-ui-string">
+          <input
+            type="text"
+            maxLength={maxLength}
+            value={currentValue}
+            onChange={e => setCurrentValue(e.target.value)}
+          />
+        </span>
+      )}
     </VarBase>
   );
 };

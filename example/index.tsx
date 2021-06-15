@@ -78,6 +78,11 @@ const App = () => {
                 showButtons
               />
               <VarString label="VarString" path="string" />
+              <VarString
+                label="VarString (multiline)"
+                path="string"
+                multiline
+              />
               <VarXY label="VarXY" path="xy" />
               <VarButton
                 buttonLabel="VarButton (no label)"
