@@ -37,11 +37,11 @@ function roundValue(
 ): IVarXYValue {
   const result: IVarXYValue = [0, 0];
 
-  if (!value) {
+  if (!value || !Array.isArray(value) || value.length < 2) {
     return result;
   }
 
-  for (let i = 0; i < value.length; i++) {
+  for (let i = 0; i < step.length; i++) {
     const decimalPlaces = step[i].toString().split('.')[1].length;
     result[i] = Math.round(value[i] / step[i]) * step[i];
     result[i] = Math.max(min[i], result[i]);
