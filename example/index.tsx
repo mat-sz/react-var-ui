@@ -20,6 +20,7 @@ const App = () => {
   const [values, setValues] = React.useState({
     toggle: true,
     color: '#FF0000',
+    colorAlpha: '#FF0000DD',
     select: 1,
     slider: 0.4,
     xy: [0, 0],
@@ -36,6 +37,7 @@ const App = () => {
           <VarUI updateValues={setValues} values={values}>
             <VarCategory label="Example">
               <VarColor label="VarColor" path="color" />
+              <VarColor label="VarColor (alpha)" path="colorAlpha" alpha />
               <VarToggle label="VarToggle" path="toggle" />
               <VarSelect
                 path="select"

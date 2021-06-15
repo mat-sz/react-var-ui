@@ -167,15 +167,15 @@ Does not apply to `<VarButton />`.
 
 _T is component's value type._
 
-| Property     | Description                                                                                                  | Type               |
-| ------------ | ------------------------------------------------------------------------------------------------------------ | ------------------ |
-| label        | Label to be shown left to the input.                                                                         | ReactNode          |
-| className    | Additional class names on the wrapping div element.                                                          | string             |
-| path         | Variable path in the data object.                                                                            | string             |
-| value        | Current value (only used if context and path aren't available). In most cases you aren't going to need this. | T                  |
-| defaultValue | Default value for components that support resetting (on double click for example).                           | T                  |
-| onChange     | On change event, called with the new value if provided. In most cases you aren't going to need this.         | (value: T) => void |
-| children     | Children. Only rendered when provided directly to the VarBase component.                                     | ReactNode          |
+| Property     | Description                                                                                                     | Type               |
+| ------------ | --------------------------------------------------------------------------------------------------------------- | ------------------ |
+| label        | Label to be shown left to the input.                                                                            | ReactNode          |
+| className    | Additional class names on the wrapping div element.                                                             | string             |
+| path         | Variable path in the data object.                                                                               | string             |
+| value        | Current value (only used if context and path aren't available).<br>In most cases you aren't going to need this. | T                  |
+| defaultValue | Default value for components that support resetting (on double click for example).                              | T                  |
+| onChange     | On change event, called with the new value if provided.<br>In most cases you aren't going to need this.         | (value: T) => void |
+| children     | Children. Only rendered when provided directly to the VarBase component.                                        | ReactNode          |
 
 ### `<VarBase />`
 
@@ -217,6 +217,12 @@ Uses [react-color](https://casesandberg.github.io/react-color/) under the hood.
 
 _T = string_ (#XXXXXX)
 
+#### optional
+
+| Property | Description                                                                                                                                       | Type    |
+| -------- | ------------------------------------------------------------------------------------------------------------------------------------------------- | ------- |
+| alpha    | Should allow picking alpha values?<br>If true, the result hex code will contain extra two characters representing the alpha value, from 00 to FF. | boolean |
+
 ### `<VarSelect />`
 
 <p align="center">
@@ -244,9 +250,9 @@ _T = any_
 
 **Optional:**
 
-| Property | Description                                                                                                           | Type |
-| -------- | --------------------------------------------------------------------------------------------------------------------- | ---- |
-| value    | Option value. Key will be used if not specified. **Note: Will be serialized to JSON and deserialized when selected.** | any  |
+| Property | Description                                                                                                              | Type |
+| -------- | ------------------------------------------------------------------------------------------------------------------------ | ---- |
+| value    | Option value. Key will be used if not specified.<br>**Note: Will be serialized to JSON and deserialized when selected.** | any  |
 
 ### `<VarSlider />`
 
