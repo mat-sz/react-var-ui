@@ -24,6 +24,11 @@ export interface IVarUIProps {
   updateValues: (values: VarUIObject) => void;
 
   /**
+   * Additional class name for the wrapper object.
+   */
+  className?: string;
+
+  /**
    * Input components (or any other children).
    */
   children?: ReactNode;
@@ -72,7 +77,12 @@ export function useVarUIValue<T>(
 /**
  * Component which provides a context to input components and handles value updates.
  */
-export const VarUI: FC<IVarUIProps> = ({ values, updateValues, children }) => {
+export const VarUI: FC<IVarUIProps> = ({
+  values,
+  updateValues,
+  className,
+  children
+}) => {
   const getValue = useCallback(
     (path?: string) => (path ? result(values, path) : undefined),
     [values]
@@ -93,7 +103,9 @@ export const VarUI: FC<IVarUIProps> = ({ values, updateValues, children }) => {
 
   return (
     <VarUIContext.Provider value={contextValue}>
-      <div className="react-var-ui">{children}</div>
+      <div className={'react-var-ui ' + (className ? className : '')}>
+        {children}
+      </div>
     </VarUIContext.Provider>
   );
 };
