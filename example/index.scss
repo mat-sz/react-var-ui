@@ -7,13 +7,28 @@ body {
   margin: 0;
 }
 
-h1 {
+h1,
+.values {
   margin-left: 20px;
 }
 
+.values {
+  margin-top: 20px;
+}
+
 .example {
-  display: grid;
-  grid-template-columns: 400px 1fr;
-  padding: 20px;
+  display: block;
   grid-gap: 20px;
+}
+
+@media screen and (min-width: 960px) {
+  .example {
+    padding: 0 20px;
+    display: grid;
+    grid-template-columns: 400px 1fr;
+  }
+
+  .values {
+    margin-top: 0;
+  }
 }
