@@ -14,17 +14,17 @@ export type VarUIObject = any;
 
 export interface IVarUIProps {
   /**
-   * Object with values.
+   * A JavaScript object or array to be mutated by the input components.
    */
   values: VarUIObject;
 
   /**
-   * Function to be called with an updated object.
+   * The function to be called whenever an update is available.
    */
   updateValues: (values: VarUIObject) => void;
 
   /**
-   * Additional class name for the wrapper object.
+   * Additional class names for the wrapper object.
    */
   className?: string;
 
@@ -75,7 +75,9 @@ export function useVarUIValue<T>(
 }
 
 /**
- * Component which provides a context to input components and handles value updates.
+ * This is the main component which provides a Context for other components.
+ * It is not required to use this component - other components accept
+ * `onChange` and `value` properties which provide a similar functionality.
  */
 export const VarUI: FC<IVarUIProps> = ({
   values,

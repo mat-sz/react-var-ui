@@ -1,10 +1,10 @@
-import React, { FC, ReactChild } from 'react';
+import React, { FC, ReactNode } from 'react';
 
 export interface IVarCategoryProps {
   /**
    * Category label.
    */
-  label: ReactChild;
+  label: ReactNode;
 }
 
 /**

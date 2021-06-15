@@ -7,7 +7,7 @@ export interface IVarBaseProps {
   label?: ReactChild;
 
   /**
-   * Additional class names on the wrapping label element.
+   * Additional class names on the wrapping div element.
    */
   className?: string;
 
@@ -35,7 +35,7 @@ export interface IVarBaseInputProps<T> extends IVarBaseProps {
   defaultValue?: T;
 
   /**
-   * On change event, called with the new value when provided.
+   * On change event, called with the new value if provided.
    * In most cases you aren't going to need this.
    */
   onChange?: (value: T) => void;
@@ -43,6 +43,7 @@ export interface IVarBaseInputProps<T> extends IVarBaseProps {
 
 /**
  * Base VarUI input component. Doesn't do anything besides displaying the label.
+ * Used to construct other components from.
  */
 export const VarBase: FC<IVarBaseProps> = ({ label, children, className }) => {
   return (

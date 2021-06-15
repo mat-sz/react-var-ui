@@ -16,11 +16,15 @@ export interface IVarSelectOption {
 
   /**
    * Option value. Key will be used if not specified.
+   * Note: Will be serialized to JSON and deserialized when selected.
    */
   value?: any;
 }
 
 export interface IVarSelectProps extends IVarBaseInputProps<any> {
+  /**
+   * Options to be displayed.
+   */
   options: IVarSelectOption[];
 }
 

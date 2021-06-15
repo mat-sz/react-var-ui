@@ -1,4 +1,4 @@
-import React, { FC, ReactText } from 'react';
+import React, { FC, ReactNode } from 'react';
 
 import { IVarBaseProps, VarBase } from './VarBase';
 
@@ -11,7 +11,7 @@ export interface IVarButtonProps extends IVarBaseProps {
   /**
    * Text for the button.
    */
-  buttonLabel: ReactText;
+  buttonLabel: ReactNode;
 }
 
 /**

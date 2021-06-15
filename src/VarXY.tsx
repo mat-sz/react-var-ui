@@ -13,8 +13,19 @@ import { IVarBaseInputProps, VarBase } from './VarBase';
 export type IVarXYValue = [number, number];
 
 export interface IVarXYProps extends IVarBaseInputProps<IVarXYValue> {
+  /**
+   * Minimum value.
+   */
   min?: IVarXYValue;
+
+  /**
+   * Maximum value.
+   */
   max?: IVarXYValue;
+
+  /**
+   * Step.
+   */
   step?: IVarXYValue;
 }
 
