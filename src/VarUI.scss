@@ -6,8 +6,8 @@ $input-background-hover-color: var(
   --react-var-ui-input-background-hover-color,
   #424253
 );
-$input-background-press-color: var(
-  --react-var-ui-input-background-hover-color,
+$input-background-pressed-color: var(
+  --react-var-ui-input-background-pressed-color,
   #2b2b37
 );
 $label-background-normal-color: var(
@@ -334,7 +334,7 @@ $transition-time: 0.2s;
       }
 
       &:active {
-        background: $input-background-press-color;
+        background: $input-background-pressed-color;
       }
     }
   }

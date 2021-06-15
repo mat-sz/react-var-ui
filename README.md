@@ -93,12 +93,31 @@ The colors can be customized as such (provided are default values):
 
 ```css
 .react-var-ui {
+  /* Foreground color, used for text. */
   --react-var-ui-foreground-color: #ddd;
+
+  /* Background color, used for category header backgrounds. */
   --react-var-ui-background-color: #11111a;
-  --react-var-ui-accent-color: #4444ff;
-  --react-var-ui-input-background-color: #66666a;
+
+  /* Accent color, used for active parts of sliders, toggles and XY. */
+  --react-var-ui-accent-color: #77f;
+
+  /* Input background color. */
+  --react-var-ui-input-background-color: #353542;
+
+  /* Input background color (when hovered). */
+  --react-var-ui-input-background-hover-color: #424253;
+
+  /* Input background color (when pressed). Only applies to buttons. */
+  --react-var-ui-input-background-pressed-color: #2b2b37;
+
+  /* Label background color. */
   --react-var-ui-label-background-normal-color: #22222a;
-  --react-var-ui-label-background-hover-color: #33333a;
+
+  /* Label background color (when hovered). */
+  --react-var-ui-label-background-hover-color: #2a2a33;
+
+  /* Label border color. */
   --react-var-ui-label-border-color: #33333a;
 }
 ```
