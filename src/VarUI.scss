@@ -154,6 +154,9 @@ $transition-time: 0.2s;
     &-multiline {
       grid-column: 1 / 3;
       margin-top: 0.4rem;
+      font-family: inherit;
+      padding: 0.5rem;
+      font-size: 0.8rem;
     }
   }
 
