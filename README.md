@@ -177,6 +177,16 @@ _T is component's value type._
 | onChange     | On change event, called with the new value if provided.<br>In most cases you aren't going to need this.         | (value: T) => void |
 | children     | Children. Only rendered when provided directly to the VarBase component.                                        | ReactNode          |
 
+### `<VarAngle />`
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/mat-sz/react-var-ui/main/screenshots/VarAngle.png" alt="VarAngle screenshot">
+</p>
+
+Angle picker component. Accepts and provides numbers (radians).
+
+_T = number_ (rad)
+
 ### `<VarBase />`
 
 Base VarUI input component. Doesn't do anything besides displaying the label.

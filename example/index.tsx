@@ -13,7 +13,8 @@ import {
   VarXY,
   VarCategory,
   VarButton,
-  VarString
+  VarString,
+  VarAngle
 } from '../.';
 
 const App = () => {
@@ -23,8 +24,9 @@ const App = () => {
     colorAlpha: '#FF0000DD',
     select: 1,
     slider: 0.4,
-    xy: [0, 0],
-    string: 'test'
+    string: 'test',
+    angle: 0,
+    xy: [0, 0]
   });
 
   console.log(values);
@@ -85,6 +87,7 @@ const App = () => {
                 path="string"
                 multiline
               />
+              <VarAngle label="VarAngle" path="angle" />
               <VarXY label="VarXY" path="xy" />
               <VarButton
                 buttonLabel="VarButton (no label)"

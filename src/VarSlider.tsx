@@ -161,7 +161,9 @@ export const VarSlider: FC<IVarSliderProps> = ({
           className="react-var-ui-slider-track"
           ref={sliderRef}
           onClick={e => updatePosition(e.clientX)}
-          onDoubleClick={() => defaultValue && setCurrentValue(defaultValue)}
+          onDoubleClick={() =>
+            typeof defaultValue !== 'undefined' && setCurrentValue(defaultValue)
+          }
           onMouseDown={e => {
             e.preventDefault();
             setMoving(true);
