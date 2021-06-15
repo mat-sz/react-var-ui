@@ -124,6 +124,10 @@ This is the main component which provides a Context for other components. It is 
 
 ### `<VarCategory />`
 
+<p align="center">
+  <img src="https://raw.githubusercontent.com/mat-sz/react-var-ui/main/screenshots/VarCategory.png" alt="VarCategory screenshot">
+</p>
+
 Category component for grouping inputs.
 
 #### required
@@ -162,6 +166,10 @@ Used to construct other components from.
 
 ### `<VarButton />`
 
+<p align="center">
+  <img src="https://raw.githubusercontent.com/mat-sz/react-var-ui/main/screenshots/VarButton.png" alt="VarButton screenshot">
+</p>
+
 Button component.
 
 **Does not accept any of the base component properties.**
@@ -180,6 +188,10 @@ Button component.
 
 ### `<VarColor />`
 
+<p align="center">
+  <img src="https://raw.githubusercontent.com/mat-sz/react-var-ui/main/screenshots/VarColor.png" alt="VarColor screenshot">
+</p>
+
 Color picker component. Returns and accepts values in form of hex color strings.
 
 Uses [react-color](https://casesandberg.github.io/react-color/) under the hood.
@@ -187,6 +199,10 @@ Uses [react-color](https://casesandberg.github.io/react-color/) under the hood.
 _T = string_ (#XXXXXX)
 
 ### `<VarSelect />`
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/mat-sz/react-var-ui/main/screenshots/VarSelect.png" alt="VarSelect screenshot">
+</p>
 
 Select component. Returns and accepts either `value` from option object or `key` when `value` is not provided.
 
@@ -215,6 +231,10 @@ _T = any_
 
 ### `<VarSlider />`
 
+<p align="center">
+  <img src="https://raw.githubusercontent.com/mat-sz/react-var-ui/main/screenshots/VarSlider.png" alt="VarSlider screenshot">
+</p>
+
 Integer/float slider component. Accepts and provides numbers.
 
 _T = number_
@@ -237,6 +257,10 @@ _T = number_
 
 ### `<VarString />`
 
+<p align="center">
+  <img src="https://raw.githubusercontent.com/mat-sz/react-var-ui/main/screenshots/VarString.png" alt="VarString screenshot">
+</p>
+
 String input component. Accepts and provides a string value.
 
 _T = string_
@@ -250,11 +274,19 @@ _T = string_
 
 ### `<VarToggle />`
 
+<p align="center">
+  <img src="https://raw.githubusercontent.com/mat-sz/react-var-ui/main/screenshots/VarToggle.png" alt="VarToggle screenshot">
+</p>
+
 Checkbox/toggle component. Accepts and returns a boolean (true/false).
 
 _T = boolean_
 
 ### `<VarXY />`
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/mat-sz/react-var-ui/main/screenshots/VarXY.png" alt="VarXY screenshot">
+</p>
 
 XY offset picker. Accepts and provides an array in form of [x, y].
 
