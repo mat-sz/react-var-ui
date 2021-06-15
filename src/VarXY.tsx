@@ -42,7 +42,7 @@ function roundValue(
   }
 
   for (let i = 0; i < step.length; i++) {
-    const decimalPlaces = step[i].toString().split('.')[1].length;
+    const decimalPlaces = step[i].toString().split('.')[1]?.length || 0;
     result[i] = Math.round(value[i] / step[i]) * step[i];
     result[i] = Math.max(min[i], result[i]);
     result[i] = Math.min(max[i], result[i]);

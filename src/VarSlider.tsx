@@ -51,7 +51,7 @@ function roundValue(
   step: number,
   integer: boolean
 ): number {
-  const decimalPlaces = step.toString().split('.')[1].length;
+  const decimalPlaces = step.toString().split('.')[1]?.length || 0;
   value = Math.round(value / step) * step;
   value = Math.max(min, value);
   value = Math.min(max, value);
