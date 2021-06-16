@@ -4,6 +4,12 @@ import { useVarUIValue } from './common/VarUIContext';
 import { usePointerDrag } from './common/usePointerDrag';
 import { IVarBaseInputProps, VarBase } from './VarBase';
 
+const PI2 = Math.PI * 2;
+
+function wrap(angle: number) {
+  return (PI2 + (angle % PI2)) % PI2;
+}
+
 export interface IVarAngleProps extends IVarBaseInputProps<number> {}
 
 /**
@@ -18,9 +24,10 @@ export const VarAngle: FC<IVarAngleProps> = ({
 }) => {
   const controlRef = useRef<HTMLDivElement>(null);
   const [currentValue, setCurrentValue] = useVarUIValue(path, value, onChange);
-  const degrees = useMemo(() => Math.round(currentValue * (180 / Math.PI)), [
-    currentValue
-  ]);
+  const degrees = useMemo(
+    () => Math.round(wrap(currentValue) * (180 / Math.PI)),
+    [currentValue]
+  );
 
   const updatePosition = useCallback(
     (x: number, y: number) => {
@@ -32,11 +39,7 @@ export const VarAngle: FC<IVarAngleProps> = ({
       const rect = div.getBoundingClientRect();
       const centerX = rect.left + rect.width / 2;
       const centerY = rect.top + rect.height / 2;
-      let angle = Math.atan2(y - centerY, x - centerX) + Math.PI / 2;
-      if (angle < 0) {
-        angle = Math.PI * 2 + angle;
-      }
-      setCurrentValue(angle);
+      setCurrentValue(wrap(Math.atan2(y - centerY, x - centerX) + Math.PI / 2));
     },
     [setCurrentValue]
   );
@@ -54,6 +57,10 @@ export const VarAngle: FC<IVarAngleProps> = ({
           onDoubleClick={() =>
             typeof defaultValue !== 'undefined' && setCurrentValue(defaultValue)
           }
+          onWheel={e => {
+            e.preventDefault();
+            setCurrentValue(wrap(currentValue + 0.5 * (e.deltaY < 0 ? -1 : 1)));
+          }}
           {...events}
         ></div>
       </div>

@@ -102,6 +102,22 @@ export const VarSlider: FC<IVarSliderProps> = ({
     [setCurrentValue, integer, min, max, step]
   );
 
+  const increaseValue = useCallback(
+    () =>
+      setCurrentValue(
+        roundValue(currentValue + step, min, max, step, !!integer)
+      ),
+    [setCurrentValue, integer, min, max, step]
+  );
+
+  const decreaseValue = useCallback(
+    () =>
+      setCurrentValue(
+        roundValue(currentValue - step, min, max, step, !!integer)
+      ),
+    [setCurrentValue, integer, min, max, step]
+  );
+
   const { events } = usePointerDrag(updatePosition);
 
   return (
@@ -114,6 +130,10 @@ export const VarSlider: FC<IVarSliderProps> = ({
           onDoubleClick={() =>
             typeof defaultValue !== 'undefined' && setCurrentValue(defaultValue)
           }
+          onWheel={e => {
+            e.preventDefault();
+            e.deltaY < 0 ? increaseValue() : decreaseValue();
+          }}
           {...events}
         >
           <div
@@ -140,24 +160,10 @@ export const VarSlider: FC<IVarSliderProps> = ({
         )}
         {showButtons && (
           <>
-            <button
-              title="Increase"
-              onClick={() =>
-                setCurrentValue(
-                  roundValue(currentValue + step, min, max, step, !!integer)
-                )
-              }
-            >
+            <button title="Increase" onClick={increaseValue}>
               <IconUp />
             </button>
-            <button
-              title="Decrease"
-              onClick={() =>
-                setCurrentValue(
-                  roundValue(currentValue - step, min, max, step, !!integer)
-                )
-              }
-            >
+            <button title="Decrease" onClick={decreaseValue}>
               <IconDown />
             </button>
           </>
