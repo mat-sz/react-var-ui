@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 
-import { useVarUIValue } from './VarUI';
+import { useVarUIValue } from './common/VarUIContext';
 import { IVarBaseInputProps, VarBase } from './VarBase';
 
 export interface IVarToggleProps extends IVarBaseInputProps<boolean> {}

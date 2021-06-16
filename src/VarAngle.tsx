@@ -1,6 +1,7 @@
 import React, { FC, useCallback, useMemo, useRef } from 'react';
 
-import { usePointerDrag, useVarUIValue } from './VarUI';
+import { useVarUIValue } from './common/VarUIContext';
+import { usePointerDrag } from './common/usePointerDrag';
 import { IVarBaseInputProps, VarBase } from './VarBase';
 
 export interface IVarAngleProps extends IVarBaseInputProps<number> {}

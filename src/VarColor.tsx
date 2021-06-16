@@ -1,7 +1,7 @@
 import React, { FC, useCallback, useState } from 'react';
 import { SketchPicker } from 'react-color';
 
-import { useVarUIValue } from './VarUI';
+import { useVarUIValue } from './common/VarUIContext';
 import { IVarBaseInputProps, VarBase } from './VarBase';
 
 export interface IVarColorProps extends IVarBaseInputProps<string> {
