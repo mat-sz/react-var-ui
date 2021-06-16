@@ -334,3 +334,60 @@ _T = [number (x), number (y)]_
 | min      | Minimum value. | [number (x), number (y)] |
 | max      | Maximum value. | [number (x), number (y)] |
 | step     | Step.          | [number (x), number (y)] |
+
+## Creation of custom components
+
+react-var-ui provides a `<VarBase />` component and a `useVarUIValue` hook designed to facilitate creation of custom components.
+
+### Example usage
+
+```tsx
+import React, { FC } from 'react';
+import { useVarUIValue, IVarBaseInputProps, VarBase } from 'react-var-ui';
+
+// Please specify the <T>.
+export interface IVarCustomProps extends IVarBaseInputProps<string> {}
+
+/**
+ * Custom input component. In this example, it's a simple text input.
+ */
+export const VarCustom: FC<IVarCustomProps> = ({
+  label,
+  path,
+  value,
+  onChange
+}) => {
+  /**
+   * currentValue will contain the current value from the value object
+   * (at a given path) or value from properties if that's not available.
+   *
+   * setCurrentValue will set the value onto a given path in the object
+   * and call onChange if available.
+   *
+   * All arguments are optional, path/object-based value changes take
+   * precedence.
+   */
+  const [currentValue, setCurrentValue] = useVarUIValue(path, value, onChange);
+
+  /**
+   * We're wrapping our component in VarBase which provides the default
+   * label.
+   *
+   * It is necessary to wrap what should appear on the right in a <span>.
+   * If this behavior is undesired, a <div> with grid-column: 1 / 3; can
+   * be used.
+   */
+  return (
+    <VarBase label={label}>
+      <span>
+        <input
+          type="text"
+          maxLength={maxLength}
+          value={currentValue}
+          onChange={e => setCurrentValue(e.target.value)}
+        />
+      </span>
+    </VarBase>
+  );
+};
+```
