@@ -1,6 +1,6 @@
 import { createContext, useContext, useMemo, useCallback } from 'react';
 
-export type VarUIObject = object;
+export type VarUIObject = any;
 
 export interface IVarUIContext {
   values: VarUIObject;
