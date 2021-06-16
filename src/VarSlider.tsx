@@ -1,13 +1,6 @@
-import React, {
-  FC,
-  useCallback,
-  useEffect,
-  useMemo,
-  useRef,
-  useState
-} from 'react';
+import React, { FC, useCallback, useMemo, useRef } from 'react';
 
-import { useVarUIValue } from './VarUI';
+import { usePointerDrag, useVarUIValue } from './VarUI';
 import { IVarBaseInputProps, VarBase } from './VarBase';
 import { IconDown } from './icons/IconDown';
 import { IconUp } from './icons/IconUp';
@@ -87,7 +80,6 @@ export const VarSlider: FC<IVarSliderProps> = ({
     max
   ]);
 
-  const [moving, setMoving] = useState(false);
   const updatePosition = useCallback(
     (x: number) => {
       if (!sliderRef.current) {
@@ -109,50 +101,7 @@ export const VarSlider: FC<IVarSliderProps> = ({
     [setCurrentValue, integer, min, max, step]
   );
 
-  useEffect(() => {
-    if (!moving) {
-      return;
-    }
-
-    const handleMouseMove = (e: MouseEvent) => {
-      e.preventDefault();
-      e.stopPropagation();
-
-      updatePosition(e.clientX);
-    };
-
-    const handleTouchMove = (e: TouchEvent) => {
-      e.preventDefault();
-      e.stopPropagation();
-
-      const touch = e.touches[0];
-      if (!touch) {
-        return;
-      }
-
-      updatePosition(touch.clientX);
-    };
-
-    const handleUp = () => {
-      setMoving(false);
-    };
-
-    document.addEventListener('mousemove', handleMouseMove);
-    document.addEventListener('mouseup', handleUp);
-
-    document.addEventListener('touchmove', handleTouchMove);
-    document.addEventListener('touchend', handleUp);
-    document.addEventListener('touchcancel', handleUp);
-
-    return () => {
-      document.removeEventListener('mousemove', handleMouseMove);
-      document.removeEventListener('mouseup', handleUp);
-
-      document.removeEventListener('touchmove', handleTouchMove);
-      document.removeEventListener('touchend', handleUp);
-      document.removeEventListener('touchcancel', handleUp);
-    };
-  });
+  const { events } = usePointerDrag(updatePosition);
 
   return (
     <VarBase label={label}>
@@ -164,14 +113,7 @@ export const VarSlider: FC<IVarSliderProps> = ({
           onDoubleClick={() =>
             typeof defaultValue !== 'undefined' && setCurrentValue(defaultValue)
           }
-          onMouseDown={e => {
-            e.preventDefault();
-            setMoving(true);
-          }}
-          onTouchStart={e => {
-            e.preventDefault();
-            setMoving(true);
-          }}
+          {...events}
         >
           <div
             className="react-var-ui-slider-content"

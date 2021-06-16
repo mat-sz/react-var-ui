@@ -1,13 +1,6 @@
-import React, {
-  FC,
-  useCallback,
-  useEffect,
-  useMemo,
-  useRef,
-  useState
-} from 'react';
+import React, { FC, useCallback, useMemo, useRef } from 'react';
 
-import { useVarUIValue } from './VarUI';
+import { usePointerDrag, useVarUIValue } from './VarUI';
 import { IVarBaseInputProps, VarBase } from './VarBase';
 
 export type IVarXYValue = [number, number];
@@ -98,7 +91,6 @@ export const VarXY: FC<IVarXYProps> = ({
     max
   ]);
 
-  const [moving, setMoving] = useState(false);
   const updatePosition = useCallback(
     (x: number, y: number) => {
       if (!sliderRef.current) {
@@ -125,56 +117,13 @@ export const VarXY: FC<IVarXYProps> = ({
     [setCurrentValue, min, max, step]
   );
 
+  const { events } = usePointerDrag(updatePosition);
+
   const reset = useCallback(() => {
     if (typeof defaultValue !== 'undefined') {
       setCurrentValue(defaultValue);
     }
   }, [defaultValue, setCurrentValue]);
-
-  useEffect(() => {
-    if (!moving) {
-      return;
-    }
-
-    const handleMouseMove = (e: MouseEvent) => {
-      e.preventDefault();
-      e.stopPropagation();
-
-      updatePosition(e.clientX, e.clientY);
-    };
-
-    const handleTouchMove = (e: TouchEvent) => {
-      e.preventDefault();
-      e.stopPropagation();
-
-      const touch = e.touches[0];
-      if (!touch) {
-        return;
-      }
-
-      updatePosition(touch.clientX, touch.clientY);
-    };
-
-    const handleUp = () => {
-      setMoving(false);
-    };
-
-    document.addEventListener('mousemove', handleMouseMove);
-    document.addEventListener('mouseup', handleUp);
-
-    document.addEventListener('touchmove', handleTouchMove);
-    document.addEventListener('touchend', handleUp);
-    document.addEventListener('touchcancel', handleUp);
-
-    return () => {
-      document.removeEventListener('mousemove', handleMouseMove);
-      document.removeEventListener('mouseup', handleUp);
-
-      document.removeEventListener('touchmove', handleTouchMove);
-      document.removeEventListener('touchend', handleUp);
-      document.removeEventListener('touchcancel', handleUp);
-    };
-  });
 
   return (
     <VarBase label={label}>
@@ -187,14 +136,7 @@ export const VarXY: FC<IVarXYProps> = ({
           ref={sliderRef}
           onClick={e => updatePosition(e.clientX, e.clientY)}
           onDoubleClick={reset}
-          onMouseDown={e => {
-            e.preventDefault();
-            setMoving(true);
-          }}
-          onTouchStart={e => {
-            e.preventDefault();
-            setMoving(true);
-          }}
+          {...events}
         >
           <div
             className="react-var-ui-xy-control"
