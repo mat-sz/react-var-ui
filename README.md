@@ -1,14 +1,10 @@
-<h1 align="center">react-var-ui</h1>
-
-<p align="center">
-Simple React settings library.
-</p>
-
+<h1 align="center">
 <p align="center">
   <a href="https://demo.matsz.dev/react-var-ui/">
     <img src="https://raw.githubusercontent.com/mat-sz/react-var-ui/main/screenshot.png" alt="Screenshot" width="700px">
   </a>
 </p>
+</h1>
 
 <p align="center">
 <img alt="workflow" src="https://img.shields.io/github/workflow/status/mat-sz/react-var-ui/CI">
@@ -19,7 +15,7 @@ Simple React settings library.
 </a>
 </p>
 
-React component library for variable setting and preview, inspired by iOS settings, [react-dat-gui](https://github.com/claus/react-dat-gui) and [dat.gui](https://github.com/dataarts/dat.gui).
+**react-var-ui** is a simple React component library for variable setting and preview, inspired by iOS settings, [react-dat-gui](https://github.com/claus/react-dat-gui) and [dat.gui](https://github.com/dataarts/dat.gui).
 
 While some code from react-dat-gui was used, this library functions in a completely different way. The codebase uses modern React code practices such as hooks and functional components. Instead of iterating over the children array, react-var-ui uses a Context. Creation of custom components is also easier.
 
