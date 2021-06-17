@@ -6,7 +6,7 @@ Simple React settings library.
 
 <p align="center">
   <a href="https://demo.matsz.dev/react-var-ui/">
-    <img src="https://raw.githubusercontent.com/mat-sz/react-var-ui/main/screenshot.png" alt="Screenshot">
+    <img src="https://raw.githubusercontent.com/mat-sz/react-var-ui/main/screenshot.png" alt="Screenshot" width="700px">
   </a>
 </p>
 
