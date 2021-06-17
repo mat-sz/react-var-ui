@@ -155,6 +155,12 @@ Category component for grouping inputs.
 | -------- | --------------- | --------- |
 | label    | Category label. | ReactNode |
 
+#### optional
+
+| Property  | Description                                         | Type   |
+| --------- | --------------------------------------------------- | ------ |
+| className | Additional class names on the wrapping div element. | string |
+
 ## Input components
 
 ### Base properties
@@ -369,7 +375,9 @@ export const VarCustom: FC<IVarCustomProps> = ({
   label,
   path,
   value,
-  onChange
+  onChange,
+  disabled,
+  className
 }) => {
   /**
    * currentValue will contain the current value from the value object
@@ -392,7 +400,7 @@ export const VarCustom: FC<IVarCustomProps> = ({
    * be used.
    */
   return (
-    <VarBase label={label}>
+    <VarBase label={label} disabled={disabled} className={className}>
       <span>
         <input
           type="text"

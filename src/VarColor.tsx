@@ -21,7 +21,8 @@ export const VarColor: FC<IVarColorProps> = ({
   value,
   onChange,
   alpha,
-  disabled
+  disabled,
+  className
 }) => {
   const [currentValue, setCurrentValue] = useVarUIValue(path, value, onChange);
 
@@ -30,7 +31,7 @@ export const VarColor: FC<IVarColorProps> = ({
   const close = useCallback(() => setShow(false), [setShow]);
 
   return (
-    <VarBase label={label} disabled={disabled}>
+    <VarBase label={label} disabled={disabled} className={className}>
       <span>
         <span className="react-var-ui-color-value">{currentValue}</span>
         <div className="react-var-ui-color">

@@ -74,6 +74,7 @@ export const VarXY: FC<IVarXYProps> = ({
   value,
   onChange,
   disabled,
+  className,
   defaultValue = [0, 0],
   min = [-1.0, -1.0],
   max = [1.0, 1.0],
@@ -128,7 +129,7 @@ export const VarXY: FC<IVarXYProps> = ({
   }, [defaultValue, setCurrentValue]);
 
   return (
-    <VarBase label={label} disabled={disabled}>
+    <VarBase label={label} disabled={disabled} className={className}>
       <span className="react-var-ui-xy-value">
         {rounded[0]}, {rounded[1]}
       </span>

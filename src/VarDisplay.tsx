@@ -23,12 +23,13 @@ export const VarDisplay: FC<IVarDisplayProps> = ({
   label,
   path,
   value,
-  disabled
+  disabled,
+  className
 }) => {
   const [currentValue] = useVarUIValue(path, value);
 
   return (
-    <VarBase label={label} disabled={disabled}>
+    <VarBase label={label} disabled={disabled} className={className}>
       <span>{currentValue}</span>
     </VarBase>
   );

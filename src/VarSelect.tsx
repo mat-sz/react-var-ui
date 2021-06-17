@@ -37,12 +37,13 @@ export const VarSelect: FC<IVarSelectProps> = ({
   value,
   onChange,
   options,
-  disabled
+  disabled,
+  className
 }) => {
   const [currentValue, setCurrentValue] = useVarUIValue(path, value, onChange);
 
   return (
-    <VarBase label={label} disabled={disabled}>
+    <VarBase label={label} disabled={disabled} className={className}>
       <span>
         <select
           value={currentValue}
