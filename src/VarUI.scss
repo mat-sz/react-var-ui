@@ -24,6 +24,11 @@ $transition-time: 0.2s;
 .react-var-ui {
   background: $background-color;
 
+  &-disabled {
+    pointer-events: none;
+    opacity: 0.5;
+  }
+
   &-category {
     &-title {
       color: $foreground-color;

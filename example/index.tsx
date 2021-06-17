@@ -40,7 +40,7 @@ const App = () => {
             <VarCategory label="Example">
               <VarColor label="VarColor" path="color" />
               <VarColor label="VarColor (alpha)" path="colorAlpha" alpha />
-              <VarToggle label="VarToggle" path="toggle" />
+              <VarToggle label="VarToggle" path="toggle" disabled />
               <VarSelect
                 path="select"
                 label="VarSelect"

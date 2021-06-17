@@ -20,6 +20,7 @@ export const VarAngle: FC<IVarAngleProps> = ({
   path,
   value,
   onChange,
+  disabled,
   defaultValue = 0
 }) => {
   const controlRef = useRef<HTMLDivElement>(null);
@@ -47,7 +48,7 @@ export const VarAngle: FC<IVarAngleProps> = ({
   const { events } = usePointerDrag(updatePosition);
 
   return (
-    <VarBase label={label}>
+    <VarBase label={label} disabled={disabled}>
       <span className="react-var-ui-angle-value">{degrees}&deg;</span>
       <div className="react-var-ui-angle">
         <div

@@ -24,12 +24,13 @@ export const VarString: FC<IVarStringProps> = ({
   value,
   onChange,
   maxLength,
-  multiline
+  multiline,
+  disabled
 }) => {
   const [currentValue, setCurrentValue] = useVarUIValue(path, value, onChange);
 
   return (
-    <VarBase label={label}>
+    <VarBase label={label} disabled={disabled}>
       {multiline ? (
         <textarea
           className="react-var-ui-string-multiline"

@@ -174,6 +174,7 @@ _T is component's value type._
 | path         | Variable path in the data object.                                                                               | string             |
 | value        | Current value (only used if context and path aren't available).<br>In most cases you aren't going to need this. | T                  |
 | defaultValue | Default value for components that support resetting (on double click for example).                              | T                  |
+| disabled     | Should the component be disabled.                                                                               | boolean            |
 | onChange     | On change event, called with the new value if provided.<br>In most cases you aren't going to need this.         | (value: T) => void |
 | children     | Children. Only rendered when provided directly to the VarBase component.                                        | ReactNode          |
 
@@ -214,6 +215,7 @@ Button component.
 | Property | Description                        | Type       |
 | -------- | ---------------------------------- | ---------- |
 | onClick  | Called when the button is clicked. | () => void |
+| disabled | Should the component be disabled.  | boolean    |
 
 ### `<VarColor />`
 

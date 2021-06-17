@@ -67,7 +67,8 @@ export const VarSlider: FC<IVarSliderProps> = ({
   integer,
   defaultValue,
   showInput,
-  showButtons
+  showButtons,
+  disabled
 }) => {
   const sliderRef = useRef<HTMLDivElement>(null);
   const [currentValue, setCurrentValue] = useVarUIValue(path, value, onChange);
@@ -121,7 +122,7 @@ export const VarSlider: FC<IVarSliderProps> = ({
   const { events } = usePointerDrag(updatePosition);
 
   return (
-    <VarBase label={label}>
+    <VarBase label={label} disabled={disabled}>
       <div className="react-var-ui-slider">
         <div
           className="react-var-ui-slider-track"

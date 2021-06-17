@@ -12,12 +12,13 @@ export const VarToggle: FC<IVarToggleProps> = ({
   label,
   path,
   value,
-  onChange
+  onChange,
+  disabled
 }) => {
   const [currentValue, setCurrentValue] = useVarUIValue(path, value, onChange);
 
   return (
-    <VarBase label={label}>
+    <VarBase label={label} disabled={disabled}>
       <span>
         <label className="react-var-ui-toggle">
           <input

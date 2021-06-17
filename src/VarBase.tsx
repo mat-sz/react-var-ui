@@ -12,6 +12,11 @@ export interface IVarBaseProps {
   className?: string;
 
   /**
+   * Should the component be disabled.
+   */
+  disabled?: boolean;
+
+  /**
    * Children. Only rendered when provided directly to the VarBase component.
    */
   children?: ReactNode;
@@ -45,7 +50,12 @@ export interface IVarBaseInputProps<T> extends IVarBaseProps {
  * Base VarUI input component. Doesn't do anything besides displaying the label.
  * Used to construct other components from.
  */
-export const VarBase: FC<IVarBaseProps> = ({ label, children, className }) => {
+export const VarBase: FC<IVarBaseProps> = ({
+  label,
+  children,
+  className,
+  disabled
+}) => {
   return (
     <div
       className={
@@ -53,6 +63,7 @@ export const VarBase: FC<IVarBaseProps> = ({ label, children, className }) => {
         (label
           ? 'react-var-ui-label-has-label '
           : 'react-var-ui-label-no-label ') +
+        (disabled ? 'react-var-ui-disabled ' : '') +
         (className ? className : '')
       }
     >

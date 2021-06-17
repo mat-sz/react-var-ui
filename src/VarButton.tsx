@@ -12,6 +12,11 @@ export interface IVarButtonProps extends IVarBaseProps {
    * Text for the button.
    */
   buttonLabel: ReactNode;
+
+  /**
+   * Should the component be disabled.
+   */
+  disabled?: boolean;
 }
 
 /**
@@ -20,12 +25,15 @@ export interface IVarButtonProps extends IVarBaseProps {
 export const VarButton: FC<IVarButtonProps> = ({
   label,
   onClick,
-  buttonLabel
+  buttonLabel,
+  disabled
 }) => {
   return (
-    <VarBase label={label}>
+    <VarBase label={label} disabled={disabled}>
       <span className="react-var-ui-button">
-        <button onClick={onClick}>{buttonLabel}</button>
+        <button onClick={onClick} disabled={disabled}>
+          {buttonLabel}
+        </button>
       </span>
     </VarBase>
   );
