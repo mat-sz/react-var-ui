@@ -337,6 +337,7 @@ $transition-time: 0.2s;
       position: relative;
       border-radius: 100%;
       cursor: pointer;
+      touch-action: none;
 
       &:after {
         display: block;
