@@ -235,6 +235,18 @@ _T = string_ (#XXXXXX)
 | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------- | ------- |
 | alpha    | Should allow picking alpha values?<br>If true, the result hex code will contain extra two characters representing the alpha value, from 00 to FF. | boolean |
 
+### `<VarDisplay />`
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/mat-sz/react-var-ui/main/screenshots/VarDisplay.png" alt="VarDisplay screenshot">
+</p>
+
+A simple component that displays a string or a numeric value.
+
+**Only accepts path and value. Does not change any values.**
+
+_T = string | number_
+
 ### `<VarSelect />`
 
 <p align="center">

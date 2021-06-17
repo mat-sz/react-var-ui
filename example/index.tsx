@@ -14,7 +14,8 @@ import {
   VarCategory,
   VarButton,
   VarString,
-  VarAngle
+  VarAngle,
+  VarDisplay
 } from '../.';
 
 const App = () => {
@@ -40,7 +41,8 @@ const App = () => {
             <VarCategory label="Example">
               <VarColor label="VarColor" path="color" />
               <VarColor label="VarColor (alpha)" path="colorAlpha" alpha />
-              <VarToggle label="VarToggle" path="toggle" disabled />
+              <VarDisplay label="VarDisplay" path="color" />
+              <VarToggle label="VarToggle" path="toggle" />
               <VarSelect
                 path="select"
                 label="VarSelect"

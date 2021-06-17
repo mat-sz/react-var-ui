@@ -7,6 +7,7 @@ export * from './VarAngle';
 export * from './VarBase';
 export * from './VarButton';
 export * from './VarColor';
+export * from './VarDisplay';
 export * from './VarSelect';
 export * from './VarSlider';
 export * from './VarString';

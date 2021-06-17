@@ -108,7 +108,7 @@ export const VarSlider: FC<IVarSliderProps> = ({
       setCurrentValue(
         roundValue(currentValue + step, min, max, step, !!integer)
       ),
-    [setCurrentValue, integer, min, max, step]
+    [currentValue, setCurrentValue, integer, min, max, step]
   );
 
   const decreaseValue = useCallback(
@@ -116,7 +116,7 @@ export const VarSlider: FC<IVarSliderProps> = ({
       setCurrentValue(
         roundValue(currentValue - step, min, max, step, !!integer)
       ),
-    [setCurrentValue, integer, min, max, step]
+    [currentValue, setCurrentValue, integer, min, max, step]
   );
 
   const { events } = usePointerDrag(updatePosition);
