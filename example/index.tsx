@@ -23,14 +23,12 @@ const App = () => {
     toggle: true,
     color: '#FF0000',
     colorAlpha: '#FF0000DD',
-    select: 1,
+    select: 'zero',
     slider: 0.4,
     string: 'test',
     angle: 0,
     xy: [0, 0]
   });
-
-  console.log(values);
 
   return (
     <div>
@@ -47,8 +45,8 @@ const App = () => {
                 path="select"
                 label="VarSelect"
                 options={[
-                  { key: 0, label: 'Zero' },
-                  { key: 1, label: 'One' }
+                  { key: 'zero', label: 'Zero' },
+                  { key: 'one', label: 'One' }
                 ]}
               />
               <VarSlider

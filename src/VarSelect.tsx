@@ -1,4 +1,4 @@
-import React, { FC, ReactText } from 'react';
+import React, { FC, ReactText, useMemo } from 'react';
 
 import { useVarUIValue } from './common/VarUIContext';
 import { IVarBaseInputProps, VarBase } from './VarBase';
@@ -42,21 +42,26 @@ export const VarSelect: FC<IVarSelectProps> = ({
 }) => {
   const [currentValue, setCurrentValue] = useVarUIValue(path, value, onChange);
 
+  const serializedCurrentValue = useMemo(() => JSON.stringify(currentValue), [
+    currentValue
+  ]);
+
   return (
     <VarBase label={label} disabled={disabled} className={className}>
       <span>
         <select
-          value={currentValue}
           onChange={e => setCurrentValue(JSON.parse(e.target.value))}
+          value={serializedCurrentValue}
         >
-          {options.map(option => (
-            <option
-              key={option.key}
-              value={JSON.stringify(option.value ?? option.key)}
-            >
-              {option.label}
-            </option>
-          ))}
+          {options.map(option => {
+            const serializedValue = JSON.stringify(option.value ?? option.key);
+
+            return (
+              <option key={option.key} value={serializedValue}>
+                {option.label}
+              </option>
+            );
+          })}
         </select>
       </span>
     </VarBase>
