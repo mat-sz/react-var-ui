@@ -15,7 +15,8 @@ import {
   VarButton,
   VarString,
   VarAngle,
-  VarDisplay
+  VarDisplay,
+  VarNumber
 } from '../.';
 
 const App = () => {
@@ -25,6 +26,7 @@ const App = () => {
     colorAlpha: '#FF0000DD',
     select: 'zero',
     slider: 0.4,
+    number: 1,
     string: 'test',
     angle: 0,
     xy: [0, 0]
@@ -81,6 +83,15 @@ const App = () => {
                 step={0.1}
                 showButtons
               />
+              <VarNumber
+                label="VarNumber"
+                path="number"
+                min={0.2}
+                max={0.8}
+                step={0.1}
+                showButtons
+              />
+              <VarNumber label="VarNumber (no buttons)" path="number" />
               <VarString label="VarString" path="string" />
               <VarString
                 label="VarString (multiline)"

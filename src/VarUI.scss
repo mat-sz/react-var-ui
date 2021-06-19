@@ -205,9 +205,11 @@ $transition-time: 0.2s;
     }
   }
 
-  &-slider {
+  &-slider,
+  &-number {
     display: flex;
     align-items: center;
+    justify-content: flex-end;
     width: 100%;
 
     &-track {
@@ -232,14 +234,14 @@ $transition-time: 0.2s;
     }
 
     input {
-      width: 3rem;
+      width: 2.5rem;
       background: $label-background-normal-color;
       border: none;
       -moz-appearance: textfield;
       color: $foreground-color;
       outline: none !important;
       height: 1.3rem;
-      padding: 0 0.1rem;
+      padding: 0 0.2rem;
       text-align: right;
       border-radius: 0.25rem;
 
@@ -261,12 +263,23 @@ $transition-time: 0.2s;
       cursor: pointer;
       color: $foreground-color;
       height: 1.3rem;
-      margin-left: 0.1rem;
+      margin-left: 0.4rem;
       border-radius: 0.25rem;
 
       display: flex;
       justify-content: center;
       align-items: center;
+    }
+  }
+
+  &-number {
+    input {
+      background: $input-background-color;
+
+      &:hover,
+      &:focus {
+        background: $input-background-hover-color;
+      }
     }
   }
 

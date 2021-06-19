@@ -249,6 +249,27 @@ A simple component that displays a string or a numeric value.
 
 _T = string | number_
 
+### `<VarNumber />`
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/mat-sz/react-var-ui/main/screenshots/VarNumber.png" alt="VarNumber screenshot">
+</p>
+
+Integer/float number component. Accepts and provides numbers.
+
+_T = number_
+
+#### optional
+
+| Property    | Description                                                                | Type    |
+| ----------- | -------------------------------------------------------------------------- | ------- |
+| min         | Minimum value.                                                             | number  |
+| max         | Maximum value.                                                             | number  |
+| step        | Step.                                                                      | number  |
+| integer     | Should the end result be rounded to an integer value.                      | boolean |
+| showInput   | If true will display an editable input, otherwise shows a read only value. | boolean |
+| showButtons | If true will display buttons that increase and decrease the value by step. | boolean |
+
 ### `<VarSelect />`
 
 <p align="center">
