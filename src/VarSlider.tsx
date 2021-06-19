@@ -1,7 +1,7 @@
 import React, { FC, useCallback, useMemo, useRef } from 'react';
+import { usePointerDragSimple } from 'react-use-pointer-drag';
 
 import { useVarUIValue } from './common/VarUIContext';
-import { usePointerDrag } from './common/usePointerDrag';
 import { IVarBaseInputProps, VarBase } from './VarBase';
 import { IconDown } from './icons/IconDown';
 import { IconUp } from './icons/IconUp';
@@ -120,7 +120,7 @@ export const VarSlider: FC<IVarSliderProps> = ({
     [currentValue, setCurrentValue, integer, min, max, step]
   );
 
-  const { events } = usePointerDrag(updatePosition);
+  const { events } = usePointerDragSimple(updatePosition);
 
   return (
     <VarBase label={label} disabled={disabled} className={className}>

@@ -1,7 +1,7 @@
 import React, { FC, useCallback, useMemo, useRef } from 'react';
+import { usePointerDragSimple } from 'react-use-pointer-drag';
 
 import { useVarUIValue } from './common/VarUIContext';
-import { usePointerDrag } from './common/usePointerDrag';
 import { IVarBaseInputProps, VarBase } from './VarBase';
 
 export type IVarXYValue = [number, number];
@@ -120,7 +120,7 @@ export const VarXY: FC<IVarXYProps> = ({
     [setCurrentValue, min, max, step]
   );
 
-  const { events } = usePointerDrag(updatePosition);
+  const { events } = usePointerDragSimple(updatePosition);
 
   const reset = useCallback(() => {
     if (typeof defaultValue !== 'undefined') {

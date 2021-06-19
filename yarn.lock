@@ -11443,6 +11443,11 @@ react-textarea-autosize@^8.3.0:
     use-composed-ref "^1.0.0"
     use-latest "^1.0.0"
 
+react-use-pointer-drag@^0.0.1:
+  version "0.0.1"
+  resolved "https://registry.yarnpkg.com/react-use-pointer-drag/-/react-use-pointer-drag-0.0.1.tgz#daab278077b210b5a3eca4542f64e8cef0f0c2c5"
+  integrity sha512-nJQqXhxfvlSGXbtlAH0i2tei8cVf+qzD+Acp3LO/NB6F/nehPQeBp/1uf+Qdj7Hwt8Ia0jwB+lP/NGRszW6X2g==
+
 react@^16.8.3:
   version "16.14.0"
   resolved "https://registry.yarnpkg.com/react/-/react-16.14.0.tgz#94d776ddd0aaa37da3eda8fc5b6b18a4c9a3114d"

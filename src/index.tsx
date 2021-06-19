@@ -19,5 +19,4 @@ export * from './VarXY';
 export * from './VarCategory';
 
 // Utility
-export * from './common/usePointerDrag';
 export { useVarUIValue } from './common/VarUIContext';

@@ -1,7 +1,7 @@
 import React, { FC, useCallback, useMemo, useRef } from 'react';
+import { usePointerDragSimple } from 'react-use-pointer-drag';
 
 import { useVarUIValue } from './common/VarUIContext';
-import { usePointerDrag } from './common/usePointerDrag';
 import { IVarBaseInputProps, VarBase } from './VarBase';
 
 const PI2 = Math.PI * 2;
@@ -46,7 +46,7 @@ export const VarAngle: FC<IVarAngleProps> = ({
     [setCurrentValue]
   );
 
-  const { events } = usePointerDrag(updatePosition);
+  const { events } = usePointerDragSimple(updatePosition);
 
   return (
     <VarBase label={label} disabled={disabled} className={className}>
