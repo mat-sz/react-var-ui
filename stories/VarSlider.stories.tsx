@@ -1,5 +1,6 @@
 import React from 'react';
 import { Meta, Story } from '@storybook/react';
+
 import { VarSlider, IVarSliderProps } from '../src';
 
 const meta: Meta = {
