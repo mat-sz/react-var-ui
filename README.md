@@ -28,6 +28,7 @@ What makes react-var-ui different when compared to similar libraries such as [Le
 
 - [Installation](#installation)
 - [Example usage](#example-usage)
+- [Testing](#testing)
 - [Utility components](#utility-components)
   - [VarUI](#varui-)
   - [VarCategory](#varcategory-)
@@ -110,6 +111,29 @@ return (
   </VarUI>
 );
 ```
+
+## Testing
+
+react-var-ui uses jest for automated unit tests and storybook for manually testing the UI.
+
+You can run unit tests after installing by running:
+
+    yarn test
+
+Storybook can be ran with:
+
+    yarn storybook
+
+To run the example app, you first need to start the project with:
+
+    yarn start
+
+And then enter the example directory and start the app:
+
+    cd ./example
+    yarn start
+
+(make sure to run `yarn install` before.)
 
 ## Utility components
 
