@@ -52,6 +52,7 @@ export const VarSelect: FC<IVarSelectProps> = ({
         <select
           onChange={e => setCurrentValue(JSON.parse(e.target.value))}
           value={serializedCurrentValue}
+          title="Select options"
         >
           {options.map(option => {
             const serializedValue = JSON.stringify(option.value ?? option.key);

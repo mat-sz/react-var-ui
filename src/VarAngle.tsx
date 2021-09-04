@@ -63,6 +63,7 @@ export const VarAngle: FC<IVarAngleProps> = ({
             e.preventDefault();
             setCurrentValue(wrap(currentValue + 0.5 * (e.deltaY < 0 ? -1 : 1)));
           }}
+          title="Angle"
           {...events}
         ></div>
       </div>

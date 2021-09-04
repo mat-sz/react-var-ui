@@ -21,7 +21,7 @@ export const VarToggle: FC<IVarToggleProps> = ({
   return (
     <VarBase label={label} disabled={disabled} className={className}>
       <span>
-        <label className="react-var-ui-toggle">
+        <label className="react-var-ui-toggle" title="Toggle">
           <input
             type="checkbox"
             checked={currentValue}

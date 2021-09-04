@@ -136,6 +136,7 @@ export const VarSlider: FC<IVarSliderProps> = ({
             e.preventDefault();
             e.deltaY < 0 ? increaseValue() : decreaseValue();
           }}
+          title="Slider"
           {...events}
         >
           <div
@@ -158,7 +159,7 @@ export const VarSlider: FC<IVarSliderProps> = ({
             }
           />
         ) : (
-          <span>{rounded}</span>
+          <span>{rounded.toString()}</span>
         )}
         {showButtons && (
           <>

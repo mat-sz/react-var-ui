@@ -81,7 +81,7 @@ export const VarNumber: FC<IVarNumberProps> = ({
           min={min}
           max={max}
           step={step}
-          value={rounded}
+          value={rounded.toString()}
           onChange={e =>
             setCurrentValue(
               integer ? parseInt(e.target.value) : parseFloat(e.target.value)
