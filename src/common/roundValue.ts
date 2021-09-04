@@ -8,6 +8,12 @@ export function roundValue(
   let decimalPlaces = 2;
   if (typeof step === 'number') {
     decimalPlaces = step.toString().split('.')[1]?.length || 0;
+
+    if (decimalPlaces > 20) {
+      // JavaScript limitation
+      decimalPlaces = 20;
+    }
+
     value = Math.round(value / step) * step;
   }
 
