@@ -18,7 +18,8 @@
     "size": "size-limit",
     "analyze": "size-limit --why",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook",
+    "chromatic": "npx chromatic --exit-zero-on-changes"
   },
   "peerDependencies": {
     "react": ">=16"
@@ -98,6 +99,7 @@
     "@types/testing-library__jest-dom": "^5.14.1",
     "babel-loader": "^8.2.2",
     "canvas": "^2.8.0",
+    "chromatic": "^5.9.2",
     "cross-env": "^7.0.3",
     "css-loader": "^5.2.7",
     "cssnano": "^5.0.6",

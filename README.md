@@ -8,10 +8,13 @@
 
 <p align="center">
 <img alt="workflow" src="https://img.shields.io/github/workflow/status/mat-sz/react-var-ui/CI">
-<a href="https://npmjs.com/package/react-var-ui">
+<a href="https://613369a1b99e84003a3bfc4e-xkwurazsfe.chromatic.com" target="_blank">
 <img alt="npm" src="https://img.shields.io/npm/v/react-var-ui">
 <img alt="npm" src="https://img.shields.io/npm/dw/react-var-ui">
 <img alt="NPM" src="https://img.shields.io/npm/l/react-var-ui">
+</a>
+<a href="https://github.com/storybooks/storybook" target="_blank">
+<img src="https://raw.githubusercontent.com/storybooks/brand/master/badge/badge-storybook.svg">
 </a>
 </p>
 
