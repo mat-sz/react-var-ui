@@ -2,11 +2,11 @@ import React from 'react';
 import { Meta, Story } from '@storybook/react';
 import { useCallback, useState } from '@storybook/client-api';
 
-import { VarSlider, IVarSliderProps } from '../src';
+import { VarNumber, IVarNumberProps } from '../src';
 
 export default {
-  title: 'VarSlider',
-  component: VarSlider,
+  title: 'VarNumber',
+  component: VarNumber,
   argTypes: {
     min: { control: { type: 'range', min: 0, max: 10, step: 0.1 } },
     max: { control: { type: 'range', min: 0, max: 10, step: 0.1 } },
@@ -22,7 +22,7 @@ export default {
     min: 0,
     max: 10,
     step: 1,
-    label: 'VarSlider',
+    label: 'VarNumber',
     disabled: false,
     showButtons: true
   },
@@ -32,8 +32,8 @@ export default {
   }
 } as Meta;
 
-const Template: Story<IVarSliderProps> = args => {
-  const [value, setValue] = useState(0);
+const Template: Story<IVarNumberProps> = args => {
+  const [value, setValue] = useState(args.value ?? 0);
   const onChange = useCallback(
     value => {
       setValue(value);
@@ -41,7 +41,7 @@ const Template: Story<IVarSliderProps> = args => {
     },
     [setValue, args]
   );
-  return <VarSlider {...args} value={value} onChange={onChange} />;
+  return <VarNumber {...args} value={value} onChange={onChange} />;
 };
 
 export const Default = Template.bind({});

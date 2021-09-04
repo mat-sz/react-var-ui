@@ -32,7 +32,7 @@ export const VarButton: FC<IVarButtonProps> = ({
   return (
     <VarBase label={label} disabled={disabled} className={className}>
       <span className="react-var-ui-button">
-        <button onClick={onClick} disabled={disabled}>
+        <button onClick={() => onClick?.()} disabled={disabled}>
           {buttonLabel}
         </button>
       </span>
