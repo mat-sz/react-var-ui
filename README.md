@@ -19,6 +19,31 @@
 
 While some code from react-dat-gui was used, this library functions in a completely different way. The codebase uses modern React code practices such as hooks and functional components. Instead of iterating over the children array, react-var-ui uses a Context. Creation of custom components is also easier.
 
+What makes react-var-ui different when compared to similar libraries such as [Leva](https://github.com/pmndrs/leva) or [react-dat-gui](https://github.com/claus/react-dat-gui), react-var-ui doesn't force itself to float over all your content, instead react-var-ui lives peacefully inside of the React node it is placed in. Unlike Leva and much more like react-dat-gui, react-var-ui relies on a local state variable, providing the developer with more flexibility. While this might seem less convenient, it allows for more customization and usage of multiple instances of react-dat-gui within one project.
+
+## Table of contents
+
+- [Installation](#installation)
+- [Example usage](#example-usage)
+- [Utility components](#utility-components)
+  - [VarUI](#varui-)
+  - [VarCategory](#varcategory-)
+- [Input components](#input-components)
+  - [Base properties](#base-properties)
+  - [VarAngle](#varangle-)
+  - [VarBase](#varbase-)
+  - [VarButton](#varbutton-)
+  - [VarColor](#varcolor-)
+  - [VarDisplay](#vardisplay-)
+  - [VarNumber](#varnumber-)
+  - [VarSelect](#varselect-)
+  - [VarSlider](#varslider-)
+  - [VarString](#varstring-)
+  - [VarToggle](#vartoggle-)
+  - [VarXY](#varxy-)
+- [Theme customization](#theme-customization)
+- [Custom input components](#custom-input-components)
+
 ## Installation
 
 Install `react-var-ui` with either npm or yarn:
@@ -45,7 +70,7 @@ import 'react-var-ui/dist/index.css';
 
 ## Example usage
 
-```tsx
+```jsx
 const [values, setValues] = React.useState({
   toggle: true,
   color: '#FF0000',
@@ -83,44 +108,9 @@ return (
 );
 ```
 
-## Theme customization
-
-The colors can be customized as such (provided are default values):
-
-```css
-.react-var-ui {
-  /* Foreground color, used for text. */
-  --react-var-ui-foreground-color: #ddd;
-
-  /* Background color, used for category header backgrounds. */
-  --react-var-ui-background-color: #11111a;
-
-  /* Accent color, used for active parts of sliders, toggles and XY. */
-  --react-var-ui-accent-color: #77f;
-
-  /* Input background color. */
-  --react-var-ui-input-background-color: #353542;
-
-  /* Input background color (when hovered). */
-  --react-var-ui-input-background-hover-color: #424253;
-
-  /* Input background color (when pressed). Only applies to buttons. */
-  --react-var-ui-input-background-pressed-color: #2b2b37;
-
-  /* Label background color. */
-  --react-var-ui-label-background-normal-color: #22222a;
-
-  /* Label background color (when hovered). */
-  --react-var-ui-label-background-hover-color: #2a2a33;
-
-  /* Label border color. */
-  --react-var-ui-label-border-color: #33333a;
-}
-```
-
 ## Utility components
 
-### `<VarUI />`
+<h3 align="center">&lt;VarUI /&gt;</h3>
 
 This is the main component which provides a Context for other components. It is not required to use this component - other components accept `onChange` and `value` properties which provide a similar functionality.
 
@@ -137,7 +127,7 @@ This is the main component which provides a Context for other components. It is 
 | --------- | ---------------------------------------------- | ------ |
 | className | Additional class names for the wrapper object. | string |
 
-### `<VarCategory />`
+<h3 align="center">&lt;VarCategory /&gt;</h3>
 
 <p align="center">
   <img src="https://raw.githubusercontent.com/mat-sz/react-var-ui/main/screenshots/VarCategory.png" alt="VarCategory screenshot">
@@ -180,7 +170,7 @@ _T is component's value type._
 | onChange     | On change event, called with the new value if provided.<br>In most cases you aren't going to need this.         | (value: T) => void |
 | children     | Children. Only rendered when provided directly to the VarBase component.                                        | ReactNode          |
 
-### `<VarAngle />`
+<h3 align="center">&lt;VarAngle /&gt;</h3>
 
 <p align="center">
   <img src="https://raw.githubusercontent.com/mat-sz/react-var-ui/main/screenshots/VarAngle.png" alt="VarAngle screenshot">
@@ -190,13 +180,13 @@ Angle picker component. Accepts and provides numbers (radians).
 
 _T = number_ (rad)
 
-### `<VarBase />`
+<h3 align="center">&lt;VarBase /&gt;</h3>
 
 Base VarUI input component. Doesn't do anything besides displaying the label.
 
 Used to construct other components from.
 
-### `<VarButton />`
+<h3 align="center">&lt;VarButton /&gt;</h3>
 
 <p align="center">
   <img src="https://raw.githubusercontent.com/mat-sz/react-var-ui/main/screenshots/VarButton.png" alt="VarButton screenshot">
@@ -219,7 +209,7 @@ Button component.
 | onClick  | Called when the button is clicked. | () => void |
 | disabled | Should the component be disabled.  | boolean    |
 
-### `<VarColor />`
+<h3 align="center">&lt;VarColor /&gt;</h3>
 
 <p align="center">
   <img src="https://raw.githubusercontent.com/mat-sz/react-var-ui/main/screenshots/VarColor.png" alt="VarColor screenshot">
@@ -237,7 +227,7 @@ _T = string_ (#XXXXXX)
 | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------- | ------- |
 | alpha    | Should allow picking alpha values?<br>If true, the result hex code will contain extra two characters representing the alpha value, from 00 to FF. | boolean |
 
-### `<VarDisplay />`
+<h3 align="center">&lt;VarDisplay /&gt;</h3>
 
 <p align="center">
   <img src="https://raw.githubusercontent.com/mat-sz/react-var-ui/main/screenshots/VarDisplay.png" alt="VarDisplay screenshot">
@@ -249,7 +239,7 @@ A simple component that displays a string or a numeric value.
 
 _T = string | number_
 
-### `<VarNumber />`
+<h3 align="center">&lt;VarNumber /&gt;</h3>
 
 <p align="center">
   <img src="https://raw.githubusercontent.com/mat-sz/react-var-ui/main/screenshots/VarNumber.png" alt="VarNumber screenshot">
@@ -270,7 +260,7 @@ _T = number_
 | showInput   | If true will display an editable input, otherwise shows a read only value. | boolean |
 | showButtons | If true will display buttons that increase and decrease the value by step. | boolean |
 
-### `<VarSelect />`
+<h3 align="center">&lt;VarSelect /&gt;</h3>
 
 <p align="center">
   <img src="https://raw.githubusercontent.com/mat-sz/react-var-ui/main/screenshots/VarSelect.png" alt="VarSelect screenshot">
@@ -301,7 +291,7 @@ _T = any_
 | -------- | ------------------------------------------------------------------------------------------------------------------------ | ---- |
 | value    | Option value. Key will be used if not specified.<br>**Note: Will be serialized to JSON and deserialized when selected.** | any  |
 
-### `<VarSlider />`
+<h3 align="center">&lt;VarSlider /&gt;</h3>
 
 <p align="center">
   <img src="https://raw.githubusercontent.com/mat-sz/react-var-ui/main/screenshots/VarSlider.png" alt="VarSlider screenshot">
@@ -327,7 +317,7 @@ _T = number_
 | showInput   | If true will display an editable input, otherwise shows a read only value. | boolean |
 | showButtons | If true will display buttons that increase and decrease the value by step. | boolean |
 
-### `<VarString />`
+<h3 align="center">&lt;VarString /&gt;</h3>
 
 <p align="center">
   <img src="https://raw.githubusercontent.com/mat-sz/react-var-ui/main/screenshots/VarString.png" alt="VarString screenshot">
@@ -344,7 +334,7 @@ _T = string_
 | maxLength | Maximum length of the text.     | number  |
 | multiline | Should the field be a textarea? | boolean |
 
-### `<VarToggle />`
+<h3 align="center">&lt;VarToggle /&gt;</h3>
 
 <p align="center">
   <img src="https://raw.githubusercontent.com/mat-sz/react-var-ui/main/screenshots/VarToggle.png" alt="VarToggle screenshot">
@@ -354,7 +344,7 @@ Checkbox/toggle component. Accepts and returns a boolean (true/false).
 
 _T = boolean_
 
-### `<VarXY />`
+<h3 align="center">&lt;VarXY /&gt;</h3>
 
 <p align="center">
   <img src="https://raw.githubusercontent.com/mat-sz/react-var-ui/main/screenshots/VarXY.png" alt="VarXY screenshot">
@@ -372,7 +362,42 @@ _T = [number (x), number (y)]_
 | max      | Maximum value. | [number (x), number (y)] |
 | step     | Step.          | [number (x), number (y)] |
 
-## Creation of custom components
+## Theme customization
+
+The colors can be customized as such (provided are default values):
+
+```css
+.react-var-ui {
+  /* Foreground color, used for text. */
+  --react-var-ui-foreground-color: #ddd;
+
+  /* Background color, used for category header backgrounds. */
+  --react-var-ui-background-color: #11111a;
+
+  /* Accent color, used for active parts of sliders, toggles and XY. */
+  --react-var-ui-accent-color: #77f;
+
+  /* Input background color. */
+  --react-var-ui-input-background-color: #353542;
+
+  /* Input background color (when hovered). */
+  --react-var-ui-input-background-hover-color: #424253;
+
+  /* Input background color (when pressed). Only applies to buttons. */
+  --react-var-ui-input-background-pressed-color: #2b2b37;
+
+  /* Label background color. */
+  --react-var-ui-label-background-normal-color: #22222a;
+
+  /* Label background color (when hovered). */
+  --react-var-ui-label-background-hover-color: #2a2a33;
+
+  /* Label border color. */
+  --react-var-ui-label-border-color: #33333a;
+}
+```
+
+## Custom input components
 
 react-var-ui provides a `<VarBase />` component and a `useVarUIValue` hook designed to facilitate creation of custom components.
 
