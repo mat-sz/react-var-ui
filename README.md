@@ -13,7 +13,7 @@
 <img alt="npm" src="https://img.shields.io/npm/dw/react-var-ui">
 <img alt="NPM" src="https://img.shields.io/npm/l/react-var-ui">
 </a>
-<a href="https://613369a1b99e84003a3bfc4e-xkwurazsfe.chromatic.com" target="_blank">
+<a href="https://main--613369a1b99e84003a3bfc4e.chromatic.com/" target="_blank">
 <img src="https://raw.githubusercontent.com/storybooks/brand/master/badge/badge-storybook.svg">
 </a>
 </p>
@@ -81,7 +81,7 @@ const [values, setValues] = React.useState({
   select: 1,
   slider: 0.4,
   xy: [0, 0.2],
-  string: 'Hello world!'
+  string: 'Hello world!',
 });
 
 return (
@@ -94,7 +94,7 @@ return (
         label="Select"
         options={[
           { key: 0, label: 'Zero' },
-          { key: 1, label: 'One' }
+          { key: 1, label: 'One' },
         ]}
       />
       <VarSlider
@@ -446,7 +446,7 @@ export const VarCustom: FC<IVarCustomProps> = ({
   value,
   onChange,
   disabled,
-  className
+  className,
 }) => {
   /**
    * currentValue will contain the current value from the value object
