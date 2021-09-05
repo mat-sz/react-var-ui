@@ -145,6 +145,8 @@ $transition-time: 0.2s;
     &-multiline,
     input {
       width: 100%;
+      min-width: 100%;
+      max-width: 100%;
       background: $input-background-color;
       border: none;
       border-radius: 0.2rem;
@@ -166,6 +168,7 @@ $transition-time: 0.2s;
       font-family: inherit;
       padding: 0.5rem;
       font-size: 0.8rem;
+      min-height: 2rem;
     }
   }
 
