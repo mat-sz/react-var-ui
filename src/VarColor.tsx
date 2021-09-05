@@ -22,7 +22,7 @@ export const VarColor: FC<IVarColorProps> = ({
   onChange,
   alpha,
   disabled,
-  className
+  className,
 }) => {
   const [currentValue, setCurrentValue] = useVarUIValue(path, value, onChange);
 

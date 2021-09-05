@@ -54,6 +54,7 @@ $transition-time: 0.2s;
     }
 
     &-color {
+      position: relative;
       width: 2.5rem;
       height: 1.2rem;
       border-radius: 0.2rem;
@@ -63,6 +64,9 @@ $transition-time: 0.2s;
       border-radius: 0.2rem;
       display: inline-block;
       cursor: pointer;
+      background: white
+        url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARzQklUCAgICHwIZIgAAAAxSURBVDhPY2RgYBABYnzgDT5JxlEDGIZJGBBIBvjTCSgMCAG8CW3UAAZwQiIEaBuIACBfCLFwf0bOAAAAAElFTkSuQmCC')
+        center center;
     }
 
     &-popover {
