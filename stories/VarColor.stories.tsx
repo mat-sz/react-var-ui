@@ -9,16 +9,16 @@ export default {
   component: VarColor,
   argTypes: {
     label: { control: 'text' },
-    disabled: { control: 'boolean' }
+    disabled: { control: 'boolean' },
   },
   args: {
     label: 'VarColor',
-    disabled: false
+    disabled: false,
   },
   parameters: {
     controls: { expanded: true },
-    actions: { argTypesRegex: '^on.*' }
-  }
+    actions: { argTypesRegex: '^on.*' },
+  },
 } as Meta;
 
 const Template: Story<IVarColorProps> = args => {
@@ -39,6 +39,12 @@ Default.storyName = 'default';
 
 export const Disabled = Template.bind({});
 Disabled.args = {
-  disabled: true
+  disabled: true,
 };
 Disabled.storyName = 'disabled: true';
+
+export const Alpha = Template.bind({});
+Alpha.args = {
+  alpha: true,
+};
+Alpha.storyName = 'alpha: true';
