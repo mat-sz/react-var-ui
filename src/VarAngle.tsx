@@ -1,4 +1,4 @@
-import React, { FC, useCallback, useMemo, useRef } from 'react';
+import React, { FC, useCallback, useEffect, useMemo, useRef } from 'react';
 import { usePointerDragSimple } from 'react-use-pointer-drag';
 
 import { useVarUIValue } from './common/VarUIContext';
@@ -22,7 +22,7 @@ export const VarAngle: FC<IVarAngleProps> = ({
   onChange,
   disabled,
   defaultValue = 0,
-  className
+  className,
 }) => {
   const controlRef = useRef<HTMLDivElement>(null);
   const [currentValue, setCurrentValue] = useVarUIValue(path, value, onChange);
@@ -48,6 +48,10 @@ export const VarAngle: FC<IVarAngleProps> = ({
 
   const { events } = usePointerDragSimple(updatePosition);
 
+  useEffect(() => {
+    controlRef.current?.addEventListener('wheel', e => e.preventDefault());
+  }, []);
+
   return (
     <VarBase label={label} disabled={disabled} className={className}>
       <span className="react-var-ui-angle-value">{degrees}&deg;</span>
@@ -60,7 +64,6 @@ export const VarAngle: FC<IVarAngleProps> = ({
             typeof defaultValue !== 'undefined' && setCurrentValue(defaultValue)
           }
           onWheel={e => {
-            e.preventDefault();
             setCurrentValue(wrap(currentValue + 0.5 * (e.deltaY < 0 ? -1 : 1)));
           }}
           title="Angle"

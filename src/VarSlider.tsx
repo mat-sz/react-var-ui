@@ -1,4 +1,4 @@
-import React, { FC, useCallback, useMemo, useRef } from 'react';
+import React, { FC, useCallback, useEffect, useMemo, useRef } from 'react';
 import { usePointerDragSimple } from 'react-use-pointer-drag';
 
 import { useVarUIValue } from './common/VarUIContext';
@@ -69,7 +69,7 @@ export const VarSlider: FC<IVarSliderProps> = ({
   showInput,
   showButtons,
   disabled,
-  className
+  className,
 }) => {
   const sliderRef = useRef<HTMLDivElement>(null);
   const [currentValue, setCurrentValue] = useVarUIValue(path, value, onChange);
@@ -80,7 +80,7 @@ export const VarSlider: FC<IVarSliderProps> = ({
   const percent = useMemo(() => ((rounded - min) / (max - min)) * 100, [
     rounded,
     min,
-    max
+    max,
   ]);
 
   const updatePosition = useCallback(
@@ -122,6 +122,10 @@ export const VarSlider: FC<IVarSliderProps> = ({
 
   const { events } = usePointerDragSimple(updatePosition);
 
+  useEffect(() => {
+    sliderRef.current?.addEventListener('wheel', e => e.preventDefault());
+  }, []);
+
   return (
     <VarBase label={label} disabled={disabled} className={className}>
       <div className="react-var-ui-slider">
@@ -133,7 +137,6 @@ export const VarSlider: FC<IVarSliderProps> = ({
             typeof defaultValue !== 'undefined' && setCurrentValue(defaultValue)
           }
           onWheel={e => {
-            e.preventDefault();
             e.deltaY < 0 ? increaseValue() : decreaseValue();
           }}
           title="Slider"
