@@ -16,7 +16,7 @@ import {
   VarString,
   VarAngle,
   VarDisplay,
-  VarNumber
+  VarNumber,
 } from '../.';
 
 const App = () => {
@@ -29,7 +29,7 @@ const App = () => {
     number: 1,
     string: 'test',
     angle: 0,
-    xy: [0, 0]
+    xy: [0, 0],
   });
 
   return (
@@ -48,7 +48,7 @@ const App = () => {
                 label="VarSelect"
                 options={[
                   { key: 'zero', label: 'Zero' },
-                  { key: 'one', label: 'One' }
+                  { key: 'one', label: 'One' },
                 ]}
               />
               <VarSlider

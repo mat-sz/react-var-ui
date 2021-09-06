@@ -20,10 +20,22 @@ describe('VarNumber', () => {
     const value = await screen.findByDisplayValue('1337');
     fireEvent.change(value, {
       target: {
-        value: 2222
-      }
+        value: 2222,
+      },
     });
     expect(fn).toBeCalledWith(2222);
+  });
+
+  it('value: updated (invalid data)', async () => {
+    const fn = jest.fn();
+    render(<VarNumber value={1337} onChange={fn} />);
+    const value = await screen.findByDisplayValue('1337');
+    fireEvent.change(value, {
+      target: {
+        value: 'a',
+      },
+    });
+    expect(fn).toBeCalledWith(0);
   });
 
   it('value: updated (increase button)', async () => {

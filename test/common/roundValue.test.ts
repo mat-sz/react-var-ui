@@ -44,4 +44,13 @@ describe('roundValue', () => {
     expect(roundValue(20.9, 19, 21, 0.1)).toBe(20.9);
     expect(roundValue(20.96, 19, 21, 0.1)).toBe(21);
   });
+
+  it('handles NaN and Infinity correctly', () => {
+    expect(roundValue(Infinity, 19, 21, 0.1)).toBe(19);
+    expect(roundValue(NaN, 19, 21, 0.1)).toBe(19);
+    expect(roundValue(Infinity, 19.01, 21, 0.1)).toBe(19);
+    expect(roundValue(NaN, 19.01, 21, 0.1)).toBe(19);
+    expect(roundValue(Infinity)).toBe(0);
+    expect(roundValue(NaN)).toBe(0);
+  });
 });

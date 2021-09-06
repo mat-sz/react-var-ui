@@ -48,7 +48,7 @@ export const VarNumber: FC<IVarNumberProps> = ({
   integer,
   showButtons,
   disabled,
-  className
+  className,
 }) => {
   const [currentValue, setCurrentValue] = useVarUIValue(path, value, onChange);
   const rounded = useMemo(
@@ -84,7 +84,7 @@ export const VarNumber: FC<IVarNumberProps> = ({
           value={rounded.toString()}
           onChange={e =>
             setCurrentValue(
-              integer ? parseInt(e.target.value) : parseFloat(e.target.value)
+              roundValue(parseFloat(e.target.value), min, max, step, !!integer)
             )
           }
         />

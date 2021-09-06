@@ -16,22 +16,22 @@ describe('VarSlider', () => {
 
   it('value: changed on drag (mouse)', async () => {
     const fn = jest.fn();
-    render(<VarSlider min={0} max={2} step={0.1} value={0} onChange={fn} />);
+    render(<VarSlider min={0} max={2} step={0.1} value={2} onChange={fn} />);
     const slider = await screen.findByTitle('Slider');
     fireEvent.mouseDown(slider);
-    fireEvent.mouseMove(slider, { clientX: 1, clientY: 5 });
-    fireEvent.mouseUp(slider, { clientX: 1, clientY: 5 });
-    expect(fn).toBeCalledWith(2);
+    fireEvent.mouseMove(slider, { clientX: 0, clientY: 0 });
+    fireEvent.mouseUp(slider, { clientX: 0, clientY: 0 });
+    expect(fn).toBeCalledWith(0);
   });
 
   it('value: changed on drag (touch)', async () => {
     const fn = jest.fn();
-    render(<VarSlider min={0} max={2} step={0.1} value={0} onChange={fn} />);
+    render(<VarSlider min={0} max={2} step={0.1} value={2} onChange={fn} />);
     const slider = await screen.findByTitle('Slider');
     fireEvent.touchStart(slider);
-    fireEvent.touchMove(slider, { touches: [{ clientX: 500, clientY: 5 }] });
-    fireEvent.touchEnd(slider, { touches: [{ clientX: 500, clientY: 5 }] });
-    expect(fn).toBeCalledWith(2);
+    fireEvent.touchMove(slider, { touches: [{ clientX: 0, clientY: 0 }] });
+    fireEvent.touchEnd(slider, { touches: [{ clientX: 0, clientY: 0 }] });
+    expect(fn).toBeCalledWith(0);
   });
 
   it('value: reset on double click', async () => {
@@ -83,5 +83,33 @@ describe('VarSlider', () => {
     const button = await screen.findByTitle('Decrease');
     button.click();
     expect(fn).toBeCalledWith(0.9);
+  });
+
+  it('value: updated (input)', async () => {
+    const fn = jest.fn();
+    render(
+      <VarSlider min={0} max={2} step={0.1} value={1} onChange={fn} showInput />
+    );
+    const input = await screen.findByDisplayValue(1);
+    fireEvent.change(input, {
+      target: {
+        value: 2,
+      },
+    });
+    expect(fn).toBeCalledWith(2);
+  });
+
+  it('value: updated (input with invalid data)', async () => {
+    const fn = jest.fn();
+    render(
+      <VarSlider min={0} max={2} step={0.1} value={1} onChange={fn} showInput />
+    );
+    const input = await screen.findByDisplayValue(1);
+    fireEvent.change(input, {
+      target: {
+        value: 'a',
+      },
+    });
+    expect(fn).toBeCalledWith(0);
   });
 });

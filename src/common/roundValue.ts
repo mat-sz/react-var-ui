@@ -5,6 +5,10 @@ export function roundValue(
   step?: number,
   integer?: boolean
 ): number {
+  if (!isFinite(value)) {
+    value = min ?? 0;
+  }
+
   let decimalPlaces = 2;
   if (typeof step === 'number') {
     decimalPlaces = step.toString().split('.')[1]?.length || 0;

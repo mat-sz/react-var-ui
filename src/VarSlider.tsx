@@ -2,6 +2,7 @@ import React, { FC, useCallback, useEffect, useMemo, useRef } from 'react';
 import { usePointerDragSimple } from 'react-use-pointer-drag';
 
 import { useVarUIValue } from './common/VarUIContext';
+import { roundValue } from './common/roundValue';
 import { IVarBaseInputProps, VarBase } from './VarBase';
 import { IconDown } from './icons/IconDown';
 import { IconUp } from './icons/IconUp';
@@ -36,21 +37,6 @@ export interface IVarSliderProps extends IVarBaseInputProps<number> {
    * If true will display buttons that increase and decrease the value by step.
    */
   showButtons?: boolean;
-}
-
-function roundValue(
-  value: number,
-  min: number,
-  max: number,
-  step: number,
-  integer: boolean
-): number {
-  const decimalPlaces = step.toString().split('.')[1]?.length || 0;
-  value = Math.round(value / step) * step;
-  value = Math.max(min, value);
-  value = Math.min(max, value);
-
-  return integer ? Math.round(value) : parseFloat(value.toFixed(decimalPlaces));
 }
 
 /**
@@ -157,7 +143,13 @@ export const VarSlider: FC<IVarSliderProps> = ({
             value={rounded}
             onChange={e =>
               setCurrentValue(
-                integer ? parseInt(e.target.value) : parseFloat(e.target.value)
+                roundValue(
+                  parseFloat(e.target.value),
+                  min,
+                  max,
+                  step,
+                  !!integer
+                )
               )
             }
           />
