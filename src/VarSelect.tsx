@@ -38,17 +38,17 @@ export const VarSelect: FC<IVarSelectProps> = ({
   onChange,
   options,
   disabled,
-  className
+  className,
 }) => {
   const [currentValue, setCurrentValue] = useVarUIValue(path, value, onChange);
 
   const serializedCurrentValue = useMemo(() => JSON.stringify(currentValue), [
-    currentValue
+    currentValue,
   ]);
 
   return (
     <VarBase label={label} disabled={disabled} className={className}>
-      <span>
+      <div className="react-var-ui-select">
         <select
           onChange={e => setCurrentValue(JSON.parse(e.target.value))}
           value={serializedCurrentValue}
@@ -64,7 +64,7 @@ export const VarSelect: FC<IVarSelectProps> = ({
             );
           })}
         </select>
-      </span>
+      </div>
     </VarBase>
   );
 };

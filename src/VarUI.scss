@@ -127,17 +127,19 @@ $transition-time: 0.2s;
     }
   }
 
-  select {
-    width: 100%;
-    background: $input-background-color;
-    border: none;
-    border-radius: 0.2rem;
-    color: $foreground-color;
-    padding: 0.2rem 0.5rem;
+  &-select {
+    select {
+      width: 100%;
+      background: $input-background-color;
+      border: none;
+      border-radius: 0.2rem;
+      color: $foreground-color;
+      padding: 0.2rem 0.5rem;
 
-    &:hover,
-    &:focus {
-      background: $input-background-hover-color;
+      &:hover,
+      &:focus {
+        background: $input-background-hover-color;
+      }
     }
   }
 
