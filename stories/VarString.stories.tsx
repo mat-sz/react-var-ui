@@ -10,16 +10,18 @@ export default {
   argTypes: {
     maxlength: { control: { type: 'range', min: 0, max: 500, step: 1 } },
     label: { control: 'text' },
-    disabled: { control: 'boolean' }
+    disabled: { control: 'boolean' },
+    multiline: { control: 'boolean' },
+    autoexpand: { control: 'boolean' },
   },
   args: {
     label: 'VarString',
-    disabled: false
+    disabled: false,
   },
   parameters: {
     controls: { expanded: true },
-    actions: { argTypesRegex: '^on.*' }
-  }
+    actions: { argTypesRegex: '^on.*' },
+  },
 } as Meta;
 
 const Template: Story<IVarStringProps> = args => {
@@ -40,12 +42,19 @@ Default.storyName = 'default';
 
 export const Disabled = Template.bind({});
 Disabled.args = {
-  disabled: true
+  disabled: true,
 };
 Disabled.storyName = 'disabled: true';
 
 export const Multiline = Template.bind({});
 Multiline.args = {
-  multiline: true
+  multiline: true,
 };
 Multiline.storyName = 'multiline: true';
+
+export const Autoexpand = Template.bind({});
+Autoexpand.args = {
+  multiline: true,
+  autoexpand: true,
+};
+Autoexpand.storyName = 'multiline: true, autoexpand: true';
