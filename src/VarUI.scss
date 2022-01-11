@@ -397,19 +397,35 @@ $transition-time: 0.2s;
     grid-column: 1 / 3;
     cursor: pointer;
 
-    &-background {
+    &-value {
+      display: inline-block !important;
+      text-align: right;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
+    }
+
+    &-background,
+    &-metadata {
       position: absolute;
       top: 0;
       left: 0;
       right: 0;
       bottom: 0;
       pointer-events: none;
+      z-index: 0;
+    }
+
+    &-background {
       background-size: cover;
       background-position: 50% 50%;
       filter: brightness(0.5) grayscale(0.5);
       transition: $transition-time ease-in-out all;
       transform: scale3d(1, 1, 1);
-      z-index: 0;
+    }
+
+    &-metadata {
+      padding: 10px;
     }
 
     &:hover &-background {

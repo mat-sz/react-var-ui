@@ -1,4 +1,5 @@
 import React, { FC, useCallback } from 'react';
+import filesize from 'filesize';
 
 import { useVarUIValue } from './common/VarUIContext';
 import { IconUpload } from './icons/IconUpload';
@@ -9,6 +10,12 @@ export interface IVarFileProps extends IVarBaseInputProps<File> {
    * Accepted file types.
    */
   accept?: string;
+
+  /**
+   * Show metadata.
+   * Default: true.
+   */
+  displayMetadata?: boolean;
 }
 
 /**
@@ -22,6 +29,7 @@ export const VarFile: FC<IVarFileProps> = ({
   disabled,
   className,
   accept,
+  displayMetadata = true,
 }) => {
   const [currentValue, setCurrentValue] = useVarUIValue(path, value, onChange);
 
@@ -41,6 +49,12 @@ export const VarFile: FC<IVarFileProps> = ({
     <VarBase label={label} disabled={disabled} className={className}>
       <span className="react-var-ui-file-value">{currentValue?.name}</span>
       <div className="react-var-ui-file">
+        {displayMetadata && !!currentValue && (
+          <div className="react-var-ui-file-metadata">
+            <div>File size: {filesize(currentValue.size)}</div>
+            <div>File type: {currentValue.type || 'unknown'}</div>
+          </div>
+        )}
         <IconUpload />
         <input
           type="file"

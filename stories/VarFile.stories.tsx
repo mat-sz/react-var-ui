@@ -10,10 +10,12 @@ export default {
   argTypes: {
     label: { control: 'text' },
     disabled: { control: 'boolean' },
+    displayMetadata: { control: 'boolean' },
   },
   args: {
     label: 'VarFile',
     disabled: false,
+    displayMetadata: true,
   },
   parameters: {
     controls: { expanded: true },

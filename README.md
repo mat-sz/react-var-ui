@@ -280,9 +280,10 @@ _T = File_
 
 #### optional
 
-| Property | Description                  | Type   |
-| -------- | ---------------------------- | ------ |
-| accept   | List of accepted file types. | string |
+| Property        | Description                                                                | Type    |
+| --------------- | -------------------------------------------------------------------------- | ------- |
+| accept          | List of accepted file types.                                               | string  |
+| displayMetadata | Whether file information should be displayed in the field. (default: true) | boolean |
 
 <h3 align="center">&lt;VarImage /&gt;</h3>
 

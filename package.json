@@ -118,6 +118,7 @@
     "typescript": "3.9.x"
   },
   "dependencies": {
+    "filesize": "^8.0.6",
     "lodash.clonedeep": "^4.0.0",
     "lodash.result": "^4.0.0",
     "lodash.set": "^4.0.0",
