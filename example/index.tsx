@@ -18,6 +18,7 @@ import {
   VarDisplay,
   VarNumber,
   VarImage,
+  VarFile,
 } from '../.';
 
 const App = () => {
@@ -31,6 +32,8 @@ const App = () => {
     string: 'test',
     angle: 0,
     xy: [0, 0],
+    image: undefined,
+    file: undefined,
   });
 
   return (
@@ -111,6 +114,7 @@ const App = () => {
                 onClick={() => alert('clicked!')}
               />
               <VarImage label="VarImage" path="image" />
+              <VarFile label="VarFile" path="file" />
             </VarCategory>
           </VarUI>
         </div>
@@ -127,7 +131,7 @@ const App = () => {
                       : 'false'
                     : Array.isArray(values[key])
                     ? values[key].join(', ')
-                    : values[key]}
+                    : values[key]?.toString()}
                 </dd>
               </React.Fragment>
             ))}

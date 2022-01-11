@@ -2,17 +2,17 @@ import React from 'react';
 import { Meta, Story } from '@storybook/react';
 import { useCallback, useState } from '@storybook/client-api';
 
-import { VarImage, IVarImageProps } from '../src';
+import { VarFile, IVarFileProps } from '../src';
 
 export default {
-  title: 'VarImage',
-  component: VarImage,
+  title: 'VarFile',
+  component: VarFile,
   argTypes: {
     label: { control: 'text' },
     disabled: { control: 'boolean' },
   },
   args: {
-    label: 'VarImage',
+    label: 'VarFile',
     disabled: false,
   },
   parameters: {
@@ -21,8 +21,8 @@ export default {
   },
 } as Meta;
 
-const Template: Story<IVarImageProps> = args => {
-  const [value, setValue] = useState<string>(undefined);
+const Template: Story<IVarFileProps> = args => {
+  const [value, setValue] = useState<File>(undefined);
   const onChange = useCallback(
     value => {
       setValue(value);
@@ -30,7 +30,7 @@ const Template: Story<IVarImageProps> = args => {
     },
     [setValue, args]
   );
-  return <VarImage {...args} value={value} onChange={onChange} />;
+  return <VarFile {...args} value={value} onChange={onChange} />;
 };
 
 export const Default = Template.bind({});

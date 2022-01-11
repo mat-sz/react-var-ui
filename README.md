@@ -39,6 +39,7 @@ What makes react-var-ui different when compared to similar libraries such as [Le
   - [VarButton](#varbutton-)
   - [VarColor](#varcolor-)
   - [VarDisplay](#vardisplay-)
+  - [VarFile](#varfile-)
   - [VarImage](#varimage-)
   - [VarNumber](#varnumber-)
   - [VarSelect](#varselect-)
@@ -266,6 +267,22 @@ A simple component that displays a string or a numeric value.
 **Only accepts path and value. Does not change any values.**
 
 _T = string | number_
+
+<h3 align="center">&lt;VarFile /&gt;</h3>
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/mat-sz/react-var-ui/main/screenshots/VarFile.png" alt="VarFile screenshot">
+</p>
+
+A simple file input component. Accepts and provides File instances.
+
+_T = File_
+
+#### optional
+
+| Property | Description                  | Type   |
+| -------- | ---------------------------- | ------ |
+| accept   | List of accepted file types. | string |
 
 <h3 align="center">&lt;VarImage /&gt;</h3>
 
