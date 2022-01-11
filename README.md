@@ -39,6 +39,7 @@ What makes react-var-ui different when compared to similar libraries such as [Le
   - [VarButton](#varbutton-)
   - [VarColor](#varcolor-)
   - [VarDisplay](#vardisplay-)
+  - [VarImage](#varimage-)
   - [VarNumber](#varnumber-)
   - [VarSelect](#varselect-)
   - [VarSlider](#varslider-)
@@ -265,6 +266,16 @@ A simple component that displays a string or a numeric value.
 **Only accepts path and value. Does not change any values.**
 
 _T = string | number_
+
+<h3 align="center">&lt;VarImage /&gt;</h3>
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/mat-sz/react-var-ui/main/screenshots/VarImage.png" alt="VarImage screenshot">
+</p>
+
+A simple image input component. Accepts and provides blob/data URLs.
+
+_T = string_
 
 <h3 align="center">&lt;VarNumber /&gt;</h3>
 

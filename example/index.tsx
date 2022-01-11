@@ -17,6 +17,7 @@ import {
   VarAngle,
   VarDisplay,
   VarNumber,
+  VarImage,
 } from '../.';
 
 const App = () => {
@@ -109,6 +110,7 @@ const App = () => {
                 buttonLabel="VarButton (with label)"
                 onClick={() => alert('clicked!')}
               />
+              <VarImage label="VarImage" path="image" />
             </VarCategory>
           </VarUI>
         </div>
