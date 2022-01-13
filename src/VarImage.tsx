@@ -39,7 +39,9 @@ export const VarImage: FC<IVarImageProps> = ({
         <div
           className="react-var-ui-image-background"
           style={{
-            backgroundImage: `url('${currentValue}')`,
+            backgroundImage: currentValue
+              ? `url('${currentValue}')`
+              : undefined,
           }}
           title="Image preview"
         ></div>
