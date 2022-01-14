@@ -19,6 +19,7 @@ import {
   VarNumber,
   VarImage,
   VarFile,
+  VarMedia,
 } from '../.';
 
 const App = () => {
@@ -34,6 +35,7 @@ const App = () => {
     xy: [0, 0],
     image: undefined,
     file: undefined,
+    media: undefined,
   });
 
   return (
@@ -115,6 +117,7 @@ const App = () => {
               />
               <VarImage label="VarImage" path="image" />
               <VarFile label="VarFile" path="file" />
+              <VarMedia label="VarMedia" path="media" />
             </VarCategory>
           </VarUI>
         </div>

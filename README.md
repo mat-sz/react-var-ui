@@ -41,6 +41,7 @@ What makes react-var-ui different when compared to similar libraries such as [Le
   - [VarDisplay](#vardisplay-)
   - [VarFile](#varfile-)
   - [VarImage](#varimage-)
+  - [VarMedia](#varmedia-)
   - [VarNumber](#varnumber-)
   - [VarSelect](#varselect-)
   - [VarSlider](#varslider-)
@@ -294,6 +295,26 @@ _T = File_
 A simple image input component. Accepts and provides blob/data URLs.
 
 _T = string_
+
+<h3 align="center">&lt;VarMedia /&gt;</h3>
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/mat-sz/react-var-ui/main/screenshots/VarMedia.png" alt="VarMedia screenshot">
+</p>
+
+Media (audio/video/image) input component. Accepts and provides a blob URL.
+
+If acceptImage, acceptAudio and acceptVideo are all false, the component will accept all 3.
+
+_T = string_
+
+#### optional
+
+| Property    | Description                                         | Type    |
+| ----------- | --------------------------------------------------- | ------- |
+| acceptImage | Whether the component should accept image/\* files. | boolean |
+| acceptAudio | Whether the component should accept audio/\* files. | boolean |
+| acceptVideo | Whether the component should accept video/\* files. | boolean |
 
 <h3 align="center">&lt;VarNumber /&gt;</h3>
 

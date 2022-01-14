@@ -10,6 +10,7 @@ export * from './VarColor';
 export * from './VarDisplay';
 export * from './VarFile';
 export * from './VarImage';
+export * from './VarMedia';
 export * from './VarNumber';
 export * from './VarSelect';
 export * from './VarSlider';
