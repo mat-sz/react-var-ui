@@ -10,6 +10,8 @@ export interface IVarCategoryProps {
    * Additional class names on the wrapping div element.
    */
   className?: string;
+
+  children?: React.ReactNode;
 }
 
 /**
@@ -18,7 +20,7 @@ export interface IVarCategoryProps {
 export const VarCategory: FC<IVarCategoryProps> = ({
   label,
   className,
-  children
+  children,
 }) => {
   return (
     <div className={'react-var-ui-category ' + (className ? className : '')}>
