@@ -48,6 +48,10 @@ export const VarColor: FC<IVarColorProps> = ({
               <SketchPicker
                 color={currentValue}
                 onChange={result => {
+                  // A workaround for some really "interesting" design decisions in react-color.
+                  // https://github.com/casesandberg/react-color/blob/bc9a0e1dc5d11b06c511a8e02a95bd85c7129f4b/src/helpers/color.js#L39
+                  const hex =
+                    result.hex === 'transparent' ? '#000000' : result.hex;
                   if (alpha) {
                     let alphaValue = Math.round(
                       (result.rgb.a ?? 1.0) * 255
@@ -55,9 +59,9 @@ export const VarColor: FC<IVarColorProps> = ({
                     if (alphaValue.length === 1) {
                       alphaValue = '0' + alphaValue;
                     }
-                    setCurrentValue(result.hex + alphaValue);
+                    setCurrentValue(hex + alphaValue);
                   } else {
-                    setCurrentValue(result.hex);
+                    setCurrentValue(hex);
                   }
                 }}
                 disableAlpha={!alpha}
