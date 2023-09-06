@@ -1,6 +1,6 @@
 <h1 align="center">
 <p align="center">
-  <a href="https://demo.matsz.dev/react-var-ui/">
+  <a href="https://demo.mat.dev/react-var-ui/">
     <img src="https://raw.githubusercontent.com/mat-sz/react-var-ui/main/screenshot.png" alt="Screenshot" width="700px">
   </a>
 </p>
