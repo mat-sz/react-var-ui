@@ -36,7 +36,7 @@ export const VarUI: FC<IVarUIProps> = ({
   values,
   updateValues,
   className,
-  children
+  children,
 }) => {
   const getValue = useCallback(
     (path?: string) => (path ? result(values, path) : undefined),
@@ -50,11 +50,10 @@ export const VarUI: FC<IVarUIProps> = ({
     [values, updateValues]
   );
 
-  const contextValue = useMemo(() => ({ values, getValue, setValue }), [
-    values,
-    getValue,
-    setValue
-  ]);
+  const contextValue = useMemo(
+    () => ({ values, getValue, setValue }),
+    [values, getValue, setValue]
+  );
 
   return (
     <VarUIContext.Provider value={contextValue}>

@@ -1,5 +1,5 @@
-import React, { FC, useCallback, useEffect, useMemo, useRef } from 'react';
-import { usePointerDragSimple } from 'react-use-pointer-drag';
+import React, { FC, useEffect, useMemo, useRef } from 'react';
+import { usePointerDrag } from 'react-use-pointer-drag';
 
 import { useVarUIValue } from './common/VarUIContext';
 import { IVarBaseInputProps, VarBase } from './VarBase';
@@ -31,8 +31,8 @@ export const VarAngle: FC<IVarAngleProps> = ({
     [currentValue]
   );
 
-  const updatePosition = useCallback(
-    (x: number, y: number) => {
+  const { dragProps } = usePointerDrag({
+    onMove: ({ x, y }) => {
       if (!controlRef.current) {
         return;
       }
@@ -43,10 +43,7 @@ export const VarAngle: FC<IVarAngleProps> = ({
       const centerY = rect.top + rect.height / 2;
       setCurrentValue(wrap(Math.atan2(y - centerY, x - centerX) + Math.PI / 2));
     },
-    [setCurrentValue]
-  );
-
-  const { events } = usePointerDragSimple(updatePosition);
+  });
 
   useEffect(() => {
     controlRef.current?.addEventListener('wheel', e => e.preventDefault());
@@ -67,7 +64,7 @@ export const VarAngle: FC<IVarAngleProps> = ({
             setCurrentValue(wrap(currentValue + 0.5 * (e.deltaY < 0 ? -1 : 1)));
           }}
           title="Angle"
-          {...events}
+          {...dragProps()}
         ></div>
       </div>
     </VarBase>

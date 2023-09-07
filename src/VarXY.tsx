@@ -1,5 +1,5 @@
 import React, { FC, useCallback, useMemo, useRef } from 'react';
-import { usePointerDragSimple } from 'react-use-pointer-drag';
+import { usePointerDrag } from 'react-use-pointer-drag';
 
 import { useVarUIValue } from './common/VarUIContext';
 import { IVarBaseInputProps, VarBase } from './VarBase';
@@ -78,7 +78,7 @@ export const VarXY: FC<IVarXYProps> = ({
   defaultValue = [0, 0],
   min = [-1.0, -1.0],
   max = [1.0, 1.0],
-  step = [0.01, 0.01]
+  step = [0.01, 0.01],
 }) => {
   const sliderRef = useRef<HTMLDivElement>(null);
   const [currentValue, setCurrentValue] = useVarUIValue(path, value, onChange);
@@ -86,12 +86,12 @@ export const VarXY: FC<IVarXYProps> = ({
     currentValue,
     min,
     max,
-    step
+    step,
   ]);
   const percent = useMemo(() => percentValue(rounded, min, max), [
     rounded,
     min,
-    max
+    max,
   ]);
 
   const updatePosition = useCallback(
@@ -109,7 +109,7 @@ export const VarXY: FC<IVarXYProps> = ({
       const value = roundValue(
         [
           min[0] + (max[0] - min[0]) * percentX,
-          min[1] + (max[1] - min[1]) * percentY
+          min[1] + (max[1] - min[1]) * percentY,
         ],
         min,
         max,
@@ -120,7 +120,9 @@ export const VarXY: FC<IVarXYProps> = ({
     [setCurrentValue, min, max, step]
   );
 
-  const { events } = usePointerDragSimple(updatePosition);
+  const { dragProps } = usePointerDrag({
+    onMove: ({ x, y }) => updatePosition(x, y),
+  });
 
   const reset = useCallback(() => {
     if (typeof defaultValue !== 'undefined') {
@@ -139,7 +141,7 @@ export const VarXY: FC<IVarXYProps> = ({
           ref={sliderRef}
           onClick={e => updatePosition(e.clientX, e.clientY)}
           onDoubleClick={reset}
-          {...events}
+          {...dragProps()}
         >
           <div
             className="react-var-ui-xy-control"

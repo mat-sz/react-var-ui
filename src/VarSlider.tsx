@@ -1,5 +1,5 @@
 import React, { FC, useCallback, useEffect, useMemo, useRef } from 'react';
-import { usePointerDragSimple } from 'react-use-pointer-drag';
+import { usePointerDrag } from 'react-use-pointer-drag';
 
 import { useVarUIValue } from './common/VarUIContext';
 import { roundValue } from './common/roundValue';
@@ -106,7 +106,9 @@ export const VarSlider: FC<IVarSliderProps> = ({
     [currentValue, setCurrentValue, integer, min, max, step]
   );
 
-  const { events } = usePointerDragSimple(updatePosition);
+  const { dragProps } = usePointerDrag({
+    onMove: ({ x }) => updatePosition(x),
+  });
 
   useEffect(() => {
     sliderRef.current?.addEventListener('wheel', e => e.preventDefault());
@@ -126,7 +128,7 @@ export const VarSlider: FC<IVarSliderProps> = ({
             e.deltaY < 0 ? increaseValue() : decreaseValue();
           }}
           title="Slider"
-          {...events}
+          {...dragProps()}
         >
           <div
             className="react-var-ui-slider-content"

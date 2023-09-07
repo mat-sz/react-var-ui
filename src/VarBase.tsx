@@ -54,7 +54,7 @@ export const VarBase: FC<IVarBaseProps> = ({
   label,
   children,
   className,
-  disabled
+  disabled,
 }) => {
   return (
     <div
