@@ -1,4 +1,3 @@
-import 'react-app-polyfill/ie11';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 
@@ -124,17 +123,17 @@ const App = () => {
         <div className="values">
           <strong>Values:</strong>
           <dl>
-            {Object.keys(values).map(key => (
+            {Object.entries(values).map(([key, value]) => (
               <React.Fragment key={key}>
                 <dt>{key}</dt>
                 <dd>
-                  {typeof values[key] === 'boolean'
-                    ? values[key]
+                  {typeof value === 'boolean'
+                    ? value
                       ? 'true'
                       : 'false'
-                    : Array.isArray(values[key])
-                    ? values[key].join(', ')
-                    : values[key]?.toString()}
+                    : Array.isArray(value)
+                    ? value.join(', ')
+                    : value?.toString()}
                 </dd>
               </React.Fragment>
             ))}
