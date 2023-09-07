@@ -2,8 +2,13 @@
   "version": "1.3.0",
   "license": "BSD-3-Clause-Clear",
   "exports": {
-    "import": "./dist/react-var-ui.js",
-    "types": "./dist/index.d.ts"
+    ".": {
+      "import": "./dist/react-var-ui.js",
+      "types": "./dist/index.d.ts"
+    },
+    "./dist/index.css": {
+      "import": "./dist/index.css"
+    }
   },
   "type": "module",
   "main": "dist/react-var-ui.js",
