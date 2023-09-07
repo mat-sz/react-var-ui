@@ -7,7 +7,7 @@
 </h1>
 
 <p align="center">
-<img alt="workflow" src="https://img.shields.io/github/workflow/status/mat-sz/react-var-ui/CI">
+<img alt="workflow" src="https://img.shields.io/github/actions/workflow/status/mat-sz/react-var-ui/main.yml?branch=main">
 <a href="https://npmjs.com/package/react-var-ui" target="_blank">
 <img alt="npm" src="https://img.shields.io/npm/v/react-var-ui">
 <img alt="npm" src="https://img.shields.io/npm/dw/react-var-ui">
