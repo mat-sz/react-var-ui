@@ -2,7 +2,7 @@ src
 example
 test
 stories
-jest.config.js
+vi.config.js
 tsdx.config.js
 yarn-error.log
 yarn.lock

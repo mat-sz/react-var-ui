@@ -15,13 +15,13 @@ describe('VarString', () => {
   });
 
   it('value: updated', async () => {
-    const fn = jest.fn();
+    const fn = vi.fn();
     render(<VarString value="Value" onChange={fn} />);
     const value = await screen.findByDisplayValue('Value');
     fireEvent.change(value, {
       target: {
-        value: 'Updated'
-      }
+        value: 'Updated',
+      },
     });
     expect(fn).toBeCalledWith('Updated');
   });

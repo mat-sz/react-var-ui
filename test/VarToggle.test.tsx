@@ -23,7 +23,7 @@ describe('VarToggle', () => {
   });
 
   it('value: toggled (false -> true)', async () => {
-    const fn = jest.fn();
+    const fn = vi.fn();
     render(<VarToggle value={false} onChange={fn} />);
     const toggle = await screen.findByTitle('Toggle');
     toggle.click();
@@ -31,7 +31,7 @@ describe('VarToggle', () => {
   });
 
   it('value: toggled (true -> false)', async () => {
-    const fn = jest.fn();
+    const fn = vi.fn();
     render(<VarToggle value={true} onChange={fn} />);
     const toggle = await screen.findByTitle('Toggle');
     toggle.click();

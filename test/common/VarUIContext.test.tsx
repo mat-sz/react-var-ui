@@ -6,12 +6,12 @@ import { useVarUIValue, VarUIContext } from '../../src/common/VarUIContext';
 describe('VarUIContext', () => {
   it('calls context functions', () => {
     const values = {};
-    const getValue = jest.fn(() => 1);
-    const setValue = jest.fn();
+    const getValue = vi.fn(() => 1);
+    const setValue = vi.fn();
     const context = {
       values,
       getValue,
-      setValue
+      setValue,
     };
 
     const Component = () => {
@@ -33,12 +33,12 @@ describe('VarUIContext', () => {
 
   it('uses fallback value', () => {
     const values = {};
-    const getValue = jest.fn(() => undefined);
-    const setValue = jest.fn();
+    const getValue = vi.fn(() => undefined);
+    const setValue = vi.fn();
     const context = {
       values,
       getValue,
-      setValue
+      setValue,
     };
 
     const Component = () => {
@@ -58,13 +58,13 @@ describe('VarUIContext', () => {
 
   it('calls onChange', () => {
     const values = {};
-    const getValue = jest.fn(() => undefined);
-    const setValue = jest.fn();
-    const onChange = jest.fn();
+    const getValue = vi.fn(() => undefined);
+    const setValue = vi.fn();
+    const onChange = vi.fn();
     const context = {
       values,
       getValue,
-      setValue
+      setValue,
     };
 
     const Component = () => {

@@ -1,6 +1,5 @@
 import React from 'react';
-import { fireEvent, render, screen } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
+import { act, fireEvent, render, screen } from '@testing-library/react';
 
 import { VarUI } from '../src/VarUI';
 import { VarAngle } from '../src/VarAngle';
@@ -17,9 +16,9 @@ describe('VarUI', () => {
   });
 
   it('values: updated when VarAngle changes', async () => {
-    const fn = jest.fn();
+    const fn = vi.fn();
     const init = {
-      value: Math.PI
+      value: Math.PI,
     };
     render(
       <VarUI values={init} updateValues={fn}>
@@ -32,26 +31,31 @@ describe('VarUI', () => {
   });
 
   it('values: updated when VarColor changes', async () => {
-    const fn = jest.fn();
+    const fn = vi.fn();
     const init = {
-      value: '#ff0000'
+      value: '#ff0000',
     };
     render(
       <VarUI values={init} updateValues={fn}>
         <VarColor path="value" />
       </VarUI>
     );
+
     const colorPreview = await screen.findByTitle('Color preview');
-    colorPreview.click();
+    act(() => {
+      colorPreview.click();
+    });
     const colorTile = await screen.findByTitle('#D0021B');
-    colorTile.click();
+    act(() => {
+      colorTile.click();
+    });
     expect(fn).toBeCalledWith(expect.objectContaining({ value: '#d0021b' }));
   });
 
   it('values: updated when VarNumber changes', async () => {
-    const fn = jest.fn();
+    const fn = vi.fn();
     const init = {
-      value: 1
+      value: 1,
     };
     render(
       <VarUI values={init} updateValues={fn}>
@@ -64,9 +68,9 @@ describe('VarUI', () => {
   });
 
   it('values: updated when VarSelect changes', async () => {
-    const fn = jest.fn();
+    const fn = vi.fn();
     const init = {
-      value: 2
+      value: 2,
     };
     render(
       <VarUI values={init} updateValues={fn}>
@@ -75,20 +79,20 @@ describe('VarUI', () => {
           options={[
             { key: 1, label: 'Test 1' },
             { key: 2, label: 'Test 2' },
-            { key: 3, label: 'Test 3' }
+            { key: 3, label: 'Test 3' },
           ]}
         />
       </VarUI>
     );
     const select = await screen.findByTitle('Select options');
-    userEvent.selectOptions(select, '1');
+    fireEvent.change(select, { target: { value: '1' } });
     expect(fn).toBeCalledWith(expect.objectContaining({ value: 1 }));
   });
 
   it('values: updated when VarSlider changes', async () => {
-    const fn = jest.fn();
+    const fn = vi.fn();
     const init = {
-      value: 1
+      value: 1,
     };
     render(
       <VarUI values={init} updateValues={fn}>
@@ -101,9 +105,9 @@ describe('VarUI', () => {
   });
 
   it('values: updated when VarString changes', async () => {
-    const fn = jest.fn();
+    const fn = vi.fn();
     const init = {
-      value: 'Value'
+      value: 'Value',
     };
     render(
       <VarUI values={init} updateValues={fn}>
@@ -113,16 +117,16 @@ describe('VarUI', () => {
     const value = await screen.findByDisplayValue('Value');
     fireEvent.change(value, {
       target: {
-        value: 'Updated'
-      }
+        value: 'Updated',
+      },
     });
     expect(fn).toBeCalledWith(expect.objectContaining({ value: 'Updated' }));
   });
 
   it('values: updated when VarToggle changes', async () => {
-    const fn = jest.fn();
+    const fn = vi.fn();
     const init = {
-      value: false
+      value: false,
     };
     render(
       <VarUI values={init} updateValues={fn}>

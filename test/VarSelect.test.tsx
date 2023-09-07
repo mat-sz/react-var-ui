@@ -1,6 +1,5 @@
 import React from 'react';
-import { render, screen } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
+import { fireEvent, render, screen } from '@testing-library/react';
 
 import { VarSelect } from '../src/VarSelect';
 
@@ -15,7 +14,7 @@ describe('VarSelect', () => {
         options={[
           { key: 1, label: 'Test 1' },
           { key: 2, label: 'Test 2' },
-          { key: 3, label: 'Test 3' }
+          { key: 3, label: 'Test 3' },
         ]}
         value={2}
       />
@@ -30,7 +29,7 @@ describe('VarSelect', () => {
         options={[
           { key: 1, label: 'Test 1', value: 'test1' },
           { key: 2, label: 'Test 2', value: 'test2' },
-          { key: 3, label: 'Test 3', value: 'test3' }
+          { key: 3, label: 'Test 3', value: 'test3' },
         ]}
         value="test2"
       />
@@ -40,38 +39,38 @@ describe('VarSelect', () => {
   });
 
   it('value: changed', async () => {
-    const fn = jest.fn();
+    const fn = vi.fn();
     render(
       <VarSelect
         options={[
           { key: 1, label: 'Test 1' },
           { key: 2, label: 'Test 2' },
-          { key: 3, label: 'Test 3' }
+          { key: 3, label: 'Test 3' },
         ]}
         value={2}
         onChange={fn}
       />
     );
     const select = await screen.findByTitle('Select options');
-    userEvent.selectOptions(select, '1');
+    fireEvent.change(select, { target: { value: '1' } });
     expect(fn).toBeCalledWith(1);
   });
 
   it('value: changed (value property)', async () => {
-    const fn = jest.fn();
+    const fn = vi.fn();
     render(
       <VarSelect
         options={[
           { key: 1, label: 'Test 1', value: 'test1' },
           { key: 2, label: 'Test 2', value: 'test2' },
-          { key: 3, label: 'Test 3', value: 'test3' }
+          { key: 3, label: 'Test 3', value: 'test3' },
         ]}
         value="test2"
         onChange={fn}
       />
     );
     const select = await screen.findByTitle('Select options');
-    userEvent.selectOptions(select, '"test1"');
+    fireEvent.change(select, { target: { value: '"test1"' } });
     expect(fn).toBeCalledWith('test1');
   });
 });

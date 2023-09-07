@@ -9,7 +9,7 @@ describe('VarButton', () => {
   });
 
   it('onClick: called on click', async () => {
-    const fn = jest.fn();
+    const fn = vi.fn();
     render(<VarButton buttonLabel="Test" onClick={fn} />);
     const button = await screen.findByText('Test');
     button.click();

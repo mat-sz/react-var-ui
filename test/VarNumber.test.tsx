@@ -15,7 +15,7 @@ describe('VarNumber', () => {
   });
 
   it('value: updated', async () => {
-    const fn = jest.fn();
+    const fn = vi.fn();
     render(<VarNumber value={1337} onChange={fn} />);
     const value = await screen.findByDisplayValue('1337');
     fireEvent.change(value, {
@@ -27,7 +27,7 @@ describe('VarNumber', () => {
   });
 
   it('value: updated (invalid data)', async () => {
-    const fn = jest.fn();
+    const fn = vi.fn();
     render(<VarNumber value={1337} onChange={fn} />);
     const value = await screen.findByDisplayValue('1337');
     fireEvent.change(value, {
@@ -39,7 +39,7 @@ describe('VarNumber', () => {
   });
 
   it('value: updated (increase button)', async () => {
-    const fn = jest.fn();
+    const fn = vi.fn();
     render(<VarNumber value={1337} onChange={fn} step={1} showButtons />);
     const button = await screen.findByTitle('Increase');
     button.click();
@@ -47,7 +47,7 @@ describe('VarNumber', () => {
   });
 
   it('value: updated (decrease button)', async () => {
-    const fn = jest.fn();
+    const fn = vi.fn();
     render(<VarNumber value={1337} onChange={fn} step={1} showButtons />);
     const button = await screen.findByTitle('Decrease');
     button.click();

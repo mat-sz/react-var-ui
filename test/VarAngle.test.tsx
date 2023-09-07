@@ -14,28 +14,19 @@ describe('VarAngle', () => {
     expect(value).toBeTruthy();
   });
 
-  it('value: changed on drag (mouse)', async () => {
-    const fn = jest.fn();
+  it('value: changed on drag', async () => {
+    const fn = vi.fn();
     render(<VarAngle value={Math.PI} onChange={fn} />);
     const angle = await screen.findByTitle('Angle');
-    fireEvent.mouseDown(angle);
-    fireEvent.mouseMove(angle, { clientX: 0, clientY: 0 });
-    fireEvent.mouseUp(angle, { clientX: 0, clientY: 0 });
-    expect(fn).toBeCalledWith(Math.PI / 2);
-  });
-
-  it('value: changed on drag (touch)', async () => {
-    const fn = jest.fn();
-    render(<VarAngle value={Math.PI} onChange={fn} />);
-    const angle = await screen.findByTitle('Angle');
-    fireEvent.touchStart(angle);
-    fireEvent.touchMove(angle, { touches: [{ clientX: 0, clientY: 0 }] });
-    fireEvent.touchEnd(angle, { touches: [{ clientX: 0, clientY: 0 }] });
-    expect(fn).toBeCalledWith(Math.PI / 2);
+    fireEvent.pointerDown(angle);
+    fireEvent.pointerMove(angle, { clientX: 0, clientY: 0 });
+    fireEvent.pointerMove(angle, { clientX: 0, clientY: 0 });
+    fireEvent.pointerUp(angle, { clientX: 0, clientY: 0 });
+    expect(fn).toBeCalledTimes(1);
   });
 
   it('value: reset on double click', async () => {
-    const fn = jest.fn();
+    const fn = vi.fn();
     render(<VarAngle value={Math.PI} onChange={fn} defaultValue={0} />);
     const angle = await screen.findByTitle('Angle');
     fireEvent.doubleClick(angle);

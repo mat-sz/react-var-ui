@@ -18,8 +18,8 @@ describe('VarImage', () => {
   });
 
   it('value: updated', async () => {
-    global.URL.createObjectURL = jest.fn();
-    const fn = jest.fn();
+    global.URL.createObjectURL = vi.fn();
+    const fn = vi.fn();
     render(<VarImage value="blob:http://example.com/test" onChange={fn} />);
     const value = await screen.findByTitle('Image upload');
     fireEvent.change(value, {

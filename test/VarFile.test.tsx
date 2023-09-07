@@ -15,8 +15,8 @@ describe('VarFile', () => {
   });
 
   it('value: updated', async () => {
-    global.URL.createObjectURL = jest.fn();
-    const fn = jest.fn();
+    global.URL.createObjectURL = vi.fn();
+    const fn = vi.fn();
     render(<VarFile onChange={fn} />);
     const value = await screen.findByTitle('File upload');
     fireEvent.change(value, {

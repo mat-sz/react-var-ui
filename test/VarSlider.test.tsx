@@ -14,28 +14,19 @@ describe('VarSlider', () => {
     expect(value).toBeTruthy();
   });
 
-  it('value: changed on drag (mouse)', async () => {
-    const fn = jest.fn();
+  it('value: changed on drag', async () => {
+    const fn = vi.fn();
     render(<VarSlider min={0} max={2} step={0.1} value={2} onChange={fn} />);
     const slider = await screen.findByTitle('Slider');
-    fireEvent.mouseDown(slider);
-    fireEvent.mouseMove(slider, { clientX: 0, clientY: 0 });
-    fireEvent.mouseUp(slider, { clientX: 0, clientY: 0 });
-    expect(fn).toBeCalledWith(0);
-  });
-
-  it('value: changed on drag (touch)', async () => {
-    const fn = jest.fn();
-    render(<VarSlider min={0} max={2} step={0.1} value={2} onChange={fn} />);
-    const slider = await screen.findByTitle('Slider');
-    fireEvent.touchStart(slider);
-    fireEvent.touchMove(slider, { touches: [{ clientX: 0, clientY: 0 }] });
-    fireEvent.touchEnd(slider, { touches: [{ clientX: 0, clientY: 0 }] });
+    fireEvent.pointerDown(slider);
+    fireEvent.pointerMove(slider, { clientX: 0, clientY: 0 });
+    fireEvent.pointerMove(slider, { clientX: 0, clientY: 0 });
+    fireEvent.pointerUp(slider, { clientX: 0, clientY: 0 });
     expect(fn).toBeCalledWith(0);
   });
 
   it('value: reset on double click', async () => {
-    const fn = jest.fn();
+    const fn = vi.fn();
     render(
       <VarSlider
         min={0}
@@ -52,7 +43,7 @@ describe('VarSlider', () => {
   });
 
   it('value: updated (increase button)', async () => {
-    const fn = jest.fn();
+    const fn = vi.fn();
     render(
       <VarSlider
         min={0}
@@ -69,7 +60,7 @@ describe('VarSlider', () => {
   });
 
   it('value: updated (decrease button)', async () => {
-    const fn = jest.fn();
+    const fn = vi.fn();
     render(
       <VarSlider
         min={0}
@@ -86,7 +77,7 @@ describe('VarSlider', () => {
   });
 
   it('value: updated (input)', async () => {
-    const fn = jest.fn();
+    const fn = vi.fn();
     render(
       <VarSlider min={0} max={2} step={0.1} value={1} onChange={fn} showInput />
     );
@@ -100,7 +91,7 @@ describe('VarSlider', () => {
   });
 
   it('value: updated (input with invalid data)', async () => {
-    const fn = jest.fn();
+    const fn = vi.fn();
     render(
       <VarSlider min={0} max={2} step={0.1} value={1} onChange={fn} showInput />
     );
