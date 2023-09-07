@@ -10,3 +10,4 @@ yarn.lock
 tsconfig.json
 .github
 storybook
+storybook-static
