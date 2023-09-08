@@ -7,6 +7,11 @@
       "types": "./dist/index.d.ts"
     },
     "./dist/index.css": {
+      "require": "./dist/index.css",
+      "import": "./dist/index.css"
+    },
+    "./index.css": {
+      "require": "./dist/index.css",
       "import": "./dist/index.css"
     }
   },
@@ -118,6 +123,6 @@
     "lodash.result": "^4.0.0",
     "lodash.set": "^4.0.0",
     "react-color": "^2.0.0",
-    "react-use-pointer-drag": "^0.1.0"
+    "react-use-pointer-drag": "^0.1.1"
   }
 }

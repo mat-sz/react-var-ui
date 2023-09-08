@@ -65,14 +65,14 @@ Then include the CSS with:
 
 ```css
 /* In your CSS/SCSS file: */
-@import 'react-var-ui/dist/index.css';
+@import 'react-var-ui/index.css';
 ```
 
 or:
 
 ```js
 // In your JS/TS file (assuming your bundler supports loading CSS files):
-import 'react-var-ui/dist/index.css';
+import 'react-var-ui/index.css';
 ```
 
 ## Example usage
