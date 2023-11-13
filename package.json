@@ -37,11 +37,6 @@
   "peerDependencies": {
     "react": ">=16"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "tsdx lint"
-    }
-  },
   "repository": {
     "type": "git",
     "url": "https://github.com/mat-sz/react-var-ui.git"
@@ -50,12 +45,6 @@
     "url": "https://github.com/mat-sz/react-var-ui/issues"
   },
   "homepage": "https://github.com/mat-sz/react-var-ui",
-  "prettier": {
-    "tabWidth": 2,
-    "singleQuote": true,
-    "semi": true,
-    "arrowParens": "avoid"
-  },
   "name": "react-var-ui",
   "author": "Mat Sz <contact@matsz.dev>",
   "keywords": [
@@ -69,17 +58,6 @@
     "library",
     "typescript"
   ],
-  "jest": {
-    "collectCoverageFrom": [
-      "src/**/*.{ts,tsx}"
-    ],
-    "setupFilesAfterEnv": [
-      "<rootDir>/test/setupTests.ts"
-    ],
-    "modulePaths": [
-      "<rootDir>/src"
-    ]
-  },
   "resolutions": {
     "string-width": "4.2.3",
     "strip-ansi": "6.0.1",

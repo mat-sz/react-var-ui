@@ -1,20 +1,20 @@
-import React, { FC, ReactNode, useMemo, useCallback } from 'react';
+import React, { ReactNode, useMemo, useCallback } from 'react';
 import cloneDeep from 'lodash.clonedeep';
 import set from 'lodash.set';
 import result from 'lodash.result';
 
-import { VarUIObject, VarUIContext } from './common/VarUIContext';
+import { VarUIContext } from './common/VarUIContext';
 
-export interface IVarUIProps {
+export interface IVarUIProps<T = any> {
   /**
    * A JavaScript object or array to be mutated by the input components.
    */
-  values: VarUIObject;
+  values: T;
 
   /**
    * The function to be called whenever an update is available.
    */
-  updateValues: (values: VarUIObject) => void;
+  updateValues: (values: T) => void;
 
   /**
    * Additional class names for the wrapper object.
@@ -32,7 +32,7 @@ export interface IVarUIProps {
  * It is not required to use this component - other components accept
  * `onChange` and `value` properties which provide a similar functionality.
  */
-export const VarUI: FC<IVarUIProps> = ({
+export const VarUI: <T>(props: IVarUIProps<T>) => JSX.Element = ({
   values,
   updateValues,
   className,
@@ -45,7 +45,7 @@ export const VarUI: FC<IVarUIProps> = ({
 
   const setValue = useCallback(
     (path: string, value: any) => {
-      updateValues(set(cloneDeep(values), path, value));
+      updateValues(set(cloneDeep(values) as any, path, value));
     },
     [values, updateValues]
   );
