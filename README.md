@@ -32,6 +32,7 @@ What makes react-var-ui different when compared to similar libraries such as [Le
 - [Utility components](#utility-components)
   - [VarUI](#varui-)
   - [VarCategory](#varcategory-)
+  - [VarArray](#vararray-)
 - [Input components](#input-components)
   - [Base properties](#base-properties)
   - [VarAngle](#varangle-)
@@ -176,6 +177,40 @@ Category component for grouping inputs.
 | Property  | Description                                         | Type   |
 | --------- | --------------------------------------------------- | ------ |
 | className | Additional class names on the wrapping div element. | string |
+
+<h3 align="center">&lt;VarArray /&gt;</h3>
+
+Renders an array value as a list of elements
+
+#### optional
+
+| Property  | Description                                             | Type      |
+| --------- | ------------------------------------------------------- | --------- | ---------------------------------------------------- |
+| className | Additional class names on the wrapping div element.     | string    |
+| disabled  | Should the component and its children be disabled.      | boolean   |
+| children  | Renders children with the array element as its context. | ReactNode | (element: T, index: number, array: T[]) => ReactNode |
+
+#### Examples
+
+With ReactNode children:
+
+```tsx
+<VarUI values={{ test: [{ prop: 'a' }, { prop: 'b' }, { prop: 'c' }] }}>
+  <VarArray path="test">
+    <VarInput path="prop" label="Example" />
+  </VarArray>
+</VarUI>
+```
+
+With function:
+
+```tsx
+<VarUI values={{ test: [{ prop: 'a' }, { prop: 'b' }, { prop: 'c' }] }}>
+  <VarArray path="test">
+    {(element, index) => <VarInput path="prop" label={`Element: ${index}`} />}
+  </VarArray>
+</VarUI>
+```
 
 ## Input components
 

@@ -2659,28 +2659,7 @@
     expect "^29.0.0"
     pretty-format "^29.0.0"
 
-"@types/lodash.clonedeep@^4.5.6":
-  version "4.5.7"
-  resolved "https://registry.yarnpkg.com/@types/lodash.clonedeep/-/lodash.clonedeep-4.5.7.tgz#0e119f582ed6f9e6b373c04a644651763214f197"
-  integrity sha512-ccNqkPptFIXrpVqUECi60/DFxjNKsfoQxSQsgcBJCX/fuX1wgyQieojkcWH/KpE3xzLoWN/2k+ZeGqIN3paSvw==
-  dependencies:
-    "@types/lodash" "*"
-
-"@types/lodash.result@^4.5.6":
-  version "4.5.7"
-  resolved "https://registry.yarnpkg.com/@types/lodash.result/-/lodash.result-4.5.7.tgz#a25caed50aa92d0c72df8da4e6002652fc1ad9de"
-  integrity sha512-d11DRiEyu/yD0YNZavb+C9Jj1lGtyV1+VcxeVKYZA1Iq9Gf459naR6LZ1xUf2MXyTYiheBl4NkgFvx38EDI4rQ==
-  dependencies:
-    "@types/lodash" "*"
-
-"@types/lodash.set@^4.3.6":
-  version "4.3.7"
-  resolved "https://registry.yarnpkg.com/@types/lodash.set/-/lodash.set-4.3.7.tgz#784fccea3fbef4d0949d1897a780f592da700942"
-  integrity sha512-bS5Wkg/nrT82YUfkNYPSccFrNZRL+irl7Yt4iM6OTSQ0VZJED2oUIVm15NkNtUAQ8SRhCe+axqERUV6MJgkeEg==
-  dependencies:
-    "@types/lodash" "*"
-
-"@types/lodash@*", "@types/lodash@^4.14.167":
+"@types/lodash@^4.14.167":
   version "4.14.198"
   resolved "https://registry.yarnpkg.com/@types/lodash/-/lodash-4.14.198.tgz#4d27465257011aedc741a809f1269941fa2c5d4c"
   integrity sha512-trNJ/vtMZYMLhfN45uLq4ShQSw0/S7xCTLLVM+WM1rmFpba/VS42jVUgaO3w/NOLiWR/09lnYk0yMaA/atdIsg==

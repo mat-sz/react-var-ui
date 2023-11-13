@@ -50,7 +50,9 @@ export const VarFile: FC<IVarFileProps> = ({
       <div className="react-var-ui-file">
         {displayMetadata && !!currentValue && (
           <div className="react-var-ui-file-metadata">
-            <div>Name: {currentValue.name}</div>
+            <div>
+              Name: <span>{currentValue.name}</span>
+            </div>
             <div>Size: {filesize(currentValue.size)}</div>
             <div>Type: {currentValue.type || 'unknown'}</div>
           </div>
