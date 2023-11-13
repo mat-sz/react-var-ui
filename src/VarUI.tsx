@@ -10,9 +10,19 @@ export interface IVarUIProps<T = any> {
   values: T;
 
   /**
-   * The function to be called whenever an update is available.
+   * @deprecated Replaced by onChange
    */
-  updateValues: (values: T) => void;
+  updateValues?: (values: T) => void;
+
+  /**
+   * The function to be called with the entire changed object.
+   */
+  onChange?: (values: T) => void;
+
+  /**
+   * The function to be called when one value is changed.
+   */
+  onChangeValue?: (path: string, newValue: any) => void;
 
   /**
    * Additional class names for the wrapper object.
@@ -33,6 +43,8 @@ export interface IVarUIProps<T = any> {
 export const VarUI: <T>(props: IVarUIProps<T>) => JSX.Element = ({
   values,
   updateValues,
+  onChange,
+  onChangeValue,
   className,
   children,
 }) => {
@@ -43,7 +55,10 @@ export const VarUI: <T>(props: IVarUIProps<T>) => JSX.Element = ({
 
   const setValue = useCallback(
     (path: string, value: any) => {
-      updateValues(set(clone(values) as any, path, value));
+      onChangeValue?.(path, value);
+      const newValues = set(clone(values) as any, path, value);
+      updateValues?.(newValues);
+      onChange?.(newValues);
     },
     [values, updateValues]
   );
