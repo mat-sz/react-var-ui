@@ -1,7 +1,5 @@
 import React, { ReactNode, useMemo, useCallback } from 'react';
-import cloneDeep from 'lodash.clonedeep';
-import set from 'lodash.set';
-import result from 'lodash.result';
+import { clone, set, get } from 'radash';
 
 import { VarUIContext } from './common/VarUIContext';
 
@@ -39,13 +37,13 @@ export const VarUI: <T>(props: IVarUIProps<T>) => JSX.Element = ({
   children,
 }) => {
   const getValue = useCallback(
-    (path?: string) => (path ? result(values, path) : undefined),
+    (path?: string) => (path ? get(values, path) : undefined),
     [values]
   );
 
   const setValue = useCallback(
     (path: string, value: any) => {
-      updateValues(set(cloneDeep(values) as any, path, value));
+      updateValues(set(clone(values) as any, path, value));
     },
     [values, updateValues]
   );

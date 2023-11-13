@@ -97,9 +97,7 @@
   },
   "dependencies": {
     "filesize": "^8.0.6",
-    "lodash.clonedeep": "^4.0.0",
-    "lodash.result": "^4.0.0",
-    "lodash.set": "^4.0.0",
+    "radash": "^11.0.0",
     "react-color": "^2.0.0",
     "react-use-pointer-drag": "^0.1.1"
   }
