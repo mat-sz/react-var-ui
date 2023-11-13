@@ -82,17 +82,14 @@ export const VarXY: FC<IVarXYProps> = ({
 }) => {
   const sliderRef = useRef<HTMLDivElement>(null);
   const [currentValue, setCurrentValue] = useVarUIValue(path, value, onChange);
-  const rounded = useMemo(() => roundValue(currentValue, min, max, step), [
-    currentValue,
-    min,
-    max,
-    step,
-  ]);
-  const percent = useMemo(() => percentValue(rounded, min, max), [
-    rounded,
-    min,
-    max,
-  ]);
+  const rounded = useMemo(
+    () => roundValue(currentValue, min, max, step),
+    [currentValue, min, max, step]
+  );
+  const percent = useMemo(
+    () => percentValue(rounded, min, max),
+    [rounded, min, max]
+  );
 
   const updatePosition = useCallback(
     (x: number, y: number) => {
@@ -131,7 +128,7 @@ export const VarXY: FC<IVarXYProps> = ({
   }, [defaultValue, setCurrentValue]);
 
   return (
-    <VarBase label={label} disabled={disabled} className={className}>
+    <VarBase label={label} disabled={disabled} className={className} column>
       <span className="react-var-ui-xy-value">
         {rounded[0]}, {rounded[1]}
       </span>

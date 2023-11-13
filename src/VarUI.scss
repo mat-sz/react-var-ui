@@ -165,7 +165,6 @@ $transition-time: 0.2s;
     }
 
     &-multiline {
-      grid-column: 1 / 3;
       margin-top: 0.4rem;
       font-family: inherit;
       padding: 0.5rem;
@@ -183,6 +182,10 @@ $transition-time: 0.2s;
     background: $label-background-normal-color;
     border-bottom: 1px solid $label-border-color;
     user-select: none;
+
+    &-column {
+      display: block;
+    }
 
     &:first-child {
       border-top: 1px solid $label-border-color;
@@ -293,8 +296,6 @@ $transition-time: 0.2s;
   }
 
   &-xy {
-    grid-column: 1 / 3;
-
     &-value {
       display: inline-block !important;
       text-align: right;
@@ -347,7 +348,6 @@ $transition-time: 0.2s;
   }
 
   &-angle {
-    grid-column: 1 / 3;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -395,7 +395,6 @@ $transition-time: 0.2s;
     display: flex;
     justify-content: center;
     align-items: center;
-    grid-column: 1 / 3;
     cursor: pointer;
 
     &-value {

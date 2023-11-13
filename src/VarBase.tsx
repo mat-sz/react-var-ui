@@ -1,10 +1,10 @@
-import React, { FC, ReactChild, ReactNode } from 'react';
+import React, { FC, ReactNode } from 'react';
 
 export interface IVarBaseProps {
   /**
    * Label to be shown left to the input.
    */
-  label?: ReactChild;
+  label?: ReactNode;
 
   /**
    * Additional class names on the wrapping div element.
@@ -20,6 +20,11 @@ export interface IVarBaseProps {
    * Children. Only rendered when provided directly to the VarBase component.
    */
   children?: ReactNode;
+
+  /**
+   * Should keep children in a column, with every child having a width of 100%.
+   */
+  column?: boolean;
 }
 
 export interface IVarBaseInputProps<T> extends IVarBaseProps {
@@ -55,6 +60,7 @@ export const VarBase: FC<IVarBaseProps> = ({
   children,
   className,
   disabled,
+  column = false,
 }) => {
   return (
     <div
@@ -64,6 +70,7 @@ export const VarBase: FC<IVarBaseProps> = ({
           ? 'react-var-ui-label-has-label '
           : 'react-var-ui-label-no-label ') +
         (disabled ? 'react-var-ui-disabled ' : '') +
+        (column ? 'react-var-ui-label-column ' : '') +
         (className ? className : '')
       }
     >

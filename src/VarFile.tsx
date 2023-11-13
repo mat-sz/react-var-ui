@@ -46,13 +46,13 @@ export const VarFile: FC<IVarFileProps> = ({
   );
 
   return (
-    <VarBase label={label} disabled={disabled} className={className}>
-      <span className="react-var-ui-file-value">{currentValue?.name}</span>
+    <VarBase label={label} disabled={disabled} className={className} column>
       <div className="react-var-ui-file">
         {displayMetadata && !!currentValue && (
           <div className="react-var-ui-file-metadata">
-            <div>File size: {filesize(currentValue.size)}</div>
-            <div>File type: {currentValue.type || 'unknown'}</div>
+            <div>Name: {currentValue.name}</div>
+            <div>Size: {filesize(currentValue.size)}</div>
+            <div>Type: {currentValue.type || 'unknown'}</div>
           </div>
         )}
         <IconUpload />

@@ -49,7 +49,12 @@ export const VarString: FC<IVarStringProps> = ({
   );
 
   return (
-    <VarBase label={label} disabled={disabled} className={className}>
+    <VarBase
+      label={label}
+      disabled={disabled}
+      className={className}
+      column={multiline}
+    >
       {multiline ? (
         <textarea
           className="react-var-ui-string-multiline"

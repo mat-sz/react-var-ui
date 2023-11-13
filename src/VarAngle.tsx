@@ -50,7 +50,7 @@ export const VarAngle: FC<IVarAngleProps> = ({
   }, []);
 
   return (
-    <VarBase label={label} disabled={disabled} className={className}>
+    <VarBase label={label} disabled={disabled} className={className} column>
       <span className="react-var-ui-angle-value">{degrees}&deg;</span>
       <div className="react-var-ui-angle">
         <div

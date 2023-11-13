@@ -33,8 +33,7 @@ export const VarImage: FC<IVarImageProps> = ({
   );
 
   return (
-    <VarBase label={label} disabled={disabled} className={className}>
-      <span className="react-var-ui-image-value"></span>
+    <VarBase label={label} disabled={disabled} className={className} column>
       <div className="react-var-ui-image">
         <div
           className="react-var-ui-image-background"

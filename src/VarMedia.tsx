@@ -139,8 +139,7 @@ export const VarMedia: FC<IVarMediaProps> = ({
   }
 
   return (
-    <VarBase label={label} disabled={disabled} className={className}>
-      <span className="react-var-ui-media-value"></span>
+    <VarBase label={label} disabled={disabled} className={className} column>
       <div className="react-var-ui-media">
         {preview}
         <IconUpload />
