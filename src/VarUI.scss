@@ -26,7 +26,10 @@ $transition-time: 0.2s;
 
   &-disabled {
     pointer-events: none;
-    opacity: 0.5;
+
+    & > * {
+      opacity: 0.5;
+    }
   }
 
   &-category {
@@ -36,6 +39,7 @@ $transition-time: 0.2s;
       font-size: 0.7rem;
       padding: 0.4rem;
       user-select: none;
+      font-weight: bold;
     }
 
     padding-bottom: 1rem;
@@ -286,6 +290,8 @@ $transition-time: 0.2s;
 
   &-number {
     input {
+      flex: 1;
+      max-width: 10rem;
       background: $input-background-color;
 
       &:hover,
