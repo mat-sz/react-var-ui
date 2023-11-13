@@ -145,14 +145,14 @@ And then enter the example directory and start the app:
 
 This is the main component which provides a Context for other components. It is not required to use this component - other components accept `onChange` and `value` properties which provide a similar functionality.
 
-#### required
+#### Required properties
 
 | Property     | Description                                                         | Type                     |
 | ------------ | ------------------------------------------------------------------- | ------------------------ |
 | values       | A JavaScript object or array to be mutated by the input components. | object                   |
 | updateValues | The function to be called whenever an update is available.          | (values: object) => void |
 
-#### optional
+#### Optional properties
 
 | Property  | Description                                    | Type   |
 | --------- | ---------------------------------------------- | ------ |
@@ -166,13 +166,13 @@ This is the main component which provides a Context for other components. It is 
 
 Category component for grouping inputs.
 
-#### required
+#### Required properties
 
 | Property | Description     | Type      |
 | -------- | --------------- | --------- |
 | label    | Category label. | ReactNode |
 
-#### optional
+#### Optional properties
 
 | Property  | Description                                         | Type   |
 | --------- | --------------------------------------------------- | ------ |
@@ -182,7 +182,7 @@ Category component for grouping inputs.
 
 Renders an array value as a list of elements
 
-#### optional
+#### Optional properties
 
 | Property  | Description                                             | Type      |
 | --------- | ------------------------------------------------------- | --------- | ---------------------------------------------------- |
@@ -220,7 +220,7 @@ Most input components accept the following base properties.
 
 Does not apply to `<VarButton />`.
 
-#### optional
+#### Optional properties
 
 _T is component's value type._
 
@@ -261,13 +261,13 @@ Button component.
 
 **Does not accept any of the base component properties.**
 
-#### required
+#### Required properties
 
 | Property    | Description     | Type      |
 | ----------- | --------------- | --------- |
 | buttonLabel | Category label. | ReactNode |
 
-#### optional
+#### Optional properties
 
 | Property | Description                        | Type       |
 | -------- | ---------------------------------- | ---------- |
@@ -286,7 +286,7 @@ Uses [react-color](https://casesandberg.github.io/react-color/) under the hood.
 
 _T = string_ (#XXXXXX)
 
-#### optional
+#### Optional properties
 
 | Property | Description                                                                                                                                       | Type    |
 | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------- | ------- |
@@ -314,7 +314,7 @@ A simple file input component. Accepts and provides File instances.
 
 _T = File_
 
-#### optional
+#### Optional properties
 
 | Property        | Description                                                                | Type    |
 | --------------- | -------------------------------------------------------------------------- | ------- |
@@ -343,7 +343,7 @@ If acceptImage, acceptAudio and acceptVideo are all false, the component will ac
 
 _T = string_
 
-#### optional
+#### Optional properties
 
 | Property    | Description                                         | Type    |
 | ----------- | --------------------------------------------------- | ------- |
@@ -361,7 +361,7 @@ Integer/float number component. Accepts and provides numbers.
 
 _T = number_
 
-#### optional
+#### Optional properties
 
 | Property    | Description                                                                | Type    |
 | ----------- | -------------------------------------------------------------------------- | ------- |
@@ -382,7 +382,7 @@ Select component. Returns and accepts either `value` from option object or `key`
 
 _T = any_
 
-#### required
+#### Required properties
 
 | Property | Description              | Type               |
 | -------- | ------------------------ | ------------------ |
@@ -413,7 +413,7 @@ Integer/float slider component. Accepts and provides numbers.
 
 _T = number_
 
-#### required
+#### Required properties
 
 | Property | Description    | Type   |
 | -------- | -------------- | ------ |
@@ -421,7 +421,7 @@ _T = number_
 | max      | Maximum value. | number |
 | step     | Step.          | number |
 
-#### optional
+#### Optional properties
 
 | Property    | Description                                                                | Type    |
 | ----------- | -------------------------------------------------------------------------- | ------- |
@@ -439,7 +439,7 @@ String input component. Accepts and provides a string value.
 
 _T = string_
 
-#### optional
+#### Optional properties
 
 | Property  | Description                     | Type    |
 | --------- | ------------------------------- | ------- |
@@ -466,7 +466,7 @@ XY offset picker. Accepts and provides an array in form of [x, y].
 
 _T = [number (x), number (y)]_
 
-#### optional
+#### Optional properties
 
 | Property | Description    | Type                     |
 | -------- | -------------- | ------------------------ |
