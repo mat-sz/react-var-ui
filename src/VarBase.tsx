@@ -1,4 +1,4 @@
-import React, { FC, ReactNode } from 'react';
+import React, { ReactNode } from 'react';
 
 export interface IVarBaseProps {
   /**
@@ -55,13 +55,13 @@ export interface IVarBaseInputProps<T> extends IVarBaseProps {
  * Base VarUI input component. Doesn't do anything besides displaying the label.
  * Used to construct other components from.
  */
-export const VarBase: FC<IVarBaseProps> = ({
+export const VarBase = ({
   label,
   children,
   className,
   disabled,
   column = false,
-}) => {
+}: IVarBaseProps): JSX.Element => {
   return (
     <div
       className={

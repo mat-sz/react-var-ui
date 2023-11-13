@@ -1,4 +1,4 @@
-import React, { FC, useCallback } from 'react';
+import React, { useCallback } from 'react';
 
 import { useVarUIValue } from './common/VarUIContext';
 import { IconUpload } from './icons/IconUpload';
@@ -9,14 +9,14 @@ export interface IVarImageProps extends IVarBaseInputProps<string> {}
 /**
  * Image input component. Accepts and provides a blob URL.
  */
-export const VarImage: FC<IVarImageProps> = ({
+export const VarImage = ({
   label,
   path,
   value,
   onChange,
   disabled,
   className,
-}) => {
+}: IVarImageProps): JSX.Element => {
   const [currentValue, setCurrentValue] = useVarUIValue(path, value, onChange);
 
   const onFileChange = useCallback(

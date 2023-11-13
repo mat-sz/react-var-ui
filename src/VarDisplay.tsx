@@ -1,4 +1,4 @@
-import React, { FC, ReactText } from 'react';
+import React from 'react';
 
 import { useVarUIValue } from './common/VarUIContext';
 import { IVarBaseProps, VarBase } from './VarBase';
@@ -13,19 +13,19 @@ export interface IVarDisplayProps extends IVarBaseProps {
    * Current value (only used if context and path aren't available).
    * In most cases you aren't going to need this.
    */
-  value?: ReactText;
+  value?: string | number;
 }
 
 /**
  * A simple component that displays a string or a numeric value.
  */
-export const VarDisplay: FC<IVarDisplayProps> = ({
+export const VarDisplay = ({
   label,
   path,
   value,
   disabled,
-  className
-}) => {
+  className,
+}: IVarDisplayProps): JSX.Element => {
   const [currentValue] = useVarUIValue(path, value);
 
   return (

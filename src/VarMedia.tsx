@@ -1,4 +1,4 @@
-import React, { FC, useCallback, useEffect, useMemo, useState } from 'react';
+import React, { useCallback, useEffect, useMemo, useState } from 'react';
 
 import { useVarUIValue } from './common/VarUIContext';
 import { IconUpload } from './icons/IconUpload';
@@ -26,7 +26,7 @@ export interface IVarMediaProps extends IVarBaseInputProps<string> {
  *
  * If acceptImage, acceptAudio and acceptVideo are all false, the component will accept all 3.
  */
-export const VarMedia: FC<IVarMediaProps> = ({
+export const VarMedia = ({
   label,
   path,
   value,
@@ -36,7 +36,7 @@ export const VarMedia: FC<IVarMediaProps> = ({
   acceptImage,
   acceptAudio,
   acceptVideo,
-}) => {
+}: IVarMediaProps): JSX.Element => {
   const [currentValue, setCurrentValue] = useVarUIValue(path, value, onChange);
   const [type, setType] = useState<string>();
   const accept = useMemo(() => {

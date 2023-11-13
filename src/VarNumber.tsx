@@ -1,4 +1,4 @@
-import React, { FC, useCallback, useMemo } from 'react';
+import React, { useCallback, useMemo } from 'react';
 
 import { useVarUIValue } from './common/VarUIContext';
 import { roundValue } from './common/roundValue';
@@ -37,7 +37,7 @@ export interface IVarNumberProps extends IVarBaseInputProps<number> {
 /**
  * Integer/float number component. Accepts and provides numbers.
  */
-export const VarNumber: FC<IVarNumberProps> = ({
+export const VarNumber = ({
   label,
   path,
   value,
@@ -49,7 +49,7 @@ export const VarNumber: FC<IVarNumberProps> = ({
   showButtons,
   disabled,
   className,
-}) => {
+}: IVarNumberProps): JSX.Element => {
   const [currentValue, setCurrentValue] = useVarUIValue(path, value, onChange);
   const rounded = useMemo(
     () => roundValue(currentValue, min, max, step, !!integer),

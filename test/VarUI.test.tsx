@@ -12,7 +12,7 @@ import { VarToggle } from '../src/VarToggle';
 
 describe('VarUI', () => {
   it('renders without crashing', () => {
-    render(<VarUI values={{}} updateValues={() => {}} />);
+    render(<VarUI values={{}} />);
   });
 
   it('values: updated when VarAngle changes', async () => {
@@ -21,7 +21,7 @@ describe('VarUI', () => {
       value: Math.PI,
     };
     render(
-      <VarUI values={init} updateValues={fn}>
+      <VarUI values={init} onChange={fn}>
         <VarAngle path="value" defaultValue={0} />
       </VarUI>
     );
@@ -36,7 +36,7 @@ describe('VarUI', () => {
       value: '#ff0000',
     };
     render(
-      <VarUI values={init} updateValues={fn}>
+      <VarUI values={init} onChange={fn}>
         <VarColor path="value" />
       </VarUI>
     );
@@ -58,7 +58,7 @@ describe('VarUI', () => {
       value: 1,
     };
     render(
-      <VarUI values={init} updateValues={fn}>
+      <VarUI values={init} onChange={fn}>
         <VarNumber path="value" showButtons={true} step={1} />
       </VarUI>
     );
@@ -73,7 +73,7 @@ describe('VarUI', () => {
       value: 2,
     };
     render(
-      <VarUI values={init} updateValues={fn}>
+      <VarUI values={init} onChange={fn}>
         <VarSelect
           path="value"
           options={[
@@ -95,7 +95,7 @@ describe('VarUI', () => {
       value: 1,
     };
     render(
-      <VarUI values={init} updateValues={fn}>
+      <VarUI values={init} onChange={fn}>
         <VarSlider path="value" showButtons={true} min={0} max={2} step={1} />
       </VarUI>
     );
@@ -110,7 +110,7 @@ describe('VarUI', () => {
       value: 'Value',
     };
     render(
-      <VarUI values={init} updateValues={fn}>
+      <VarUI values={init} onChange={fn}>
         <VarString path="value" />
       </VarUI>
     );
@@ -129,7 +129,7 @@ describe('VarUI', () => {
       value: false,
     };
     render(
-      <VarUI values={init} updateValues={fn}>
+      <VarUI values={init} onChange={fn}>
         <VarToggle path="value" />
       </VarUI>
     );

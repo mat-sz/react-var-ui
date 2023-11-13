@@ -1,4 +1,4 @@
-import React, { FC, ReactNode } from 'react';
+import React, { ReactNode } from 'react';
 import { clone, get, set } from 'radash';
 
 import { useVarUIValue, VarUIContext } from './common/VarUIContext';
@@ -12,14 +12,14 @@ export interface IVarArrayProps<T = any>
 /**
  * Array input component.
  */
-export const VarArray: FC<IVarArrayProps> = ({
+export const VarArray = ({
   path,
   value,
   onChange,
   disabled,
   className,
   children,
-}) => {
+}: IVarArrayProps): JSX.Element => {
   const [currentValue, setCurrentValue] = useVarUIValue(path, value, onChange);
 
   return (

@@ -1,4 +1,4 @@
-import React, { FC, useCallback } from 'react';
+import React, { useCallback } from 'react';
 import filesize from 'filesize';
 
 import { useVarUIValue } from './common/VarUIContext';
@@ -21,7 +21,7 @@ export interface IVarFileProps extends IVarBaseInputProps<File> {
 /**
  * File input component. Accepts and provides a File instance.
  */
-export const VarFile: FC<IVarFileProps> = ({
+export const VarFile = ({
   label,
   path,
   value,
@@ -30,7 +30,7 @@ export const VarFile: FC<IVarFileProps> = ({
   className,
   accept,
   displayMetadata = true,
-}) => {
+}: IVarFileProps): JSX.Element => {
   const [currentValue, setCurrentValue] = useVarUIValue(path, value, onChange);
 
   const onFileChange = useCallback(

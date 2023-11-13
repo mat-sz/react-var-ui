@@ -3,7 +3,7 @@ import { clone, set, get } from 'radash';
 
 import { VarUIContext } from './common/VarUIContext';
 
-export interface IVarUIProps<T = any> {
+export interface IVarUIProps<T extends object> {
   /**
    * A JavaScript object or array to be mutated by the input components.
    */
@@ -40,7 +40,9 @@ export interface IVarUIProps<T = any> {
  * It is not required to use this component - other components accept
  * `onChange` and `value` properties which provide a similar functionality.
  */
-export const VarUI: <T>(props: IVarUIProps<T>) => JSX.Element = ({
+export const VarUI: <T extends object>(
+  props: IVarUIProps<T>
+) => JSX.Element = ({
   values,
   updateValues,
   onChange,
@@ -56,11 +58,11 @@ export const VarUI: <T>(props: IVarUIProps<T>) => JSX.Element = ({
   const setValue = useCallback(
     (path: string, value: any) => {
       onChangeValue?.(path, value);
-      const newValues = set(clone(values) as any, path, value);
+      const newValues = set(clone(values), path, value);
       updateValues?.(newValues);
       onChange?.(newValues);
     },
-    [values, updateValues]
+    [values, updateValues, onChange, onChangeValue]
   );
 
   const contextValue = useMemo(

@@ -1,4 +1,4 @@
-import React, { FC, useCallback, useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import { SketchPicker } from 'react-color';
 
 import { useVarUIValue } from './common/VarUIContext';
@@ -15,7 +15,7 @@ export interface IVarColorProps extends IVarBaseInputProps<string> {
 /**
  * Color picker component. Returns and accepts values in form of hex color strings.
  */
-export const VarColor: FC<IVarColorProps> = ({
+export const VarColor = ({
   label,
   path,
   value,
@@ -23,7 +23,7 @@ export const VarColor: FC<IVarColorProps> = ({
   alpha,
   disabled,
   className,
-}) => {
+}: IVarColorProps): JSX.Element => {
   const [currentValue, setCurrentValue] = useVarUIValue(path, value, onChange);
 
   const [show, setShow] = useState(false);

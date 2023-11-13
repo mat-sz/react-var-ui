@@ -1,4 +1,4 @@
-import React, { FC, ReactText, useMemo } from 'react';
+import React, { useMemo } from 'react';
 
 import { useVarUIValue } from './common/VarUIContext';
 import { IVarBaseInputProps, VarBase } from './VarBase';
@@ -7,7 +7,7 @@ export interface IVarSelectOption {
   /**
    * Key for the option. Also used as value if `value` is not specified.
    */
-  key: ReactText;
+  key: string | number;
 
   /**
    * Option label.
@@ -31,7 +31,7 @@ export interface IVarSelectProps extends IVarBaseInputProps<any> {
 /**
  * Select component. Returns and accepts either `value` from option object or `key` when `value` is not provided.
  */
-export const VarSelect: FC<IVarSelectProps> = ({
+export const VarSelect = ({
   label,
   path,
   value,
@@ -39,12 +39,13 @@ export const VarSelect: FC<IVarSelectProps> = ({
   options,
   disabled,
   className,
-}) => {
+}: IVarSelectProps): JSX.Element => {
   const [currentValue, setCurrentValue] = useVarUIValue(path, value, onChange);
 
-  const serializedCurrentValue = useMemo(() => JSON.stringify(currentValue), [
-    currentValue,
-  ]);
+  const serializedCurrentValue = useMemo(
+    () => JSON.stringify(currentValue),
+    [currentValue]
+  );
 
   return (
     <VarBase label={label} disabled={disabled} className={className}>

@@ -89,7 +89,7 @@ const [values, setValues] = React.useState({
 });
 
 return (
-  <VarUI updateValues={setValues} values={values}>
+  <VarUI onChange={setValues} values={values}>
     <VarCategory label="Example">
       <VarColor path="color" label="Color" />
       <VarToggle path="toggle" label="Toggle" />
@@ -147,10 +147,11 @@ This is the main component which provides a Context for other components. It is 
 
 #### Required properties
 
-| Property     | Description                                                         | Type                     |
-| ------------ | ------------------------------------------------------------------- | ------------------------ |
-| values       | A JavaScript object or array to be mutated by the input components. | object                   |
-| updateValues | The function to be called whenever an update is available.          | (values: object) => void |
+| Property       | Description                                                         | Type                                  |
+| -------------- | ------------------------------------------------------------------- | ------------------------------------- |
+| values         | A JavaScript object or array to be mutated by the input components. | object                                |
+| onChange       | The function to be called with the entire changed object.           | (values: object) => void              |
+| onChangeValuye | The function to be called when one value is changed.                | (path: string, newValue: any) => void |
 
 #### Optional properties
 
@@ -516,7 +517,7 @@ react-var-ui provides a `<VarBase />` component and a `useVarUIValue` hook desig
 ### Example usage
 
 ```tsx
-import React, { FC } from 'react';
+import React from 'react';
 import { useVarUIValue, IVarBaseInputProps, VarBase } from 'react-var-ui';
 
 // Please specify the <T>.
@@ -525,14 +526,14 @@ export interface IVarCustomProps extends IVarBaseInputProps<string> {}
 /**
  * Custom input component. In this example, it's a simple text input.
  */
-export const VarCustom: FC<IVarCustomProps> = ({
+export const VarCustom = ({
   label,
   path,
   value,
   onChange,
   disabled,
   className,
-}) => {
+}: IVarCustomProps): JSX.Element => {
   /**
    * currentValue will contain the current value from the value object
    * (at a given path) or value from properties if that's not available.

@@ -1,4 +1,4 @@
-import React, { FC, useCallback, useEffect, useMemo, useRef } from 'react';
+import React, { useCallback, useEffect, useMemo, useRef } from 'react';
 import { usePointerDrag } from 'react-use-pointer-drag';
 
 import { useVarUIValue } from './common/VarUIContext';
@@ -42,7 +42,7 @@ export interface IVarSliderProps extends IVarBaseInputProps<number> {
 /**
  * Integer/float slider component. Accepts and provides numbers.
  */
-export const VarSlider: FC<IVarSliderProps> = ({
+export const VarSlider = ({
   label,
   path,
   value,
@@ -56,18 +56,17 @@ export const VarSlider: FC<IVarSliderProps> = ({
   showButtons,
   disabled,
   className,
-}) => {
+}: IVarSliderProps): JSX.Element => {
   const sliderRef = useRef<HTMLDivElement>(null);
   const [currentValue, setCurrentValue] = useVarUIValue(path, value, onChange);
   const rounded = useMemo(
     () => roundValue(currentValue, min, max, step, !!integer),
     [currentValue, min, max, step, integer]
   );
-  const percent = useMemo(() => ((rounded - min) / (max - min)) * 100, [
-    rounded,
-    min,
-    max,
-  ]);
+  const percent = useMemo(
+    () => ((rounded - min) / (max - min)) * 100,
+    [rounded, min, max]
+  );
 
   const updatePosition = useCallback(
     (x: number) => {

@@ -1,4 +1,4 @@
-import React, { CSSProperties, FC, useMemo } from 'react';
+import React, { CSSProperties, useMemo } from 'react';
 
 import { useVarUIValue } from './common/VarUIContext';
 import { IVarBaseInputProps, VarBase } from './VarBase';
@@ -24,7 +24,7 @@ export interface IVarStringProps extends IVarBaseInputProps<string> {
 /**
  * String input component. Accepts and provides a string value.
  */
-export const VarString: FC<IVarStringProps> = ({
+export const VarString = ({
   label,
   path,
   value,
@@ -34,7 +34,7 @@ export const VarString: FC<IVarStringProps> = ({
   autoexpand,
   disabled,
   className,
-}) => {
+}: IVarStringProps): JSX.Element => {
   const [currentValue, setCurrentValue] = useVarUIValue(path, value, onChange);
 
   const autoexpandOnInput = (event: React.FormEvent<HTMLTextAreaElement>) => {

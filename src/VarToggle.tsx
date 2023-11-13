@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React from 'react';
 
 import { useVarUIValue } from './common/VarUIContext';
 import { IVarBaseInputProps, VarBase } from './VarBase';
@@ -8,14 +8,14 @@ export interface IVarToggleProps extends IVarBaseInputProps<boolean> {}
 /**
  * Checkbox/toggle component. Accepts and returns a boolean (true/false).
  */
-export const VarToggle: FC<IVarToggleProps> = ({
+export const VarToggle = ({
   label,
   path,
   value,
   onChange,
   disabled,
-  className
-}) => {
+  className,
+}: IVarToggleProps): JSX.Element => {
   const [currentValue, setCurrentValue] = useVarUIValue(path, value, onChange);
 
   return (

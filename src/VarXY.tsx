@@ -1,4 +1,4 @@
-import React, { FC, useCallback, useMemo, useRef } from 'react';
+import React, { useCallback, useMemo, useRef } from 'react';
 import { usePointerDrag } from 'react-use-pointer-drag';
 
 import { useVarUIValue } from './common/VarUIContext';
@@ -68,7 +68,7 @@ function percentValue(
 /**
  * XY offset picker. Accepts and provides an array in form of [x, y].
  */
-export const VarXY: FC<IVarXYProps> = ({
+export const VarXY = ({
   label,
   path,
   value,
@@ -79,7 +79,7 @@ export const VarXY: FC<IVarXYProps> = ({
   min = [-1.0, -1.0],
   max = [1.0, 1.0],
   step = [0.01, 0.01],
-}) => {
+}: IVarXYProps): JSX.Element => {
   const sliderRef = useRef<HTMLDivElement>(null);
   const [currentValue, setCurrentValue] = useVarUIValue(path, value, onChange);
   const rounded = useMemo(

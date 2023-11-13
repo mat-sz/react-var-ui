@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useMemo, useRef } from 'react';
+import React, { useEffect, useMemo, useRef } from 'react';
 import { usePointerDrag } from 'react-use-pointer-drag';
 
 import { useVarUIValue } from './common/VarUIContext';
@@ -15,7 +15,7 @@ export interface IVarAngleProps extends IVarBaseInputProps<number> {}
 /**
  * Angle picker component. Accepts and provides numbers (radians).
  */
-export const VarAngle: FC<IVarAngleProps> = ({
+export const VarAngle = ({
   label,
   path,
   value,
@@ -23,7 +23,7 @@ export const VarAngle: FC<IVarAngleProps> = ({
   disabled,
   defaultValue = 0,
   className,
-}) => {
+}: IVarAngleProps): JSX.Element => {
   const controlRef = useRef<HTMLDivElement>(null);
   const [currentValue, setCurrentValue] = useVarUIValue(path, value, onChange);
   const degrees = useMemo(

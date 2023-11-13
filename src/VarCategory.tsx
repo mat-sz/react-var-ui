@@ -1,4 +1,4 @@
-import React, { FC, ReactNode } from 'react';
+import React, { ReactNode } from 'react';
 
 export interface IVarCategoryProps {
   /**
@@ -17,11 +17,11 @@ export interface IVarCategoryProps {
 /**
  * Category component for grouping inputs.
  */
-export const VarCategory: FC<IVarCategoryProps> = ({
+export const VarCategory = ({
   label,
   className,
   children,
-}) => {
+}: IVarCategoryProps): JSX.Element => {
   return (
     <div className={'react-var-ui-category ' + (className ? className : '')}>
       <div className="react-var-ui-category-title">{label}</div>

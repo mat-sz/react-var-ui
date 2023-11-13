@@ -1,4 +1,4 @@
-import React, { FC, ReactNode } from 'react';
+import React, { ReactNode } from 'react';
 
 import { IVarBaseProps, VarBase } from './VarBase';
 
@@ -22,13 +22,13 @@ export interface IVarButtonProps extends IVarBaseProps {
 /**
  * Button component. Only provides a onClick property.
  */
-export const VarButton: FC<IVarButtonProps> = ({
+export const VarButton = ({
   label,
   onClick,
   buttonLabel,
   disabled,
-  className
-}) => {
+  className,
+}: IVarButtonProps): JSX.Element => {
   return (
     <VarBase label={label} disabled={disabled} className={className}>
       <span className="react-var-ui-button">
