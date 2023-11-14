@@ -52,14 +52,11 @@ export const VarFile = ({
       disabled={disabled}
       readOnly={readOnly}
       className={className}
-      column
     >
+      <span className="react-var-ui-file-value">{currentValue?.name}</span>
       <div className="react-var-ui-file react-var-ui-interactive">
         {displayMetadata && !!currentValue && (
           <div className="react-var-ui-file-metadata">
-            <div>
-              Name: <span>{currentValue.name}</span>
-            </div>
             <div>Size: {filesize(currentValue.size)}</div>
             <div>Type: {currentValue.type || 'unknown'}</div>
           </div>
