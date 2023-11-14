@@ -38,6 +38,7 @@ export const VarSelect = ({
   onChange,
   options,
   disabled,
+  readOnly,
   className,
 }: IVarSelectProps): JSX.Element => {
   const [currentValue, setCurrentValue] = useVarUIValue(path, value, onChange);
@@ -48,12 +49,18 @@ export const VarSelect = ({
   );
 
   return (
-    <VarBase label={label} disabled={disabled} className={className}>
+    <VarBase
+      label={label}
+      disabled={disabled}
+      readOnly={readOnly}
+      className={className}
+    >
       <div className="react-var-ui-select">
         <select
           onChange={e => setCurrentValue(JSON.parse(e.target.value))}
           value={serializedCurrentValue}
           title="Select options"
+          disabled={disabled || readOnly}
         >
           {options.map(option => {
             const serializedValue = JSON.stringify(option.value ?? option.key);

@@ -55,6 +55,7 @@ export const VarSlider = ({
   showInput,
   showButtons,
   disabled,
+  readOnly,
   className,
 }: IVarSliderProps): JSX.Element => {
   const sliderRef = useRef<HTMLDivElement>(null);
@@ -114,10 +115,15 @@ export const VarSlider = ({
   }, []);
 
   return (
-    <VarBase label={label} disabled={disabled} className={className}>
+    <VarBase
+      label={label}
+      disabled={disabled}
+      readOnly={readOnly}
+      className={className}
+    >
       <div className="react-var-ui-slider">
         <div
-          className="react-var-ui-slider-track"
+          className="react-var-ui-slider-track react-var-ui-interactive"
           ref={sliderRef}
           onClick={e => updatePosition(e.clientX)}
           onDoubleClick={() =>
@@ -142,6 +148,8 @@ export const VarSlider = ({
             max={max}
             step={step}
             value={rounded}
+            disabled={disabled}
+            readOnly={readOnly}
             onChange={e =>
               setCurrentValue(
                 roundValue(
@@ -159,10 +167,18 @@ export const VarSlider = ({
         )}
         {showButtons && (
           <>
-            <button title="Increase" onClick={increaseValue}>
+            <button
+              title="Increase"
+              onClick={increaseValue}
+              disabled={disabled || readOnly}
+            >
               <IconUp />
             </button>
-            <button title="Decrease" onClick={decreaseValue}>
+            <button
+              title="Decrease"
+              onClick={decreaseValue}
+              disabled={disabled || readOnly}
+            >
               <IconDown />
             </button>
           </>

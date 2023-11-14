@@ -14,18 +14,26 @@ export const VarToggle = ({
   value,
   onChange,
   disabled,
+  readOnly,
   className,
 }: IVarToggleProps): JSX.Element => {
   const [currentValue, setCurrentValue] = useVarUIValue(path, value, onChange);
 
   return (
-    <VarBase label={label} disabled={disabled} className={className}>
+    <VarBase
+      label={label}
+      disabled={disabled}
+      readOnly={readOnly}
+      className={className}
+    >
       <span>
         <label className="react-var-ui-toggle" title="Toggle">
           <input
             type="checkbox"
             checked={currentValue}
             onChange={e => setCurrentValue(e.target.checked)}
+            disabled={disabled}
+            readOnly={readOnly}
           />
           <span className="react-var-ui-toggle-helper"></span>
         </label>

@@ -22,6 +22,7 @@ export const VarColor = ({
   onChange,
   alpha,
   disabled,
+  readOnly,
   className,
 }: IVarColorProps): JSX.Element => {
   const [currentValue, setCurrentValue] = useVarUIValue(path, value, onChange);
@@ -31,10 +32,15 @@ export const VarColor = ({
   const close = useCallback(() => setShow(false), [setShow]);
 
   return (
-    <VarBase label={label} disabled={disabled} className={className}>
+    <VarBase
+      label={label}
+      disabled={disabled}
+      readOnly={readOnly}
+      className={className}
+    >
       <span>
         <span className="react-var-ui-color-value">{currentValue}</span>
-        <div className="react-var-ui-color">
+        <div className="react-var-ui-color react-var-ui-interactive">
           <div className="react-var-ui-color-swatch" onClick={toggle}>
             <div
               className="react-var-ui-color-color"

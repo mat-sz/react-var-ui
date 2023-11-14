@@ -5,7 +5,7 @@ import { useVarUIValue, VarUIContext } from './common/VarUIContext';
 import { IVarBaseInputProps, VarBase } from './VarBase';
 
 export interface IVarArrayProps<T = any>
-  extends Omit<IVarBaseInputProps<T[]>, 'label' | 'children'> {
+  extends Omit<IVarBaseInputProps<T[]>, 'label' | 'children' | 'readOnly'> {
   children?: ReactNode | ((element: T, index: number, array: T[]) => ReactNode);
 }
 

@@ -23,7 +23,7 @@ export const VarCategory = ({
   children,
 }: IVarCategoryProps): JSX.Element => {
   return (
-    <div className={'react-var-ui-category ' + (className ? className : '')}>
+    <div className={'react-var-ui-category ' + (className ?? '')}>
       <div className="react-var-ui-category-title">{label}</div>
       {!!children && <div>{children}</div>}
     </div>

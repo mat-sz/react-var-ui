@@ -46,6 +46,12 @@ Disabled.args = {
 };
 Disabled.storyName = 'disabled: true';
 
+export const ReadOnly = Template.bind({});
+ReadOnly.args = {
+  readOnly: true,
+};
+ReadOnly.storyName = 'readOnly: true';
+
 export const Multiline = Template.bind({});
 Multiline.args = {
   multiline: true,

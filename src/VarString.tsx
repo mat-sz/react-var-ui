@@ -33,6 +33,7 @@ export const VarString = ({
   multiline,
   autoexpand,
   disabled,
+  readOnly,
   className,
 }: IVarStringProps): JSX.Element => {
   const [currentValue, setCurrentValue] = useVarUIValue(path, value, onChange);
@@ -52,6 +53,7 @@ export const VarString = ({
     <VarBase
       label={label}
       disabled={disabled}
+      readOnly={readOnly}
       className={className}
       column={multiline}
     >
@@ -62,6 +64,8 @@ export const VarString = ({
           onChange={e => setCurrentValue(e.target.value)}
           onInput={autoexpand ? autoexpandOnInput : undefined}
           style={textareaStyle}
+          disabled={disabled}
+          readOnly={readOnly}
         />
       ) : (
         <span className="react-var-ui-string">
@@ -70,6 +74,8 @@ export const VarString = ({
             maxLength={maxLength}
             value={currentValue}
             onChange={e => setCurrentValue(e.target.value)}
+            disabled={disabled}
+            readOnly={readOnly}
           />
         </span>
       )}

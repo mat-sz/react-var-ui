@@ -24,12 +24,18 @@ export const VarDisplay = ({
   path,
   value,
   disabled,
+  readOnly,
   className,
 }: IVarDisplayProps): JSX.Element => {
   const [currentValue] = useVarUIValue(path, value);
 
   return (
-    <VarBase label={label} disabled={disabled} className={className}>
+    <VarBase
+      label={label}
+      disabled={disabled}
+      readOnly={readOnly}
+      className={className}
+    >
       <span>{currentValue}</span>
     </VarBase>
   );

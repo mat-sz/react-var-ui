@@ -233,6 +233,7 @@ _T is component's value type._
 | value        | Current value (only used if context and path aren't available).<br>In most cases you aren't going to need this. | T                  |
 | defaultValue | Default value for components that support resetting (on double click for example).                              | T                  |
 | disabled     | Should the component be disabled.                                                                               | boolean            |
+| readOnly     | Should the component be read-only.                                                                              | boolean            |
 | onChange     | On change event, called with the new value if provided.<br>In most cases you aren't going to need this.         | (value: T) => void |
 | children     | Children. Only rendered when provided directly to the VarBase component.                                        | ReactNode          |
 

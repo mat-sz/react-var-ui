@@ -32,6 +32,7 @@ export const VarMedia = ({
   value,
   onChange,
   disabled,
+  readOnly,
   className,
   acceptImage,
   acceptAudio,
@@ -139,8 +140,14 @@ export const VarMedia = ({
   }
 
   return (
-    <VarBase label={label} disabled={disabled} className={className} column>
-      <div className="react-var-ui-media">
+    <VarBase
+      label={label}
+      disabled={disabled}
+      readOnly={readOnly}
+      className={className}
+      column
+    >
+      <div className="react-var-ui-media react-var-ui-interactive">
         {preview}
         <IconUpload />
         <input

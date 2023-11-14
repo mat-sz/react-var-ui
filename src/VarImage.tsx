@@ -15,6 +15,7 @@ export const VarImage = ({
   value,
   onChange,
   disabled,
+  readOnly,
   className,
 }: IVarImageProps): JSX.Element => {
   const [currentValue, setCurrentValue] = useVarUIValue(path, value, onChange);
@@ -33,8 +34,14 @@ export const VarImage = ({
   );
 
   return (
-    <VarBase label={label} disabled={disabled} className={className} column>
-      <div className="react-var-ui-image">
+    <VarBase
+      label={label}
+      disabled={disabled}
+      readOnly={readOnly}
+      className={className}
+      column
+    >
+      <div className="react-var-ui-image react-var-ui-interactive">
         <div
           className="react-var-ui-image-background"
           style={{

@@ -48,6 +48,7 @@ export const VarNumber = ({
   integer,
   showButtons,
   disabled,
+  readOnly,
   className,
 }: IVarNumberProps): JSX.Element => {
   const [currentValue, setCurrentValue] = useVarUIValue(path, value, onChange);
@@ -73,7 +74,12 @@ export const VarNumber = ({
   );
 
   return (
-    <VarBase label={label} disabled={disabled} className={className}>
+    <VarBase
+      label={label}
+      disabled={disabled}
+      readOnly={readOnly}
+      className={className}
+    >
       <div className="react-var-ui-number">
         <input
           className="react-var-ui-number-input"
@@ -82,6 +88,8 @@ export const VarNumber = ({
           max={max}
           step={step}
           value={rounded.toString()}
+          disabled={disabled}
+          readOnly={readOnly}
           onChange={e =>
             setCurrentValue(
               roundValue(parseFloat(e.target.value), min, max, step, !!integer)
@@ -90,10 +98,18 @@ export const VarNumber = ({
         />
         {showButtons && (
           <>
-            <button title="Increase" onClick={increaseValue}>
+            <button
+              title="Increase"
+              onClick={increaseValue}
+              disabled={disabled || readOnly}
+            >
               <IconUp />
             </button>
-            <button title="Decrease" onClick={decreaseValue}>
+            <button
+              title="Decrease"
+              onClick={decreaseValue}
+              disabled={disabled || readOnly}
+            >
               <IconDown />
             </button>
           </>

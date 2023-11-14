@@ -9,20 +9,20 @@ export default {
   component: VarAngle,
   argTypes: {
     defaultValue: {
-      control: { type: 'range', min: 0, max: Math.PI * 2, step: 0.1 }
+      control: { type: 'range', min: 0, max: Math.PI * 2, step: 0.1 },
     },
     label: { control: { type: 'text' } },
-    disabled: { control: 'boolean' }
+    disabled: { control: 'boolean' },
   },
   args: {
     defaultValue: 0,
     label: 'VarAngle',
-    disabled: false
+    disabled: false,
   },
   parameters: {
     controls: { expanded: true },
-    actions: { argTypesRegex: '^on.*' }
-  }
+    actions: { argTypesRegex: '^on.*' },
+  },
 } as Meta;
 
 const Template: Story<IVarAngleProps> = args => {
@@ -43,6 +43,12 @@ Default.storyName = 'default';
 
 export const Disabled = Template.bind({});
 Disabled.args = {
-  disabled: true
+  disabled: true,
 };
 Disabled.storyName = 'disabled: true';
+
+export const ReadOnly = Template.bind({});
+ReadOnly.args = {
+  readOnly: true,
+};
+ReadOnly.storyName = 'readOnly: true';

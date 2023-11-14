@@ -72,9 +72,7 @@ export const VarUI: <T extends object>(
 
   return (
     <VarUIContext.Provider value={contextValue}>
-      <div className={'react-var-ui ' + (className ? className : '')}>
-        {children}
-      </div>
+      <div className={'react-var-ui ' + (className ?? '')}>{children}</div>
     </VarUIContext.Provider>
   );
 };

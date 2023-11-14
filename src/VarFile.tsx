@@ -27,6 +27,7 @@ export const VarFile = ({
   value,
   onChange,
   disabled,
+  readOnly,
   className,
   accept,
   displayMetadata = true,
@@ -46,8 +47,14 @@ export const VarFile = ({
   );
 
   return (
-    <VarBase label={label} disabled={disabled} className={className} column>
-      <div className="react-var-ui-file">
+    <VarBase
+      label={label}
+      disabled={disabled}
+      readOnly={readOnly}
+      className={className}
+      column
+    >
+      <div className="react-var-ui-file react-var-ui-interactive">
         {displayMetadata && !!currentValue && (
           <div className="react-var-ui-file-metadata">
             <div>

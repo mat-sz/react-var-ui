@@ -74,6 +74,7 @@ export const VarXY = ({
   value,
   onChange,
   disabled,
+  readOnly,
   className,
   defaultValue = [0, 0],
   min = [-1.0, -1.0],
@@ -128,11 +129,17 @@ export const VarXY = ({
   }, [defaultValue, setCurrentValue]);
 
   return (
-    <VarBase label={label} disabled={disabled} className={className} column>
+    <VarBase
+      label={label}
+      disabled={disabled}
+      readOnly={readOnly}
+      className={className}
+      column
+    >
       <span className="react-var-ui-xy-value">
         {rounded[0]}, {rounded[1]}
       </span>
-      <div className="react-var-ui-xy">
+      <div className="react-var-ui-xy react-var-ui-interactive">
         <div
           className="react-var-ui-xy-space"
           ref={sliderRef}

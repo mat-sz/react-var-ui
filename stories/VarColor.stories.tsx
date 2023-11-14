@@ -48,3 +48,9 @@ Alpha.args = {
   alpha: true,
 };
 Alpha.storyName = 'alpha: true';
+
+export const ReadOnly = Template.bind({});
+ReadOnly.args = {
+  readOnly: true,
+};
+ReadOnly.storyName = 'readOnly: true';

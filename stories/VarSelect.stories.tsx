@@ -9,7 +9,7 @@ export default {
   component: VarSelect,
   argTypes: {
     label: { control: 'text' },
-    disabled: { control: 'boolean' }
+    disabled: { control: 'boolean' },
   },
   args: {
     label: 'VarSelect',
@@ -17,22 +17,22 @@ export default {
     options: [
       {
         key: '1',
-        label: 'Test 1'
+        label: 'Test 1',
       },
       {
         key: '2',
-        label: 'Test 2'
+        label: 'Test 2',
       },
       {
         key: '3',
-        label: 'Test 3'
-      }
-    ]
+        label: 'Test 3',
+      },
+    ],
   },
   parameters: {
     controls: { expanded: true },
-    actions: { argTypesRegex: '^on.*' }
-  }
+    actions: { argTypesRegex: '^on.*' },
+  },
 } as Meta;
 
 const Template: Story<IVarSelectProps> = args => {
@@ -53,6 +53,12 @@ Default.storyName = 'default';
 
 export const Disabled = Template.bind({});
 Disabled.args = {
-  disabled: true
+  disabled: true,
 };
 Disabled.storyName = 'disabled: true';
+
+export const ReadOnly = Template.bind({});
+ReadOnly.args = {
+  readOnly: true,
+};
+ReadOnly.storyName = 'readOnly: true';

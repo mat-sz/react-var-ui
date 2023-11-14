@@ -9,16 +9,16 @@ export default {
   component: VarToggle,
   argTypes: {
     label: { control: 'text' },
-    disabled: { control: 'boolean' }
+    disabled: { control: 'boolean' },
   },
   args: {
     label: 'VarToggle',
-    disabled: false
+    disabled: false,
   },
   parameters: {
     controls: { expanded: true },
-    actions: { argTypesRegex: '^on.*' }
-  }
+    actions: { argTypesRegex: '^on.*' },
+  },
 } as Meta;
 
 const Template: Story<IVarToggleProps> = args => {
@@ -39,6 +39,12 @@ Default.storyName = 'default';
 
 export const Disabled = Template.bind({});
 Disabled.args = {
-  disabled: true
+  disabled: true,
 };
 Disabled.storyName = 'disabled: true';
+
+export const ReadOnly = Template.bind({});
+ReadOnly.args = {
+  readOnly: true,
+};
+ReadOnly.storyName = 'readOnly: true';

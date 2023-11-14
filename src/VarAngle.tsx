@@ -21,6 +21,7 @@ export const VarAngle = ({
   value,
   onChange,
   disabled,
+  readOnly,
   defaultValue = 0,
   className,
 }: IVarAngleProps): JSX.Element => {
@@ -50,11 +51,17 @@ export const VarAngle = ({
   }, []);
 
   return (
-    <VarBase label={label} disabled={disabled} className={className} column>
+    <VarBase
+      label={label}
+      disabled={disabled}
+      readOnly={readOnly}
+      className={className}
+      column
+    >
       <span className="react-var-ui-angle-value">{degrees}&deg;</span>
       <div className="react-var-ui-angle">
         <div
-          className="react-var-ui-angle-control"
+          className="react-var-ui-angle-control react-var-ui-interactive"
           ref={controlRef}
           style={{ transform: `rotate(${degrees}deg)` }}
           onDoubleClick={() =>

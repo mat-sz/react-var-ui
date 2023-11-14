@@ -17,6 +17,11 @@ export interface IVarBaseProps {
   disabled?: boolean;
 
   /**
+   * Should the component be read-only.
+   */
+  readOnly?: boolean;
+
+  /**
    * Children. Only rendered when provided directly to the VarBase component.
    */
   children?: ReactNode;
@@ -60,6 +65,7 @@ export const VarBase = ({
   children,
   className,
   disabled,
+  readOnly,
   column = false,
 }: IVarBaseProps): JSX.Element => {
   return (
@@ -70,8 +76,9 @@ export const VarBase = ({
           ? 'react-var-ui-label-has-label '
           : 'react-var-ui-label-no-label ') +
         (disabled ? 'react-var-ui-disabled ' : '') +
+        (readOnly ? 'react-var-ui-read-only ' : '') +
         (column ? 'react-var-ui-label-column ' : '') +
-        (className ? className : '')
+        (className ?? '')
       }
     >
       {!!label && <span>{label}</span>}
