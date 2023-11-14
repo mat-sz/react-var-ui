@@ -1,6 +1,6 @@
 import React from 'react';
-import { Meta, Story } from '@storybook/react';
-import { useCallback, useState } from '@storybook/client-api';
+import { Meta, StoryFn } from '@storybook/react';
+import { useCallback, useState } from '@storybook/preview-api';
 
 import { VarFile, IVarFileProps } from '../src';
 
@@ -23,12 +23,12 @@ export default {
   },
 } as Meta;
 
-const Template: Story<IVarFileProps> = args => {
-  const [value, setValue] = useState<File>(undefined);
+const Template: StoryFn<IVarFileProps> = args => {
+  const [value, setValue] = useState<File | undefined>(undefined);
   const onChange = useCallback(
     value => {
       setValue(value);
-      args.onChange(value);
+      args.onChange?.(value);
     },
     [setValue, args]
   );

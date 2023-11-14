@@ -1,6 +1,6 @@
 import React from 'react';
-import { Meta, Story } from '@storybook/react';
-import { useCallback, useState } from '@storybook/client-api';
+import { Meta, StoryFn } from '@storybook/react';
+import { useCallback, useState } from '@storybook/preview-api';
 
 import { VarColor, IVarColorProps } from '../src';
 
@@ -21,12 +21,12 @@ export default {
   },
 } as Meta;
 
-const Template: Story<IVarColorProps> = args => {
+const Template: StoryFn<IVarColorProps> = args => {
   const [value, setValue] = useState('#ff0000');
   const onChange = useCallback(
     value => {
       setValue(value);
-      args.onChange(value);
+      args.onChange?.(value);
     },
     [setValue, args]
   );

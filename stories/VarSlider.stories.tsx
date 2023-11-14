@@ -1,6 +1,6 @@
 import React from 'react';
-import { Meta, Story } from '@storybook/react';
-import { useCallback, useState } from '@storybook/client-api';
+import { Meta, StoryFn } from '@storybook/react';
+import { useCallback, useState } from '@storybook/preview-api';
 
 import { VarSlider, IVarSliderProps } from '../src';
 
@@ -33,12 +33,12 @@ export default {
   },
 } as Meta;
 
-const Template: Story<IVarSliderProps> = args => {
+const Template: StoryFn<IVarSliderProps> = args => {
   const [value, setValue] = useState(0);
   const onChange = useCallback(
     value => {
       setValue(value);
-      args.onChange(value);
+      args.onChange?.(value);
     },
     [setValue, args]
   );

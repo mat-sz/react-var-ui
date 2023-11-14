@@ -1,5 +1,5 @@
 import React from 'react';
-import { Meta, Story } from '@storybook/react';
+import { Meta, StoryFn } from '@storybook/react';
 
 import { VarButton, IVarButtonProps } from '../src';
 
@@ -9,7 +9,7 @@ export default {
   argTypes: {
     label: { control: 'text' },
     buttonLabel: { control: 'text' },
-    disabled: { control: 'boolean' }
+    disabled: { control: 'boolean' },
   },
   args: {
     min: 0,
@@ -17,15 +17,15 @@ export default {
     step: 1,
     label: 'VarButton',
     buttonLabel: 'VarButton',
-    disabled: false
+    disabled: false,
   },
   parameters: {
     controls: { expanded: true },
-    actions: { argTypesRegex: '^on.*' }
-  }
+    actions: { argTypesRegex: '^on.*' },
+  },
 } as Meta;
 
-const Template: Story<IVarButtonProps> = args => <VarButton {...args} />;
+const Template: StoryFn<IVarButtonProps> = args => <VarButton {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {};
@@ -33,12 +33,12 @@ Default.storyName = 'default';
 
 export const Disabled = Template.bind({});
 Disabled.args = {
-  disabled: true
+  disabled: true,
 };
 Disabled.storyName = 'disabled: true';
 
 export const NoLabel = Template.bind({});
 NoLabel.args = {
-  label: undefined
+  label: undefined,
 };
 NoLabel.storyName = 'no label';

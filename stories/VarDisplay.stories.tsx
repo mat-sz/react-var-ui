@@ -1,5 +1,5 @@
 import React from 'react';
-import { Meta, Story } from '@storybook/react';
+import { Meta, StoryFn } from '@storybook/react';
 
 import { VarDisplay, IVarDisplayProps } from '../src';
 
@@ -20,7 +20,7 @@ export default {
   },
 } as Meta;
 
-const Template: Story<IVarDisplayProps> = args => <VarDisplay {...args} />;
+const Template: StoryFn<IVarDisplayProps> = args => <VarDisplay {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {};
