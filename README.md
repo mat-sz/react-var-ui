@@ -185,11 +185,11 @@ Renders an array value as a list of elements
 
 #### Optional properties
 
-| Property  | Description                                             | Type      |
-| --------- | ------------------------------------------------------- | --------- | ---------------------------------------------------- |
-| className | Additional class names on the wrapping div element.     | string    |
-| disabled  | Should the component and its children be disabled.      | boolean   |
-| children  | Renders children with the array element as its context. | ReactNode | (element: T, index: number, array: T[]) => ReactNode |
+| Property  | Description                                             | Type                                                              |
+| --------- | ------------------------------------------------------- | ----------------------------------------------------------------- |
+| className | Additional class names on the wrapping div element.     | string                                                            |
+| disabled  | Should the component and its children be disabled.      | boolean                                                           |
+| children  | Renders children with the array element as its context. | ReactNode \| (element: T, index: number, array: T[]) => ReactNode |
 
 #### Examples
 
