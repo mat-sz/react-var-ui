@@ -147,11 +147,11 @@ This is the main component which provides a Context for other components. It is 
 
 #### Required properties
 
-| Property       | Description                                                         | Type                                  |
-| -------------- | ------------------------------------------------------------------- | ------------------------------------- |
-| values         | A JavaScript object or array to be mutated by the input components. | object                                |
-| onChange       | The function to be called with the entire changed object.           | (values: object) => void              |
-| onChangeValuye | The function to be called when one value is changed.                | (path: string, newValue: any) => void |
+| Property      | Description                                                         | Type                                  |
+| ------------- | ------------------------------------------------------------------- | ------------------------------------- |
+| values        | A JavaScript object or array to be mutated by the input components. | object                                |
+| onChange      | The function to be called with the entire changed object.           | (values: object) => void              |
+| onChangeValue | The function to be called when one value is changed.                | (path: string, newValue: any) => void |
 
 #### Optional properties
 
