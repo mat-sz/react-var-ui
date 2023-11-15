@@ -37,12 +37,23 @@ $transition-time: 0.2s;
 
   &-category {
     &-title {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
       color: $foreground-color;
       text-transform: uppercase;
       font-size: 0.7rem;
       padding: 0.4rem;
       user-select: none;
       font-weight: bold;
+    }
+
+    &-collapse {
+      background: none;
+      border: none;
+      color: $foreground-color;
+      font-size: 0;
+      cursor: pointer;
     }
 
     padding-bottom: 1rem;

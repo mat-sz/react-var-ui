@@ -175,9 +175,10 @@ Category component for grouping inputs.
 
 #### Optional properties
 
-| Property  | Description                                         | Type   |
-| --------- | --------------------------------------------------- | ------ |
-| className | Additional class names on the wrapping div element. | string |
+| Property    | Description                                         | Type    |
+| ----------- | --------------------------------------------------- | ------- |
+| className   | Additional class names on the wrapping div element. | string  |
+| collapsible | Should display the Collapse/Expand button.          | boolean |
 
 <h3 align="center">&lt;VarArray /&gt;</h3>
 
