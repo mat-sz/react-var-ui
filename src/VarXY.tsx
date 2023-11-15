@@ -134,7 +134,6 @@ export const VarXY = ({
       disabled={disabled}
       readOnly={readOnly}
       className={className}
-      column
     >
       <span className="react-var-ui-xy-value">
         {rounded[0]}, {rounded[1]}

@@ -489,8 +489,10 @@ $transition-time: 0.2s;
     }
   }
 
-  &-file {
-    grid-column: 1/3;
+  &-file,
+  &-angle,
+  &-xy {
+    grid-column: 1 / 3;
   }
 
   &-button {

@@ -56,7 +56,6 @@ export const VarAngle = ({
       disabled={disabled}
       readOnly={readOnly}
       className={className}
-      column
     >
       <span className="react-var-ui-angle-value">{degrees}&deg;</span>
       <div className="react-var-ui-angle">
