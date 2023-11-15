@@ -1,5 +1,4 @@
 $foreground-color: var(--react-var-ui-foreground-color, #ddd);
-$background-color: var(--react-var-ui-background-color, #11111a);
 $accent-color: var(--react-var-ui-accent-color, #77f);
 $input-background-color: var(--react-var-ui-input-background-color, #353542);
 $input-background-hover-color: var(
@@ -22,8 +21,6 @@ $label-border-color: var(--react-var-ui-label-border-color, #33333a);
 $transition-time: 0.2s;
 
 .react-var-ui {
-  background: $background-color;
-
   &-disabled {
     pointer-events: none;
 
