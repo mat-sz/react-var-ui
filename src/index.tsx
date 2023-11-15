@@ -13,6 +13,7 @@ export * from './VarFile';
 export * from './VarImage';
 export * from './VarMedia';
 export * from './VarNumber';
+export * from './VarScope';
 export * from './VarSelect';
 export * from './VarSlider';
 export * from './VarString';

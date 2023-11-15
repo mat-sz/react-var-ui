@@ -181,7 +181,7 @@ Category component for grouping inputs.
 
 <h3 align="center">&lt;VarArray /&gt;</h3>
 
-Renders an array value as a list of elements
+Renders an array value as a list of elements.
 
 #### Optional properties
 
@@ -190,6 +190,16 @@ Renders an array value as a list of elements
 | className | Additional class names on the wrapping div element.     | string                                                            |
 | disabled  | Should the component and its children be disabled.      | boolean                                                           |
 | children  | Renders children with the array element as its context. | ReactNode \| (element: T, index: number, array: T[]) => ReactNode |
+
+<h3 align="center">&lt;VarScope /&gt;</h3>
+
+Creates a context with a certain path as base.
+
+#### Optional properties
+
+| Property | Description                   | Type   |
+| -------- | ----------------------------- | ------ |
+| path     | Path to use as the base path. | string |
 
 #### Examples
 

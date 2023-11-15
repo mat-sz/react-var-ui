@@ -32,7 +32,7 @@ export interface IVarBaseProps {
   column?: boolean;
 }
 
-export interface IVarBaseInputProps<T> extends IVarBaseProps {
+export interface IVarBaseValueProps<T> {
   /**
    * Variable path in the data object.
    */
@@ -55,6 +55,10 @@ export interface IVarBaseInputProps<T> extends IVarBaseProps {
    */
   onChange?: (value: T) => void;
 }
+
+export interface IVarBaseInputProps<T>
+  extends IVarBaseProps,
+    IVarBaseValueProps<T> {}
 
 /**
  * Base VarUI input component. Doesn't do anything besides displaying the label.
