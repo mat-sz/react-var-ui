@@ -12,7 +12,7 @@ describe('VarNumber', () => {
   it('should display value', async () => {
     render(<VarNumber value={1337} />);
     const value = await screen.findByDisplayValue('1337');
-    expect(value).toBeTruthy();
+    expect(value).toBeInTheDocument();
   });
 
   it('should update value on change', async () => {

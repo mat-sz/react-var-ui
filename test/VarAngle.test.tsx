@@ -12,7 +12,7 @@ describe('VarAngle', () => {
   it('should display value', async () => {
     render(<VarAngle value={Math.PI} />);
     const value = await screen.findByText('180°');
-    expect(value).toBeTruthy();
+    expect(value).toBeInTheDocument();
   });
 
   it('should update value on drag', async () => {

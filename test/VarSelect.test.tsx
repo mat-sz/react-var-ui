@@ -21,7 +21,7 @@ describe('VarSelect', () => {
       />
     );
     const value = await screen.findAllByDisplayValue('Test 2');
-    expect(value).toBeTruthy();
+    expect(value.length).toBeGreaterThan(0);
   });
 
   it('should display value (value property)', async () => {
@@ -36,7 +36,7 @@ describe('VarSelect', () => {
       />
     );
     const value = await screen.findAllByDisplayValue('Test 2');
-    expect(value).toBeTruthy();
+    expect(value.length).toBeGreaterThan(0);
   });
 
   it('should update value on change', async () => {

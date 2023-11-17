@@ -11,7 +11,7 @@ describe('VarFile', () => {
   it('should display value', async () => {
     render(<VarFile value={new File(['test'], 'test.pdf')} />);
     const value = await screen.findByText('test.pdf');
-    expect(value).toBeTruthy();
+    expect(value).toBeInTheDocument();
   });
 
   it('should update value on change', async () => {

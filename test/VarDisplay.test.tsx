@@ -11,6 +11,6 @@ describe('VarDisplay', () => {
   it('should display value', async () => {
     render(<VarDisplay value="Value" />);
     const value = await screen.findByText('Value');
-    expect(value).toBeTruthy();
+    expect(value).toBeInTheDocument();
   });
 });

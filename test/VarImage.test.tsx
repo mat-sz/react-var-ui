@@ -14,7 +14,7 @@ describe('VarImage', () => {
     expect(value.style.backgroundImage).toEqual(
       'url(blob:http://example.com/test)'
     );
-    expect(value).toBeTruthy();
+    expect(value).toBeInTheDocument();
   });
 
   it('should update value on change', async () => {

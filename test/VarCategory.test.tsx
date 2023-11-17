@@ -12,7 +12,7 @@ describe('VarCategory', () => {
   it('should display label', async () => {
     render(<VarCategory label="Test" />);
     const value = await screen.findByText('Test');
-    expect(value).toBeTruthy();
+    expect(value).toBeInTheDocument();
   });
 
   it('should collapse when collapse button clicked', async () => {

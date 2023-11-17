@@ -12,7 +12,7 @@ describe('VarSlider', () => {
   it('should display value', async () => {
     render(<VarSlider min={0} max={2} step={0.1} value={2} />);
     const value = await screen.findAllByText('2');
-    expect(value).toBeTruthy();
+    expect(value.length).toBeGreaterThan(0);
   });
 
   it('should update value on drag', async () => {

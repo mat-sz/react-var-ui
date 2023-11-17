@@ -11,6 +11,6 @@ describe('VarBase', () => {
   it('should display label', async () => {
     render(<VarBase label="Test" />);
     const base = await screen.findByText('Test');
-    expect(base).toBeTruthy();
+    expect(base).toBeInTheDocument();
   });
 });
