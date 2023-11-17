@@ -6,3 +6,4 @@ dist
 .parcel-cache
 build
 storybook-static
+coverage
