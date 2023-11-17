@@ -4,17 +4,17 @@ import { fireEvent, render, screen } from '@testing-library/react';
 import { VarFile } from '../src/VarFile';
 
 describe('VarFile', () => {
-  it('renders without crashing', () => {
+  it('should render without crashing', () => {
     render(<VarFile />);
   });
 
-  it('value: displayed', async () => {
+  it('should display value', async () => {
     render(<VarFile value={new File(['test'], 'test.pdf')} />);
     const value = await screen.findByText('test.pdf');
     expect(value).toBeTruthy();
   });
 
-  it('value: updated', async () => {
+  it('should update value on change', async () => {
     global.URL.createObjectURL = vi.fn();
     const fn = vi.fn();
     render(<VarFile onChange={fn} />);

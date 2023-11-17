@@ -5,17 +5,17 @@ import { VarCategory } from '../src/VarCategory';
 import { VarDisplay } from '../src/VarDisplay';
 
 describe('VarCategory', () => {
-  it('renders without crashing', () => {
+  it('should render without crashing', () => {
     render(<VarCategory label="Test" />);
   });
 
-  it('label: displayed', async () => {
+  it('should display label', async () => {
     render(<VarCategory label="Test" />);
     const value = await screen.findByText('Test');
     expect(value).toBeTruthy();
   });
 
-  it('collapse: should collapse when collapse button clicked', async () => {
+  it('should collapse when collapse button clicked', async () => {
     render(
       <VarCategory collapsible label="Test">
         <VarDisplay value="contents" />

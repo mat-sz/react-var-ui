@@ -2,19 +2,20 @@ import React from 'react';
 import { fireEvent, render, screen } from '@testing-library/react';
 
 import { VarAngle } from '../src/VarAngle';
+import { VarUI } from '../src/VarUI';
 
 describe('VarAngle', () => {
-  it('renders without crashing', () => {
+  it('should render without crashing', () => {
     render(<VarAngle />);
   });
 
-  it('value: display', async () => {
+  it('should display value', async () => {
     render(<VarAngle value={Math.PI} />);
     const value = await screen.findByText('180°');
     expect(value).toBeTruthy();
   });
 
-  it('value: changed on drag', async () => {
+  it('should update value on drag', async () => {
     const fn = vi.fn();
     render(<VarAngle value={Math.PI} onChange={fn} />);
     const angle = await screen.findByTitle('Angle');
@@ -25,11 +26,26 @@ describe('VarAngle', () => {
     expect(fn).toBeCalledTimes(1);
   });
 
-  it('value: reset on double click', async () => {
+  it('should reset value on double click', async () => {
     const fn = vi.fn();
     render(<VarAngle value={Math.PI} onChange={fn} defaultValue={0} />);
     const angle = await screen.findByTitle('Angle');
     fireEvent.doubleClick(angle);
     expect(fn).toBeCalledWith(0);
+  });
+
+  it('should update value in context', async () => {
+    const fn = vi.fn();
+    const init = {
+      value: Math.PI,
+    };
+    render(
+      <VarUI values={init} onChange={fn}>
+        <VarAngle path="value" defaultValue={0} />
+      </VarUI>
+    );
+    const angle = await screen.findByTitle('Angle');
+    fireEvent.doubleClick(angle);
+    expect(fn).toBeCalledWith(expect.objectContaining({ value: 0 }));
   });
 });

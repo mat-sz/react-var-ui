@@ -4,7 +4,7 @@ import { render } from '@testing-library/react';
 import { VarMedia } from '../src/VarMedia';
 
 describe('VarMedia', () => {
-  it('renders without crashing', () => {
+  it('should render without crashing', () => {
     render(<VarMedia />);
   });
 });

@@ -5,11 +5,11 @@ import { VarArray } from '../src/VarArray';
 import { VarString } from '../src/VarString';
 
 describe('VarArray', () => {
-  it('renders without crashing', () => {
+  it('should render without crashing', () => {
     render(<VarArray />);
   });
 
-  it('value: display (node children)', async () => {
+  it('should display value (node children)', async () => {
     render(
       <VarArray value={[{ test: 'a' }, { test: 'b' }, { test: 'c' }]}>
         <VarString path="test" />
@@ -19,7 +19,7 @@ describe('VarArray', () => {
     expect(value).toBeInTheDocument();
   });
 
-  it('value: display (function)', async () => {
+  it('should display value (function)', async () => {
     render(
       <VarArray value={[{ test: 'a' }, { test: 'b' }, { test: 'c' }]}>
         {() => <VarString path="test" />}
@@ -29,7 +29,7 @@ describe('VarArray', () => {
     expect(value).toBeInTheDocument();
   });
 
-  it('value: changed on input', async () => {
+  it('should update value on change', async () => {
     const fn = vi.fn();
     render(
       <VarArray

@@ -4,11 +4,11 @@ import { fireEvent, render, screen } from '@testing-library/react';
 import { VarImage } from '../src/VarImage';
 
 describe('VarImage', () => {
-  it('renders without crashing', () => {
+  it('should render without crashing', () => {
     render(<VarImage />);
   });
 
-  it('value: displayed', async () => {
+  it('should display value', async () => {
     render(<VarImage value="blob:http://example.com/test" />);
     const value = await screen.findByTitle('Image preview');
     expect(value.style.backgroundImage).toEqual(
@@ -17,7 +17,7 @@ describe('VarImage', () => {
     expect(value).toBeTruthy();
   });
 
-  it('value: updated', async () => {
+  it('should update value on change', async () => {
     global.URL.createObjectURL = vi.fn();
     const fn = vi.fn();
     render(<VarImage value="blob:http://example.com/test" onChange={fn} />);

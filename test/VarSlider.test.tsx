@@ -2,19 +2,20 @@ import React from 'react';
 import { fireEvent, render, screen } from '@testing-library/react';
 
 import { VarSlider } from '../src/VarSlider';
+import { VarUI } from '../src/VarUI';
 
 describe('VarSlider', () => {
-  it('renders without crashing', () => {
+  it('should render without crashing', () => {
     render(<VarSlider min={0} max={1} step={0.1} />);
   });
 
-  it('value: displayed', async () => {
+  it('should display value', async () => {
     render(<VarSlider min={0} max={2} step={0.1} value={2} />);
     const value = await screen.findAllByText('2');
     expect(value).toBeTruthy();
   });
 
-  it('value: changed on drag', async () => {
+  it('should update value on drag', async () => {
     const fn = vi.fn();
     render(<VarSlider min={0} max={2} step={0.1} value={2} onChange={fn} />);
     const slider = await screen.findByTitle('Slider');
@@ -25,7 +26,7 @@ describe('VarSlider', () => {
     expect(fn).toBeCalledWith(0);
   });
 
-  it('value: reset on double click', async () => {
+  it('should reset value on double click', async () => {
     const fn = vi.fn();
     render(
       <VarSlider
@@ -42,7 +43,7 @@ describe('VarSlider', () => {
     expect(fn).toBeCalledWith(1);
   });
 
-  it('value: updated (increase button)', async () => {
+  it('should update value on increase button click', async () => {
     const fn = vi.fn();
     render(
       <VarSlider
@@ -59,7 +60,7 @@ describe('VarSlider', () => {
     expect(fn).toBeCalledWith(1.1);
   });
 
-  it('value: updated (decrease button)', async () => {
+  it('should update value on decrease button click', async () => {
     const fn = vi.fn();
     render(
       <VarSlider
@@ -76,7 +77,7 @@ describe('VarSlider', () => {
     expect(fn).toBeCalledWith(0.9);
   });
 
-  it('value: updated (input)', async () => {
+  it('should update value on input change', async () => {
     const fn = vi.fn();
     render(
       <VarSlider min={0} max={2} step={0.1} value={1} onChange={fn} showInput />
@@ -90,7 +91,7 @@ describe('VarSlider', () => {
     expect(fn).toBeCalledWith(2);
   });
 
-  it('value: updated (input with invalid data)', async () => {
+  it('should update value to 0 on invalid input change', async () => {
     const fn = vi.fn();
     render(
       <VarSlider min={0} max={2} step={0.1} value={1} onChange={fn} showInput />
@@ -102,5 +103,20 @@ describe('VarSlider', () => {
       },
     });
     expect(fn).toBeCalledWith(0);
+  });
+
+  it('should update value in context', async () => {
+    const fn = vi.fn();
+    const init = {
+      value: 1,
+    };
+    render(
+      <VarUI values={init} onChange={fn}>
+        <VarSlider path="value" showButtons={true} min={0} max={2} step={1} />
+      </VarUI>
+    );
+    const button = await screen.findByTitle('Increase');
+    button.click();
+    expect(fn).toBeCalledWith(expect.objectContaining({ value: 2 }));
   });
 });

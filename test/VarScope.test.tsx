@@ -6,11 +6,11 @@ import { VarString } from '../src/VarString';
 import { VarUI } from '../src/VarUI';
 
 describe('VarScope', () => {
-  it('renders without crashing', () => {
+  it('should render without crashing', () => {
     render(<VarScope />);
   });
 
-  it('value: display', async () => {
+  it('should display value', async () => {
     render(
       <VarUI values={{ scope: { test: 'abc' } }}>
         <VarScope path="scope">
@@ -22,7 +22,7 @@ describe('VarScope', () => {
     expect(value).toBeInTheDocument();
   });
 
-  it('value: changed', async () => {
+  it('should update value on change', async () => {
     const fn = vi.fn();
     render(
       <VarUI values={{ scope: { test: 'abc' } }} onChange={fn}>

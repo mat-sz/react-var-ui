@@ -2,19 +2,20 @@ import React from 'react';
 import { fireEvent, render, screen } from '@testing-library/react';
 
 import { VarNumber } from '../src/VarNumber';
+import { VarUI } from '../src/VarUI';
 
 describe('VarNumber', () => {
-  it('renders without crashing', () => {
+  it('should render without crashing', () => {
     render(<VarNumber />);
   });
 
-  it('value: displayed', async () => {
+  it('should display value', async () => {
     render(<VarNumber value={1337} />);
     const value = await screen.findByDisplayValue('1337');
     expect(value).toBeTruthy();
   });
 
-  it('value: updated', async () => {
+  it('should update value on change', async () => {
     const fn = vi.fn();
     render(<VarNumber value={1337} onChange={fn} />);
     const value = await screen.findByDisplayValue('1337');
@@ -26,7 +27,7 @@ describe('VarNumber', () => {
     expect(fn).toBeCalledWith(2222);
   });
 
-  it('value: updated (invalid data)', async () => {
+  it('should update value on change (invalid data)', async () => {
     const fn = vi.fn();
     render(<VarNumber value={1337} onChange={fn} />);
     const value = await screen.findByDisplayValue('1337');
@@ -38,7 +39,7 @@ describe('VarNumber', () => {
     expect(fn).toBeCalledWith(0);
   });
 
-  it('value: updated (increase button)', async () => {
+  it('should update value on increase button click', async () => {
     const fn = vi.fn();
     render(<VarNumber value={1337} onChange={fn} step={1} showButtons />);
     const button = await screen.findByTitle('Increase');
@@ -46,11 +47,26 @@ describe('VarNumber', () => {
     expect(fn).toBeCalledWith(1338);
   });
 
-  it('value: updated (decrease button)', async () => {
+  it('should update value on decrease button click', async () => {
     const fn = vi.fn();
     render(<VarNumber value={1337} onChange={fn} step={1} showButtons />);
     const button = await screen.findByTitle('Decrease');
     button.click();
     expect(fn).toBeCalledWith(1336);
+  });
+
+  it('should update value in context', async () => {
+    const fn = vi.fn();
+    const init = {
+      value: 1,
+    };
+    render(
+      <VarUI values={init} onChange={fn}>
+        <VarNumber path="value" showButtons={true} step={1} />
+      </VarUI>
+    );
+    const button = await screen.findByTitle('Increase');
+    button.click();
+    expect(fn).toBeCalledWith(expect.objectContaining({ value: 2 }));
   });
 });
