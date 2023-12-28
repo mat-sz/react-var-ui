@@ -56,6 +56,11 @@ export const VarSelect = ({
     [currentValue]
   );
 
+  const valueInOptions = !!options.find(
+    option =>
+      JSON.stringify(option.value ?? option.key) === serializedCurrentValue
+  );
+
   return (
     <VarBase
       label={label}
@@ -71,6 +76,11 @@ export const VarSelect = ({
           title="Select options"
           disabled={disabled || readOnly}
         >
+          {!valueInOptions && (
+            <option value={serializedCurrentValue}>
+              {String(currentValue)}
+            </option>
+          )}
           {options.map(option => {
             const serializedValue = JSON.stringify(option.value ?? option.key);
 
