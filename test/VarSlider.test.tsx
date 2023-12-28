@@ -88,6 +88,7 @@ describe('VarSlider', () => {
         value: 2,
       },
     });
+    fireEvent.blur(input);
     expect(fn).toBeCalledWith(2);
   });
 
@@ -102,6 +103,7 @@ describe('VarSlider', () => {
         value: 'a',
       },
     });
+    fireEvent.blur(input);
     expect(fn).toBeCalledWith(0);
   });
 

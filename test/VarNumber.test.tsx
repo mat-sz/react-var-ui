@@ -24,6 +24,7 @@ describe('VarNumber', () => {
         value: 2222,
       },
     });
+    fireEvent.blur(value);
     expect(fn).toBeCalledWith(2222);
   });
 
@@ -36,6 +37,7 @@ describe('VarNumber', () => {
         value: 'a',
       },
     });
+    fireEvent.blur(value);
     expect(fn).toBeCalledWith(0);
   });
 

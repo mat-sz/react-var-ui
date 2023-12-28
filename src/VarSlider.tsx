@@ -1,6 +1,7 @@
 import React, { useCallback, useEffect, useMemo, useRef } from 'react';
 import { usePointerDrag } from 'react-use-pointer-drag';
 
+import { Number } from './common/Number';
 import { useVarUIValue } from './common/VarUIContext';
 import { roundValue } from './common/roundValue';
 import { IVarBaseInputProps, VarBase } from './VarBase';
@@ -60,13 +61,21 @@ export const VarSlider = ({
 }: IVarSliderProps): JSX.Element => {
   const sliderRef = useRef<HTMLDivElement>(null);
   const [currentValue, setCurrentValue] = useVarUIValue(path, value, onChange);
-  const rounded = useMemo(
-    () => roundValue(currentValue, min, max, step, !!integer),
-    [currentValue, min, max, step, integer]
+  const round = useCallback(
+    (value: number) => roundValue(value, min, max, step, !!integer),
+    [min, max, step, integer]
   );
+  const rounded = useMemo(() => round(currentValue), [currentValue, round]);
   const percent = useMemo(
     () => ((rounded - min) / (max - min)) * 100,
     [rounded, min, max]
+  );
+
+  const setValue = useCallback(
+    (value: number) => {
+      setCurrentValue(round(value));
+    },
+    [round, setCurrentValue]
   );
 
   const updatePosition = useCallback(
@@ -78,32 +87,9 @@ export const VarSlider = ({
       const div = sliderRef.current;
       const rect = div.getBoundingClientRect();
       const percent = (x - rect.left) / rect.width;
-      const value = roundValue(
-        min + (max - min) * percent,
-        min,
-        max,
-        step,
-        !!integer
-      );
-      setCurrentValue(value);
+      setValue(min + (max - min) * percent);
     },
-    [setCurrentValue, integer, min, max, step]
-  );
-
-  const increaseValue = useCallback(
-    () =>
-      setCurrentValue(
-        roundValue(currentValue + step, min, max, step, !!integer)
-      ),
-    [currentValue, setCurrentValue, integer, min, max, step]
-  );
-
-  const decreaseValue = useCallback(
-    () =>
-      setCurrentValue(
-        roundValue(currentValue - step, min, max, step, !!integer)
-      ),
-    [currentValue, setCurrentValue, integer, min, max, step]
+    [setValue, integer, min, max, step]
   );
 
   const { dragProps } = usePointerDrag({
@@ -127,11 +113,9 @@ export const VarSlider = ({
           ref={sliderRef}
           onClick={e => updatePosition(e.clientX)}
           onDoubleClick={() =>
-            typeof defaultValue !== 'undefined' && setCurrentValue(defaultValue)
+            typeof defaultValue !== 'undefined' && setValue(defaultValue)
           }
-          onWheel={e => {
-            e.deltaY < 0 ? increaseValue() : decreaseValue();
-          }}
+          onWheel={e => setValue(currentValue - step * Math.sign(e.deltaY))}
           title="Slider"
           {...dragProps()}
         >
@@ -141,26 +125,16 @@ export const VarSlider = ({
           ></div>
         </div>
         {showInput ? (
-          <input
+          <Number
             className="react-var-ui-slider-input"
-            type="number"
+            round={round}
             min={min}
             max={max}
             step={step}
-            value={rounded}
             disabled={disabled}
             readOnly={readOnly}
-            onChange={e =>
-              setCurrentValue(
-                roundValue(
-                  parseFloat(e.target.value),
-                  min,
-                  max,
-                  step,
-                  !!integer
-                )
-              )
-            }
+            onChange={setValue}
+            value={currentValue}
           />
         ) : (
           <span>{rounded.toString()}</span>
@@ -169,14 +143,14 @@ export const VarSlider = ({
           <>
             <button
               title="Increase"
-              onClick={increaseValue}
+              onClick={() => setValue(currentValue + step)}
               disabled={disabled || readOnly}
             >
               <IconUp />
             </button>
             <button
               title="Decrease"
-              onClick={decreaseValue}
+              onClick={() => setValue(currentValue - step)}
               disabled={disabled || readOnly}
             >
               <IconDown />

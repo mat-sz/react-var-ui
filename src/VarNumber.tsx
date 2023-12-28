@@ -5,6 +5,7 @@ import { roundValue } from './common/roundValue';
 import { IVarBaseInputProps, VarBase } from './VarBase';
 import { IconDown } from './icons/IconDown';
 import { IconUp } from './icons/IconUp';
+import { Number } from './common/Number';
 
 export interface IVarNumberProps extends IVarBaseInputProps<number> {
   /**
@@ -52,25 +53,18 @@ export const VarNumber = ({
   className,
 }: IVarNumberProps): JSX.Element => {
   const [currentValue, setCurrentValue] = useVarUIValue(path, value, onChange);
-  const rounded = useMemo(
-    () => roundValue(currentValue, min, max, step, !!integer),
-    [currentValue, min, max, step, integer]
+  const round = useCallback(
+    (value: number) => roundValue(value, min, max, step, !!integer),
+    [min, max, step, integer]
   );
+  const rounded = useMemo(() => round(currentValue), [currentValue, round]);
 
-  const increaseValue = useCallback(
-    () =>
-      setCurrentValue(
-        roundValue(currentValue + (step ?? 1), min, max, step, !!integer)
-      ),
-    [currentValue, setCurrentValue, integer, min, max, step]
-  );
-
-  const decreaseValue = useCallback(
-    () =>
-      setCurrentValue(
-        roundValue(currentValue - (step ?? 1), min, max, step, !!integer)
-      ),
-    [currentValue, setCurrentValue, integer, min, max, step]
+  const setValue = useCallback(
+    (value: number) => {
+      value = round(value);
+      setCurrentValue(value);
+    },
+    [round, setCurrentValue]
   );
 
   return (
@@ -81,33 +75,29 @@ export const VarNumber = ({
       className={className}
     >
       <div className="react-var-ui-number">
-        <input
+        <Number
           className="react-var-ui-number-input"
-          type="number"
+          round={round}
           min={min}
           max={max}
           step={step}
-          value={rounded.toString()}
+          value={rounded}
           disabled={disabled}
           readOnly={readOnly}
-          onChange={e =>
-            setCurrentValue(
-              roundValue(parseFloat(e.target.value), min, max, step, !!integer)
-            )
-          }
+          onChange={setValue}
         />
         {showButtons && (
           <>
             <button
               title="Increase"
-              onClick={increaseValue}
+              onClick={() => setValue(currentValue + step)}
               disabled={disabled || readOnly}
             >
               <IconUp />
             </button>
             <button
               title="Decrease"
-              onClick={decreaseValue}
+              onClick={() => setValue(currentValue - step)}
               disabled={disabled || readOnly}
             >
               <IconDown />
