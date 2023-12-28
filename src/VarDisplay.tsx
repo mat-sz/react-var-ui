@@ -16,6 +16,8 @@ export interface IVarDisplayProps extends IVarBaseProps {
   value?: string | number;
 
   errorPath?: string;
+
+  unit?: string;
 }
 
 /**
@@ -30,6 +32,7 @@ export const VarDisplay = ({
   className,
   error,
   errorPath,
+  unit,
 }: IVarDisplayProps): JSX.Element => {
   const [currentValue, _, currentError] = useVarUIValue({
     path,
@@ -46,7 +49,10 @@ export const VarDisplay = ({
       className={className}
       error={currentError}
     >
-      <span>{currentValue}</span>
+      <span>
+        {currentValue}
+        {unit}
+      </span>
     </VarBase>
   );
 };

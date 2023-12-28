@@ -38,6 +38,11 @@ export interface IVarSliderProps extends IVarBaseInputProps<number> {
    * If true will display buttons that increase and decrease the value by step.
    */
   showButtons?: boolean;
+
+  /**
+   * Unit to display to the right of the input field.
+   */
+  unit?: string;
 }
 
 /**
@@ -60,6 +65,7 @@ export const VarSlider = ({
   className,
   error,
   errorPath,
+  unit,
 }: IVarSliderProps): JSX.Element => {
   const sliderRef = useRef<HTMLDivElement>(null);
   const [currentValue, setCurrentValue, currentError] = useVarUIValue({
@@ -144,9 +150,13 @@ export const VarSlider = ({
             readOnly={readOnly}
             onChange={setValue}
             value={currentValue}
+            unit={unit}
           />
         ) : (
-          <span>{rounded.toString()}</span>
+          <span>
+            {rounded.toString()}
+            {unit}
+          </span>
         )}
         {showButtons && (
           <>

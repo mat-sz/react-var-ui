@@ -33,6 +33,11 @@ export interface IVarNumberProps extends IVarBaseInputProps<number> {
    * Step must be set.
    */
   showButtons?: boolean;
+
+  /**
+   * Unit to display to the right of the input field.
+   */
+  unit?: string;
 }
 
 /**
@@ -53,6 +58,7 @@ export const VarNumber = ({
   className,
   error,
   errorPath,
+  unit,
 }: IVarNumberProps): JSX.Element => {
   const [currentValue, setCurrentValue, currentError] = useVarUIValue({
     path,
@@ -94,6 +100,7 @@ export const VarNumber = ({
           disabled={disabled}
           readOnly={readOnly}
           onChange={setValue}
+          unit={unit}
         />
         {showButtons && (
           <>

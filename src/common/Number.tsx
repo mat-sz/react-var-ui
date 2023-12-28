@@ -10,6 +10,7 @@ export interface INumberProps {
   className?: string;
   disabled?: boolean;
   readOnly?: boolean;
+  unit?: string;
 }
 
 /**
@@ -25,6 +26,7 @@ export const Number = ({
   disabled,
   readOnly,
   round,
+  unit,
 }: INumberProps): JSX.Element => {
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -60,14 +62,15 @@ export const Number = ({
       : {
           onBlur: updateValueFromInput,
           onKeyDown: (e: React.KeyboardEvent) => {
+            const input = inputRef.current!;
             switch (e.key) {
               case 'ArrowUp':
                 e.preventDefault();
-                setValue(value + step);
+                setValue(parseFloat(input.value) + step);
                 break;
               case 'ArrowDown':
                 e.preventDefault();
-                setValue(value - step);
+                setValue(parseFloat(input.value) - step);
                 break;
             }
           },
@@ -80,16 +83,18 @@ export const Number = ({
         };
 
   return (
-    <input
-      className={className}
-      type="number"
-      min={min}
-      max={max}
-      step={step}
-      disabled={disabled}
-      readOnly={readOnly}
-      ref={inputRef}
-      {...events}
-    />
+    <div className={className}>
+      <input
+        type="number"
+        min={min}
+        max={max}
+        step={step}
+        disabled={disabled}
+        readOnly={readOnly}
+        ref={inputRef}
+        {...events}
+      />
+      {unit ? <span>{unit}</span> : null}
+    </div>
   );
 };

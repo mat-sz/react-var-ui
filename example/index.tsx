@@ -70,6 +70,7 @@ const App = () => {
                 min={0.2}
                 max={0.8}
                 step={0.1}
+                unit="mm"
                 showInput
                 showButtons
               />
