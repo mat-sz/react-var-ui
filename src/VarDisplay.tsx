@@ -14,6 +14,8 @@ export interface IVarDisplayProps extends IVarBaseProps {
    * In most cases you aren't going to need this.
    */
   value?: string | number;
+
+  errorPath?: string;
 }
 
 /**
@@ -26,8 +28,15 @@ export const VarDisplay = ({
   disabled,
   readOnly,
   className,
+  error,
+  errorPath,
 }: IVarDisplayProps): JSX.Element => {
-  const [currentValue] = useVarUIValue(path, value);
+  const [currentValue, _, currentError] = useVarUIValue({
+    path,
+    fallbackValue: value,
+    error,
+    errorPath,
+  });
 
   return (
     <VarBase
@@ -35,6 +44,7 @@ export const VarDisplay = ({
       disabled={disabled}
       readOnly={readOnly}
       className={className}
+      error={currentError}
     >
       <span>{currentValue}</span>
     </VarBase>

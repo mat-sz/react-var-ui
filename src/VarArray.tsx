@@ -19,8 +19,16 @@ export const VarArray = ({
   disabled,
   className,
   children,
+  error,
+  errorPath,
 }: IVarArrayProps): JSX.Element => {
-  const [currentValue, setCurrentValue] = useVarUIValue(path, value, onChange);
+  const [currentValue, setCurrentValue, currentError] = useVarUIValue({
+    path,
+    fallbackValue: value,
+    onChange,
+    error,
+    errorPath,
+  });
 
   return (
     <div
@@ -41,6 +49,12 @@ export const VarArray = ({
                 const newArray = [...currentValue];
                 newArray[index] = set(clone(element), path, newValue);
                 setCurrentValue(newArray);
+              },
+              getError: (path?: string) => {
+                const elementError = currentError?.[index];
+                return elementError && path
+                  ? get(elementError, path)
+                  : undefined;
               },
             }}
             key={index}

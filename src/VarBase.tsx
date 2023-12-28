@@ -30,6 +30,11 @@ export interface IVarBaseProps {
    * Should keep children in a column, with every child having a width of 100%.
    */
   column?: boolean;
+
+  /**
+   * Error to display.
+   */
+  error?: string;
 }
 
 export interface IVarBaseValueProps<T> {
@@ -54,6 +59,13 @@ export interface IVarBaseValueProps<T> {
    * In most cases you aren't going to need this.
    */
   onChange?: (value: T) => void;
+
+  /**
+   * Error path to resolve in object. (default: same as path)
+   */
+  errorPath?: string;
+
+  error?: string;
 }
 
 export interface IVarBaseInputProps<T>
@@ -71,6 +83,7 @@ export const VarBase = ({
   disabled,
   readOnly,
   column = false,
+  error,
 }: IVarBaseProps): JSX.Element => {
   return (
     <div
@@ -87,6 +100,7 @@ export const VarBase = ({
     >
       {!!label && <span>{label}</span>}
       {children}
+      {error ? <div className="react-var-ui-error">{error}</div> : null}
     </div>
   );
 };

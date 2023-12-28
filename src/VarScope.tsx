@@ -12,8 +12,16 @@ export const VarScope = ({
   value,
   onChange,
   children,
+  error,
+  errorPath,
 }: React.PropsWithChildren<IVarBaseValueProps<any>>): JSX.Element => {
-  const [currentValue, setCurrentValue] = useVarUIValue(path, value, onChange);
+  const [currentValue, setCurrentValue, currentError] = useVarUIValue({
+    path,
+    fallbackValue: value,
+    onChange,
+    error,
+    errorPath,
+  });
 
   return (
     <VarUIContext.Provider
@@ -24,6 +32,11 @@ export const VarScope = ({
         setValue: (subpath: string, newValue: any) => {
           const newObject = set(clone(currentValue), subpath, newValue);
           setCurrentValue(newObject);
+        },
+        getError: (subpath?: string) => {
+          return currentError && subpath
+            ? get(currentError, subpath)
+            : undefined;
         },
       }}
     >

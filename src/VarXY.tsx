@@ -80,9 +80,17 @@ export const VarXY = ({
   min = [-1.0, -1.0],
   max = [1.0, 1.0],
   step = [0.01, 0.01],
+  error,
+  errorPath,
 }: IVarXYProps): JSX.Element => {
   const sliderRef = useRef<HTMLDivElement>(null);
-  const [currentValue, setCurrentValue] = useVarUIValue(path, value, onChange);
+  const [currentValue, setCurrentValue, currentError] = useVarUIValue({
+    path,
+    fallbackValue: value,
+    onChange,
+    error,
+    errorPath,
+  });
   const rounded = useMemo(
     () => roundValue(currentValue, min, max, step),
     [currentValue, min, max, step]
@@ -134,6 +142,7 @@ export const VarXY = ({
       disabled={disabled}
       readOnly={readOnly}
       className={className}
+      error={currentError}
     >
       <span className="react-var-ui-xy-value">
         {rounded[0]}, {rounded[1]}

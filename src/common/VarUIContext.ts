@@ -4,9 +4,18 @@ export interface IVarUIContext {
   values: any;
   getValue: (path?: string) => any;
   setValue: (path: string, value: any) => void;
+  getError: (path?: string) => any;
 }
 
 export const VarUIContext = createContext<IVarUIContext | undefined>(undefined);
+
+export interface UseVarUIValueOptions<T> {
+  path?: string;
+  fallbackValue?: T;
+  onChange?: (value: T) => void;
+  errorPath?: string;
+  error?: string;
+}
 
 /**
  * Simple function used for custom input components.
@@ -15,11 +24,13 @@ export const VarUIContext = createContext<IVarUIContext | undefined>(undefined);
  * @param onChange
  * @returns [value: T, setValue: (value: T) => void]
  */
-export function useVarUIValue<T>(
-  path?: string,
-  fallbackValue?: T,
-  onChange?: (value: T) => void
-): [T, (value: T) => void] {
+export function useVarUIValue<T>({
+  path,
+  fallbackValue,
+  onChange,
+  errorPath,
+  error,
+}: UseVarUIValueOptions<T>): [T, (value: T) => void, string | undefined] {
   const context = useContext(VarUIContext);
   const value = useMemo(
     () => context?.getValue(path) ?? fallbackValue,
@@ -35,6 +46,7 @@ export function useVarUIValue<T>(
     },
     [path, context, onChange]
   );
+  error ||= context?.getError(errorPath || path);
 
-  return [value, setValue];
+  return [value, setValue, error];
 }

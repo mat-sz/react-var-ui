@@ -58,9 +58,17 @@ export const VarSlider = ({
   disabled,
   readOnly,
   className,
+  error,
+  errorPath,
 }: IVarSliderProps): JSX.Element => {
   const sliderRef = useRef<HTMLDivElement>(null);
-  const [currentValue, setCurrentValue] = useVarUIValue(path, value, onChange);
+  const [currentValue, setCurrentValue, currentError] = useVarUIValue({
+    path,
+    fallbackValue: value,
+    onChange,
+    error,
+    errorPath,
+  });
   const round = useCallback(
     (value: number) => roundValue(value, min, max, step, !!integer),
     [min, max, step, integer]
@@ -106,6 +114,7 @@ export const VarSlider = ({
       disabled={disabled}
       readOnly={readOnly}
       className={className}
+      error={currentError}
     >
       <div className="react-var-ui-slider">
         <div

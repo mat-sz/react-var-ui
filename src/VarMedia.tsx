@@ -37,8 +37,16 @@ export const VarMedia = ({
   acceptImage,
   acceptAudio,
   acceptVideo,
+  error,
+  errorPath,
 }: IVarMediaProps): JSX.Element => {
-  const [currentValue, setCurrentValue] = useVarUIValue(path, value, onChange);
+  const [currentValue, setCurrentValue, currentError] = useVarUIValue({
+    path,
+    fallbackValue: value,
+    onChange,
+    error,
+    errorPath,
+  });
   const [type, setType] = useState<string>();
   const accept = useMemo(() => {
     let accept = '';
@@ -145,6 +153,7 @@ export const VarMedia = ({
       disabled={disabled}
       readOnly={readOnly}
       className={className}
+      error={currentError}
       column
     >
       <div className="react-var-ui-media react-var-ui-interactive">

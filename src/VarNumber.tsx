@@ -51,8 +51,16 @@ export const VarNumber = ({
   disabled,
   readOnly,
   className,
+  error,
+  errorPath,
 }: IVarNumberProps): JSX.Element => {
-  const [currentValue, setCurrentValue] = useVarUIValue(path, value, onChange);
+  const [currentValue, setCurrentValue, currentError] = useVarUIValue({
+    path,
+    fallbackValue: value,
+    onChange,
+    error,
+    errorPath,
+  });
   const round = useCallback(
     (value: number) => roundValue(value, min, max, step, !!integer),
     [min, max, step, integer]
@@ -73,6 +81,7 @@ export const VarNumber = ({
       disabled={disabled}
       readOnly={readOnly}
       className={className}
+      error={currentError}
     >
       <div className="react-var-ui-number">
         <Number

@@ -16,8 +16,16 @@ export const VarToggle = ({
   disabled,
   readOnly,
   className,
+  error,
+  errorPath,
 }: IVarToggleProps): JSX.Element => {
-  const [currentValue, setCurrentValue] = useVarUIValue(path, value, onChange);
+  const [currentValue, setCurrentValue, currentError] = useVarUIValue({
+    path,
+    fallbackValue: value,
+    onChange,
+    error,
+    errorPath,
+  });
 
   return (
     <VarBase
@@ -25,6 +33,7 @@ export const VarToggle = ({
       disabled={disabled}
       readOnly={readOnly}
       className={className}
+      error={currentError}
     >
       <span>
         <label className="react-var-ui-toggle" title="Toggle">

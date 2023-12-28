@@ -19,7 +19,7 @@ import {
   VarImage,
   VarFile,
   VarMedia,
-} from '../.';
+} from '../src';
 
 const App = () => {
   const [values, setValues] = React.useState({
@@ -59,6 +59,7 @@ const App = () => {
               <VarSlider
                 label="VarSlider"
                 path="slider"
+                error="Hello world"
                 min={0.2}
                 max={0.8}
                 step={0.1}

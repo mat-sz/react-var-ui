@@ -17,8 +17,16 @@ export const VarImage = ({
   disabled,
   readOnly,
   className,
+  error,
+  errorPath,
 }: IVarImageProps): JSX.Element => {
-  const [currentValue, setCurrentValue] = useVarUIValue(path, value, onChange);
+  const [currentValue, setCurrentValue, currentError] = useVarUIValue({
+    path,
+    fallbackValue: value,
+    onChange,
+    error,
+    errorPath,
+  });
 
   const onFileChange = useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -39,6 +47,7 @@ export const VarImage = ({
       disabled={disabled}
       readOnly={readOnly}
       className={className}
+      error={currentError}
       column
     >
       <div className="react-var-ui-image react-var-ui-interactive">

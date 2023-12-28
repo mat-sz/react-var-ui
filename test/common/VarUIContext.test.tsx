@@ -8,14 +8,16 @@ describe('VarUIContext', () => {
     const values = {};
     const getValue = vi.fn(() => 1);
     const setValue = vi.fn();
+    const getError = vi.fn(() => undefined);
     const context = {
       values,
       getValue,
       setValue,
+      getError,
     };
 
     const Component = () => {
-      const [currentValue, setCurrentValue] = useVarUIValue('test');
+      const [currentValue, setCurrentValue] = useVarUIValue({ path: 'test' });
       expect(currentValue).toBe(1);
       setCurrentValue(2);
       return <></>;
@@ -35,14 +37,16 @@ describe('VarUIContext', () => {
     const values = {};
     const getValue = vi.fn(() => undefined);
     const setValue = vi.fn();
+    const getError = vi.fn(() => undefined);
     const context = {
       values,
       getValue,
       setValue,
+      getError,
     };
 
     const Component = () => {
-      const [currentValue] = useVarUIValue('test', 1);
+      const [currentValue] = useVarUIValue({ path: 'test', fallbackValue: 1 });
       expect(currentValue).toBe(1);
       return <></>;
     };
@@ -61,14 +65,16 @@ describe('VarUIContext', () => {
     const getValue = vi.fn(() => undefined);
     const setValue = vi.fn();
     const onChange = vi.fn();
+    const getError = vi.fn(() => undefined);
     const context = {
       values,
       getValue,
       setValue,
+      getError,
     };
 
     const Component = () => {
-      const [, setCurrentValue] = useVarUIValue('test', undefined, onChange);
+      const [, setCurrentValue] = useVarUIValue({ path: 'test', onChange });
       setCurrentValue(2);
       return <></>;
     };

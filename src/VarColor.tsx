@@ -24,8 +24,16 @@ export const VarColor = ({
   disabled,
   readOnly,
   className,
+  error,
+  errorPath,
 }: IVarColorProps): JSX.Element => {
-  const [currentValue, setCurrentValue] = useVarUIValue(path, value, onChange);
+  const [currentValue, setCurrentValue, currentError] = useVarUIValue({
+    path,
+    fallbackValue: value,
+    onChange,
+    error,
+    errorPath,
+  });
 
   const [show, setShow] = useState(false);
   const toggle = useCallback(() => setShow(show => !show), [setShow]);
@@ -37,6 +45,7 @@ export const VarColor = ({
       disabled={disabled}
       readOnly={readOnly}
       className={className}
+      error={currentError}
     >
       <span>
         <span className="react-var-ui-color-value">{currentValue}</span>

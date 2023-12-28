@@ -24,9 +24,17 @@ export const VarAngle = ({
   readOnly,
   defaultValue = 0,
   className,
+  error,
+  errorPath,
 }: IVarAngleProps): JSX.Element => {
   const controlRef = useRef<HTMLDivElement>(null);
-  const [currentValue, setCurrentValue] = useVarUIValue(path, value, onChange);
+  const [currentValue, setCurrentValue, currentError] = useVarUIValue({
+    path,
+    fallbackValue: value,
+    onChange,
+    error,
+    errorPath,
+  });
   const degrees = useMemo(
     () => Math.round(wrap(currentValue) * (180 / Math.PI)),
     [currentValue]
@@ -56,6 +64,7 @@ export const VarAngle = ({
       disabled={disabled}
       readOnly={readOnly}
       className={className}
+      error={currentError}
     >
       <span className="react-var-ui-angle-value">{degrees}&deg;</span>
       <div className="react-var-ui-angle">

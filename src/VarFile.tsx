@@ -31,8 +31,16 @@ export const VarFile = ({
   className,
   accept,
   displayMetadata = true,
+  error,
+  errorPath,
 }: IVarFileProps): JSX.Element => {
-  const [currentValue, setCurrentValue] = useVarUIValue(path, value, onChange);
+  const [currentValue, setCurrentValue, currentError] = useVarUIValue({
+    path,
+    fallbackValue: value,
+    onChange,
+    error,
+    errorPath,
+  });
 
   const onFileChange = useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -52,6 +60,7 @@ export const VarFile = ({
       disabled={disabled}
       readOnly={readOnly}
       className={className}
+      error={currentError}
     >
       <span className="react-var-ui-file-value">{currentValue?.name}</span>
       <div className="react-var-ui-file react-var-ui-interactive">

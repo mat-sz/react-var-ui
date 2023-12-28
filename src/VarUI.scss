@@ -19,6 +19,7 @@ $label-background-hover-color: var(
 );
 $label-border-color: var(--react-var-ui-label-border-color, #33333a);
 $transition-time: 0.2s;
+$error-color: var(--react-var-ui-error-color, #f00);
 
 .react-var-ui {
   &-disabled {
@@ -513,5 +514,10 @@ $transition-time: 0.2s;
         background: $input-background-pressed-color;
       }
     }
+  }
+
+  &-error {
+    color: $error-color;
+    grid-column: 1 / 3;
   }
 }

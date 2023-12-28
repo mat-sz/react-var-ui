@@ -10,6 +10,11 @@ export interface IVarUIProps<T extends object> {
   values: T;
 
   /**
+   * A JavaScript object holding error information.
+   */
+  errors?: any;
+
+  /**
    * @deprecated Replaced by onChange
    */
   updateValues?: (values: T) => void;
@@ -44,6 +49,7 @@ export const VarUI: <T extends object>(
   props: IVarUIProps<T>
 ) => JSX.Element = ({
   values,
+  errors,
   updateValues,
   onChange,
   onChangeValue,
@@ -65,8 +71,13 @@ export const VarUI: <T extends object>(
     [values, updateValues, onChange, onChangeValue]
   );
 
+  const getError = useCallback(
+    (path?: string) => (errors && path ? get(values, path) : undefined),
+    [errors]
+  );
+
   const contextValue = useMemo(
-    () => ({ values, getValue, setValue }),
+    () => ({ values, getValue, setValue, getError }),
     [values, getValue, setValue]
   );
 

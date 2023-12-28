@@ -40,8 +40,16 @@ export const VarSelect = ({
   disabled,
   readOnly,
   className,
+  error,
+  errorPath,
 }: IVarSelectProps): JSX.Element => {
-  const [currentValue, setCurrentValue] = useVarUIValue(path, value, onChange);
+  const [currentValue, setCurrentValue, currentError] = useVarUIValue({
+    path,
+    fallbackValue: value,
+    onChange,
+    error,
+    errorPath,
+  });
 
   const serializedCurrentValue = useMemo(
     () => JSON.stringify(currentValue),
@@ -54,6 +62,7 @@ export const VarSelect = ({
       disabled={disabled}
       readOnly={readOnly}
       className={className}
+      error={currentError}
     >
       <div className="react-var-ui-select">
         <select

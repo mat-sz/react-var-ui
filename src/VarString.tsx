@@ -35,8 +35,16 @@ export const VarString = ({
   disabled,
   readOnly,
   className,
+  error,
+  errorPath,
 }: IVarStringProps): JSX.Element => {
-  const [currentValue, setCurrentValue] = useVarUIValue(path, value, onChange);
+  const [currentValue, setCurrentValue, currentError] = useVarUIValue({
+    path,
+    fallbackValue: value,
+    onChange,
+    error,
+    errorPath,
+  });
 
   const autoexpandOnInput = (event: React.FormEvent<HTMLTextAreaElement>) => {
     const textarea = event.currentTarget;
@@ -56,6 +64,7 @@ export const VarString = ({
       readOnly={readOnly}
       className={className}
       column={multiline}
+      error={currentError}
     >
       {multiline ? (
         <textarea
