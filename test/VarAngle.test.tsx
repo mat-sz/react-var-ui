@@ -26,6 +26,14 @@ describe('VarAngle', () => {
     expect(fn).toBeCalledTimes(1);
   });
 
+  it('should update value on wheel', async () => {
+    const fn = vi.fn();
+    render(<VarAngle value={Math.PI} onChange={fn} />);
+    const angle = await screen.findByTitle('Angle');
+    fireEvent.wheel(angle, { deltaY: -1 });
+    expect(fn).toBeCalledTimes(1);
+  });
+
   it('should reset value on double click', async () => {
     const fn = vi.fn();
     render(<VarAngle value={Math.PI} onChange={fn} defaultValue={0} />);

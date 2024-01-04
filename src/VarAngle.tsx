@@ -42,11 +42,7 @@ export const VarAngle = ({
 
   const { dragProps } = usePointerDrag({
     onMove: ({ x, y }) => {
-      if (!controlRef.current) {
-        return;
-      }
-
-      const div = controlRef.current;
+      const div = controlRef.current!;
       const rect = div.getBoundingClientRect();
       const centerX = rect.left + rect.width / 2;
       const centerY = rect.top + rect.height / 2;
@@ -76,7 +72,7 @@ export const VarAngle = ({
             typeof defaultValue !== 'undefined' && setCurrentValue(defaultValue)
           }
           onWheel={e => {
-            setCurrentValue(wrap(currentValue + 0.5 * (e.deltaY < 0 ? -1 : 1)));
+            setCurrentValue(wrap(currentValue + 0.5 * Math.sign(e.deltaY)));
           }}
           title="Angle"
           {...dragProps()}

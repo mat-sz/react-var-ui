@@ -4,7 +4,7 @@ import { render } from '@testing-library/react';
 import { useVarUIValue, VarUIContext } from '../../src/common/VarUIContext';
 
 describe('VarUIContext', () => {
-  it('calls context functions', () => {
+  it('should call context functions', () => {
     const values = {};
     const getValue = vi.fn(() => 1);
     const setValue = vi.fn();
@@ -33,7 +33,7 @@ describe('VarUIContext', () => {
     expect(setValue).toBeCalledWith('test', 2);
   });
 
-  it('uses fallback value', () => {
+  it('should use fallback value', () => {
     const values = {};
     const getValue = vi.fn(() => undefined);
     const setValue = vi.fn();
@@ -60,7 +60,7 @@ describe('VarUIContext', () => {
     expect(getValue).toBeCalledWith('test');
   });
 
-  it('calls onChange', () => {
+  it('should call onChange', () => {
     const values = {};
     const getValue = vi.fn(() => undefined);
     const setValue = vi.fn();
