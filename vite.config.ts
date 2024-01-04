@@ -20,7 +20,7 @@ export default defineConfig(() => ({
         'react-dom',
         'filesize',
         'radash',
-        'react-color',
+        '@uiw/react-color-sketch',
         'react-use-pointer-drag',
         'react/jsx-runtime',
       ],

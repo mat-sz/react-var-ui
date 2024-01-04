@@ -66,10 +66,17 @@ $error-color: var(--react-var-ui-error-color, #f00);
     position: relative;
     margin-left: 1rem;
 
-    .sketch-picker {
+    &-popover {
       position: absolute;
-      top: 1rem;
-      right: -3rem;
+      z-index: 4;
+      right: 0;
+      bottom: 0;
+    }
+
+    .w-color-sketch {
+      position: absolute;
+      top: 0.5rem;
+      right: 0;
     }
 
     &-color {
@@ -86,11 +93,6 @@ $error-color: var(--react-var-ui-error-color, #f00);
       background: white
         url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARzQklUCAgICHwIZIgAAAAxSURBVDhPY2RgYBABYnzgDT5JxlEDGIZJGBBIBvjTCSgMCAG8CW3UAAZwQiIEaBuIACBfCLFwf0bOAAAAAElFTkSuQmCC')
         center center;
-    }
-
-    &-popover {
-      position: absolute;
-      z-index: 4;
     }
 
     &-cover {

@@ -36,7 +36,7 @@ describe('VarColor', () => {
     act(() => {
       colorPreview.click();
     });
-    const colorAlpha = await screen.findByLabelText('a');
+    const colorAlpha = screen.getByText('A').previousSibling!;
     fireEvent.change(colorAlpha, { target: { value: '0' } });
     expect(fn).toBeCalledWith('#ff000000');
   });
@@ -48,7 +48,7 @@ describe('VarColor', () => {
     act(() => {
       colorPreview.click();
     });
-    const colorAlpha = await screen.findByLabelText('a');
+    const colorAlpha = screen.getByText('A').previousSibling!;
     fireEvent.change(colorAlpha, { target: { value: '0' } });
     expect(fn).toBeCalledWith('#00000000');
   });

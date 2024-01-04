@@ -1,5 +1,5 @@
 import React, { useCallback, useState } from 'react';
-import { SketchPicker } from 'react-color';
+import ColorPicker from '@uiw/react-color-sketch';
 
 import { useVarUIValue } from './common/VarUIContext';
 import { IVarBaseInputProps, VarBase } from './VarBase';
@@ -36,8 +36,6 @@ export const VarColor = ({
   });
 
   const [show, setShow] = useState(false);
-  const toggle = useCallback(() => setShow(show => !show), [setShow]);
-  const close = useCallback(() => setShow(false), [setShow]);
 
   return (
     <VarBase
@@ -50,7 +48,10 @@ export const VarColor = ({
       <span>
         <span className="react-var-ui-color-value">{currentValue}</span>
         <div className="react-var-ui-color react-var-ui-interactive">
-          <div className="react-var-ui-color-swatch" onClick={toggle}>
+          <div
+            className="react-var-ui-color-swatch"
+            onClick={() => setShow(show => !show)}
+          >
             <div
               className="react-var-ui-color-color"
               title="Color preview"
@@ -59,24 +60,17 @@ export const VarColor = ({
           </div>
           {show ? (
             <div className="react-var-ui-color-popover">
-              <div className="react-var-ui-color-cover" onClick={close} />
-              <SketchPicker
+              <div
+                className="react-var-ui-color-cover"
+                onClick={() => setShow(false)}
+              />
+              <ColorPicker
                 color={currentValue}
                 onChange={result => {
-                  // A workaround for some really "interesting" design decisions in react-color.
-                  // https://github.com/casesandberg/react-color/blob/bc9a0e1dc5d11b06c511a8e02a95bd85c7129f4b/src/helpers/color.js#L39
-                  const hex =
-                    result.hex === 'transparent' ? '#000000' : result.hex;
                   if (alpha) {
-                    let alphaValue = Math.round(
-                      (result.rgb.a ?? 1.0) * 255
-                    ).toString(16);
-                    if (alphaValue.length === 1) {
-                      alphaValue = '0' + alphaValue;
-                    }
-                    setCurrentValue(hex + alphaValue);
+                    setCurrentValue(result.hexa);
                   } else {
-                    setCurrentValue(hex);
+                    setCurrentValue(result.hex);
                   }
                 }}
                 disableAlpha={!alpha}

@@ -295,7 +295,7 @@ Button component.
 
 Color picker component. Returns and accepts values in form of hex color strings.
 
-Uses [react-color](https://casesandberg.github.io/react-color/) under the hood.
+Uses [@uiw/react-color-sketch](https://uiwjs.github.io/react-color/#/sketch) to render the color picker.
 
 _T = string_ (#XXXXXX)
 
