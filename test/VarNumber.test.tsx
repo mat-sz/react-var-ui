@@ -72,6 +72,11 @@ describe('VarNumber', () => {
     expect(fn).toBeCalledWith(expect.objectContaining({ value: 2 }));
   });
 
+  it('should display unit', async () => {
+    render(<VarNumber value={1337} unit="mm" />);
+    expect(screen.getByText('mm')).toBeInTheDocument();
+  });
+
   it('should render error from property', async () => {
     render(<VarNumber path="value" error="example error" />);
     expect(screen.getByText('example error')).toBeInTheDocument();

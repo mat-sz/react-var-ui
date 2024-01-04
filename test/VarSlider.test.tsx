@@ -122,6 +122,13 @@ describe('VarSlider', () => {
     expect(fn).toBeCalledWith(expect.objectContaining({ value: 2 }));
   });
 
+  it('should display unit', async () => {
+    render(
+      <VarSlider min={0} max={2} step={0.1} value={1} showInput unit="mm" />
+    );
+    expect(screen.getByText('mm')).toBeInTheDocument();
+  });
+
   it('should render error from property', async () => {
     render(
       <VarSlider

@@ -94,11 +94,7 @@ export const VarSlider = ({
 
   const updatePosition = useCallback(
     (x: number) => {
-      if (!sliderRef.current) {
-        return;
-      }
-
-      const div = sliderRef.current;
+      const div = sliderRef.current!;
       const rect = div.getBoundingClientRect();
       const percent = (x - rect.left) / rect.width;
       setValue(min + (max - min) * percent);
