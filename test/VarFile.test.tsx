@@ -2,6 +2,7 @@ import React from 'react';
 import { fireEvent, render, screen } from '@testing-library/react';
 
 import { VarFile } from '../src/VarFile';
+import { VarUI } from '../src/VarUI';
 
 describe('VarFile', () => {
   it('should render without crashing', () => {
@@ -25,5 +26,24 @@ describe('VarFile', () => {
       },
     });
     expect(fn).toBeCalled();
+  });
+
+  it('should render error from property', async () => {
+    render(<VarFile path="value" error="example error" />);
+    expect(screen.getByText('example error')).toBeInTheDocument();
+  });
+
+  it('should render error from context', async () => {
+    render(
+      <VarUI
+        values={{
+          value: false,
+        }}
+        errors={{ value: 'example error' }}
+      >
+        <VarFile path="value" />
+      </VarUI>
+    );
+    expect(screen.getByText('example error')).toBeInTheDocument();
   });
 });

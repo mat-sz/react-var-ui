@@ -15,4 +15,9 @@ describe('VarButton', () => {
     button.click();
     expect(fn).toBeCalled();
   });
+
+  it('should render error from property', async () => {
+    render(<VarButton buttonLabel="Test" error="example error" />);
+    expect(screen.getByText('example error')).toBeInTheDocument();
+  });
 });

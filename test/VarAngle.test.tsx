@@ -48,4 +48,23 @@ describe('VarAngle', () => {
     fireEvent.doubleClick(angle);
     expect(fn).toBeCalledWith(expect.objectContaining({ value: 0 }));
   });
+
+  it('should render error from property', async () => {
+    render(<VarAngle path="value" error="example error" />);
+    expect(screen.getByText('example error')).toBeInTheDocument();
+  });
+
+  it('should render error from context', async () => {
+    render(
+      <VarUI
+        values={{
+          value: false,
+        }}
+        errors={{ value: 'example error' }}
+      >
+        <VarAngle path="value" />
+      </VarUI>
+    );
+    expect(screen.getByText('example error')).toBeInTheDocument();
+  });
 });

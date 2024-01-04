@@ -39,4 +39,18 @@ describe('VarScope', () => {
     });
     expect(fn).toBeCalledWith({ scope: { test: 'x' } });
   });
+
+  it('should render errors from context', async () => {
+    render(
+      <VarUI
+        values={{ scope: { test: 'abc' } }}
+        errors={{ scope: { test: 'example error' } }}
+      >
+        <VarScope path="scope">
+          <VarString path="test" />
+        </VarScope>
+      </VarUI>
+    );
+    expect(screen.getByText('example error')).toBeInTheDocument();
+  });
 });

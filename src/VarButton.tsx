@@ -28,9 +28,15 @@ export const VarButton = ({
   buttonLabel,
   disabled,
   className,
+  error,
 }: IVarButtonProps): JSX.Element => {
   return (
-    <VarBase label={label} disabled={disabled} className={className}>
+    <VarBase
+      label={label}
+      disabled={disabled}
+      className={className}
+      error={error}
+    >
       <span className="react-var-ui-button">
         <button onClick={() => onClick?.()} disabled={disabled}>
           {buttonLabel}

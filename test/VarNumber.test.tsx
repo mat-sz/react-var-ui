@@ -71,4 +71,23 @@ describe('VarNumber', () => {
     button.click();
     expect(fn).toBeCalledWith(expect.objectContaining({ value: 2 }));
   });
+
+  it('should render error from property', async () => {
+    render(<VarNumber path="value" error="example error" />);
+    expect(screen.getByText('example error')).toBeInTheDocument();
+  });
+
+  it('should render error from context', async () => {
+    render(
+      <VarUI
+        values={{
+          value: false,
+        }}
+        errors={{ value: 'example error' }}
+      >
+        <VarNumber path="value" />
+      </VarUI>
+    );
+    expect(screen.getByText('example error')).toBeInTheDocument();
+  });
 });

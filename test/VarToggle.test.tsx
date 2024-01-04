@@ -53,4 +53,23 @@ describe('VarToggle', () => {
     toggle.click();
     expect(fn).toBeCalledWith(expect.objectContaining({ value: true }));
   });
+
+  it('should render error from property', async () => {
+    render(<VarToggle path="value" error="example error" />);
+    expect(screen.getByText('example error')).toBeInTheDocument();
+  });
+
+  it('should render error from context', async () => {
+    render(
+      <VarUI
+        values={{
+          value: false,
+        }}
+        errors={{ value: 'example error' }}
+      >
+        <VarToggle path="value" />
+      </VarUI>
+    );
+    expect(screen.getByText('example error')).toBeInTheDocument();
+  });
 });

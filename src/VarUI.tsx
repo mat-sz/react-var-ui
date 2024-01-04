@@ -72,7 +72,7 @@ export const VarUI: <T extends object>(
   );
 
   const getError = useCallback(
-    (path?: string) => (errors && path ? get(values, path) : undefined),
+    (path?: string) => (errors && path ? get(errors, path) : undefined),
     [errors]
   );
 

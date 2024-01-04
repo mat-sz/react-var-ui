@@ -3,6 +3,7 @@ import { fireEvent, render, screen } from '@testing-library/react';
 
 import { VarArray } from '../src/VarArray';
 import { VarString } from '../src/VarString';
+import { VarUI } from '../src/VarUI';
 
 describe('VarArray', () => {
   it('should render without crashing', () => {
@@ -46,5 +47,17 @@ describe('VarArray', () => {
       },
     });
     expect(fn).toBeCalledWith([{ test: 'a' }, { test: 'x' }, { test: 'c' }]);
+  });
+
+  it('should render errors from context', async () => {
+    render(
+      <VarUI
+        values={{ array: [{ test: 'a' }, { test: 'b' }, { test: 'c' }] }}
+        errors={{ array: [undefined, { test: 'example error' }] }}
+      >
+        <VarArray path="array">{() => <VarString path="test" />}</VarArray>
+      </VarUI>
+    );
+    expect(screen.getByText('example error')).toBeInTheDocument();
   });
 });

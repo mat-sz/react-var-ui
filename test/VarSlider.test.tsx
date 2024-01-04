@@ -121,4 +121,32 @@ describe('VarSlider', () => {
     button.click();
     expect(fn).toBeCalledWith(expect.objectContaining({ value: 2 }));
   });
+
+  it('should render error from property', async () => {
+    render(
+      <VarSlider
+        path="value"
+        showButtons={true}
+        min={0}
+        max={2}
+        step={1}
+        error="example error"
+      />
+    );
+    expect(screen.getByText('example error')).toBeInTheDocument();
+  });
+
+  it('should render error from context', async () => {
+    render(
+      <VarUI
+        values={{
+          value: false,
+        }}
+        errors={{ value: 'example error' }}
+      >
+        <VarSlider path="value" showButtons={true} min={0} max={2} step={1} />
+      </VarUI>
+    );
+    expect(screen.getByText('example error')).toBeInTheDocument();
+  });
 });

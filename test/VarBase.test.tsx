@@ -13,4 +13,9 @@ describe('VarBase', () => {
     const base = await screen.findByText('Test');
     expect(base).toBeInTheDocument();
   });
+
+  it('should render error from property', async () => {
+    render(<VarBase error="example error" />);
+    expect(screen.getByText('example error')).toBeInTheDocument();
+  });
 });

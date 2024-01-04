@@ -96,4 +96,40 @@ describe('VarSelect', () => {
     fireEvent.change(select, { target: { value: '1' } });
     expect(fn).toBeCalledWith(expect.objectContaining({ value: 1 }));
   });
+
+  it('should render error from property', async () => {
+    render(
+      <VarSelect
+        path="value"
+        options={[
+          { key: 1, label: 'Test 1' },
+          { key: 2, label: 'Test 2' },
+          { key: 3, label: 'Test 3' },
+        ]}
+        error="example error"
+      />
+    );
+    expect(screen.getByText('example error')).toBeInTheDocument();
+  });
+
+  it('should render error from context', async () => {
+    render(
+      <VarUI
+        values={{
+          value: false,
+        }}
+        errors={{ value: 'example error' }}
+      >
+        <VarSelect
+          path="value"
+          options={[
+            { key: 1, label: 'Test 1' },
+            { key: 2, label: 'Test 2' },
+            { key: 3, label: 'Test 3' },
+          ]}
+        />
+      </VarUI>
+    );
+    expect(screen.getByText('example error')).toBeInTheDocument();
+  });
 });

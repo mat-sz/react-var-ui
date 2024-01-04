@@ -2,6 +2,7 @@ import React from 'react';
 import { fireEvent, render, screen } from '@testing-library/react';
 
 import { VarImage } from '../src/VarImage';
+import { VarUI } from '../src/VarUI';
 
 describe('VarImage', () => {
   it('should render without crashing', () => {
@@ -28,5 +29,24 @@ describe('VarImage', () => {
       },
     });
     expect(fn).toBeCalled();
+  });
+
+  it('should render error from property', async () => {
+    render(<VarImage path="value" error="example error" />);
+    expect(screen.getByText('example error')).toBeInTheDocument();
+  });
+
+  it('should render error from context', async () => {
+    render(
+      <VarUI
+        values={{
+          value: false,
+        }}
+        errors={{ value: 'example error' }}
+      >
+        <VarImage path="value" />
+      </VarUI>
+    );
+    expect(screen.getByText('example error')).toBeInTheDocument();
   });
 });

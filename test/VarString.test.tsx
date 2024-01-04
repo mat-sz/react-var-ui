@@ -45,4 +45,23 @@ describe('VarString', () => {
     });
     expect(fn).toBeCalledWith(expect.objectContaining({ value: 'Updated' }));
   });
+
+  it('should render error from property', async () => {
+    render(<VarString path="value" error="example error" />);
+    expect(screen.getByText('example error')).toBeInTheDocument();
+  });
+
+  it('should render error from context', async () => {
+    render(
+      <VarUI
+        values={{
+          value: false,
+        }}
+        errors={{ value: 'example error' }}
+      >
+        <VarString path="value" />
+      </VarUI>
+    );
+    expect(screen.getByText('example error')).toBeInTheDocument();
+  });
 });
