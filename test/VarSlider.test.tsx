@@ -156,4 +156,29 @@ describe('VarSlider', () => {
     );
     expect(screen.getByText('example error')).toBeInTheDocument();
   });
+
+  it('should update value on input change if inputMin/inputMax/inputStep are defined', async () => {
+    const fn = vi.fn();
+    render(
+      <VarSlider
+        min={0}
+        max={2}
+        step={0.1}
+        inputMin={0}
+        inputMax={4}
+        inputStep={1}
+        value={1}
+        onChange={fn}
+        showInput
+      />
+    );
+    const input = await screen.findByDisplayValue(1);
+    fireEvent.change(input, {
+      target: {
+        value: 3,
+      },
+    });
+    fireEvent.blur(input);
+    expect(fn).toBeCalledWith(3);
+  });
 });

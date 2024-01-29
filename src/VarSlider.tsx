@@ -25,6 +25,21 @@ export interface IVarSliderProps extends IVarBaseInputProps<number> {
   step: number;
 
   /**
+   * Minimum value (for the input field, if not defined, will use `min`).
+   */
+  inputMin?: number;
+
+  /**
+   * Maximum value (for the input field, if not defined, will use `max`).
+   */
+  inputMax?: number;
+
+  /**
+   * Step (for the input field, if not defined, will use `step`).
+   */
+  inputStep?: number;
+
+  /**
    * Should the end result be rounded to an integer value.
    */
   integer?: boolean;
@@ -56,6 +71,9 @@ export const VarSlider = ({
   min,
   max,
   step,
+  inputMin = min,
+  inputMax = max,
+  inputStep = step,
   integer,
   defaultValue,
   showInput,
@@ -79,6 +97,11 @@ export const VarSlider = ({
     (value: number) => roundValue(value, min, max, step, !!integer),
     [min, max, step, integer]
   );
+  const roundInput = useCallback(
+    (value: number) =>
+      roundValue(value, inputMin, inputMax, inputStep, !!integer),
+    [inputMin, inputMax, inputStep, integer]
+  );
   const rounded = useMemo(() => round(currentValue), [currentValue, round]);
   const percent = useMemo(
     () => ((rounded - min) / (max - min)) * 100,
@@ -90,6 +113,13 @@ export const VarSlider = ({
       setCurrentValue(round(value));
     },
     [round, setCurrentValue]
+  );
+
+  const setValueInput = useCallback(
+    (value: number) => {
+      setCurrentValue(roundInput(value));
+    },
+    [roundInput, setCurrentValue]
   );
 
   const updatePosition = useCallback(
@@ -139,12 +169,12 @@ export const VarSlider = ({
           <Number
             className="react-var-ui-slider-input"
             round={round}
-            min={min}
-            max={max}
-            step={step}
+            min={inputMin}
+            max={inputMax}
+            step={inputStep}
             disabled={disabled}
             readOnly={readOnly}
-            onChange={setValue}
+            onChange={setValueInput}
             value={currentValue}
             unit={unit}
           />
