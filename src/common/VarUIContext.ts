@@ -38,7 +38,7 @@ export function useVarUIValue<T>({
   );
   const setValue = useCallback(
     (value: T) => {
-      if (path && context) {
+      if (typeof path === 'string' && context) {
         context.setValue(path, value);
       }
 

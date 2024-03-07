@@ -57,14 +57,15 @@ export const VarUI: <T extends object>(
   children,
 }) => {
   const getValue = useCallback(
-    (path?: string) => (path ? get(values, path) : undefined),
+    (path?: string) =>
+      typeof path === 'string' ? get(values, path) : undefined,
     [values]
   );
 
   const setValue = useCallback(
     (path: string, value: any) => {
       onChangeValue?.(path, value);
-      const newValues = set(clone(values), path, value);
+      const newValues = path === '' ? value : set(clone(values), path, value);
       updateValues?.(newValues);
       onChange?.(newValues);
     },
@@ -72,7 +73,8 @@ export const VarUI: <T extends object>(
   );
 
   const getError = useCallback(
-    (path?: string) => (errors && path ? get(errors, path) : undefined),
+    (path?: string) =>
+      errors && typeof path === 'string' ? get(errors, path) : undefined,
     [errors]
   );
 

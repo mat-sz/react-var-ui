@@ -28,7 +28,7 @@ export const VarScope = ({
       value={{
         values: currentValue,
         getValue: (subpath?: string) =>
-          subpath ? get(currentValue, subpath) : undefined,
+          typeof subpath === 'string' ? get(currentValue, subpath) : undefined,
         setValue: (subpath: string, newValue: any) => {
           const newObject = set(clone(currentValue), subpath, newValue);
           setCurrentValue(newObject);

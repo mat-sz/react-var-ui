@@ -60,4 +60,30 @@ describe('VarArray', () => {
     );
     expect(screen.getByText('example error')).toBeInTheDocument();
   });
+
+  it('should display value (empty path)', async () => {
+    render(
+      <VarArray value={['a', 'b', 'c']}>
+        <VarString path="" />
+      </VarArray>
+    );
+    const value = await screen.findByDisplayValue('b');
+    expect(value).toBeInTheDocument();
+  });
+
+  it('should update value on change (empty path)', async () => {
+    const fn = vi.fn();
+    render(
+      <VarArray value={['a', 'b', 'c']} onChange={fn}>
+        {() => <VarString path="" />}
+      </VarArray>
+    );
+    const value = await screen.findByDisplayValue('b');
+    fireEvent.change(value, {
+      target: {
+        value: 'x',
+      },
+    });
+    expect(fn).toBeCalledWith(['a', 'x', 'c']);
+  });
 });

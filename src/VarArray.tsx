@@ -44,10 +44,11 @@ export const VarArray = ({
             value={{
               values: element,
               getValue: (path?: string) =>
-                path ? get(element, path) : undefined,
+                typeof path === 'string' ? get(element, path) : undefined,
               setValue: (path: string, newValue: any) => {
                 const newArray = [...currentValue];
-                newArray[index] = set(clone(element), path, newValue);
+                newArray[index] =
+                  path === '' ? newValue : set(clone(element), path, newValue);
                 setCurrentValue(newArray);
               },
               getError: (path?: string) => {
